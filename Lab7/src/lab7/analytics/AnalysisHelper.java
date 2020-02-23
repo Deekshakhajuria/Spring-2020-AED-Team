@@ -27,19 +27,43 @@ public class AnalysisHelper {
         
         Map<Integer, Comment> comments = DataStore.getInstance().getComments();
 
-        int totalLikes = 0;
+        int avgLikes = 0;
         for (Comment c : comments.values()) {
-            totalLikes += c.getLikes();
+            avgLikes += c.getLikes();
         }
 
-        int avg = totalLikes / comments.size();
+        int avg = avgLikes / comments.size();
         
         System.out.println("--------------------------------Task 1-------------------------------");
         System.out.println("---------------------------------------------------------------------");
         System.out.println("(I) Average Number of Likes Per Comment: " + avg);
-        System.out.println("---------------------------------------------------------------------");
+        
 
     }
+    
+    //find the post with most liked comments
+    
+     public void getPostWithMostLikedComments() {
+         
+        Map<Integer, Comment> comment = DataStore.getInstance().getComments();
+        int maxlike = Integer.MIN_VALUE;
+        int maxId = 0;
+
+        for (Comment c : comment.values()) {
+
+            int count = c.getLikes();
+
+            if (count > maxlike) {
+                maxlike = count;
+                maxId = c.getPostId();
+            }
+
+        }
+        
+        System.out.println("------------------------------Task 2--------------------------------");
+        System.out.println("---------------------------------------------------------------------");
+        System.out.println("(II) Post with most liked comments: " + maxId + " Total number of comments: " + maxlike);
+            }
     
     
     // find user with Most Likes
