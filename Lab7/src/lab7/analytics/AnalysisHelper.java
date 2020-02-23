@@ -12,14 +12,124 @@ import java.util.Comparator;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
+import java.util.TreeMap;
 import lab7.entities.Comment;
+import lab7.entities.Post;
 import lab7.entities.User;
 
 /**
  *
- * @author harshalneelkamal
+ * @author A Team Has No Name
  */
 public class AnalysisHelper {
+    
+    //find average number of likes per comment:
+    
+    public void getAvgNumberOfLikesPerComment() {
+        
+        Map<Integer, Comment> comments = DataStore.getInstance().getComments();
+
+        int avgLikes = 0;
+        for (Comment c : comments.values()) {
+            avgLikes += c.getLikes();
+        }
+
+        int avg = avgLikes / comments.size();
+        
+        System.out.println("--------------------------------Task 1-------------------------------");
+        System.out.println("---------------------------------------------------------------------");
+        System.out.println("(I) Average Number of Likes Per Comment: " + avg);
+        
+
+    }
+    
+    //find the post with most liked comments
+    
+     public void getPostWithMostLikedComments() {
+         
+        Map<Integer, Comment> comment = DataStore.getInstance().getComments();
+        int maxlike = Integer.MIN_VALUE;
+        int maxId = 0;
+
+        for (Comment c : comment.values()) {
+
+            int count = c.getLikes();
+
+            if (count > maxlike) {
+                maxlike = count;
+                maxId = c.getPostId();
+            }
+
+        }
+        
+        System.out.println("------------------------------Task 2--------------------------------");
+        System.out.println("---------------------------------------------------------------------");
+        System.out.println("(II) Post with most liked comments: " + maxId + " Total number of comments: " + maxlike);
+     }
+    
+     
+     public void getPostWithMostComments() {
+
+        Map<Integer, Post> posts = DataStore.getInstance().getPosts();
+        int max = Integer.MIN_VALUE;
+        int maxId = 0;
+
+        for (Post p : posts.values()) {
+            int count = p.getComments().size();
+
+            if (count > max) {
+
+                max = count;
+                maxId = p.getPostId();
+
+            }
+
+        }
+
+        System.out.println("------------------------------Task 3--------------------------------");
+        System.out.println("---------------------------------------------------------------------");
+        System.out.println("(III) Post with most comments: " + maxId + " Total number of comments: " + max);
+     }
+     
+     public void getTopFiveInactiveUsersBasedOnTotalPostNo() {
+
+        Map<Integer, Post> posts = DataStore.getInstance().getPosts();
+        Map<Integer, Integer> users = new TreeMap<>();
+
+        for (Post p : posts.values()) {
+
+            int count = 1;
+
+            if (users.containsKey(p.getUserId())) {
+                count = users.get(p.getUserId());
+                count++;
+            }
+
+            users.put(p.getUserId(), count);
+        }
+
+        Set entrySet = users.entrySet();
+        
+        List<Map.Entry<Integer, Integer>> list = new ArrayList<>(entrySet);
+        Collections.sort(list, new Comparator<Map.Entry<Integer, Integer>>() {
+            
+            public int compare(Map.Entry<Integer, Integer> a, Map.Entry<Integer, Integer> b) {
+                
+                return a.getValue() - b.getValue();
+            }
+        });
+        System.out.println("------------------------------Task 4--------------------------------");
+        System.out.println("---------------------------------------------------------------------");
+        System.out.println("(IV) Top Five Inactive Users Based on Total Post Number");
+        for (int i = 0; i < list.size() && i < 5; i++) {
+            int userid = list.get(i).getKey();
+            int numberOfPosts = list.get(i).getValue();
+            System.out.println("UserID: " + userid + " Posted " + numberOfPosts + " posts");
+        }
+    }
+     
+    
     // find user with Most Likes
     //  key: UserId ; Value: sum of likes from all comments
     public void userWithMostLikes() {

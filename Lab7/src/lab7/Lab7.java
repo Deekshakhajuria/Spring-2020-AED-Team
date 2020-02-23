@@ -15,7 +15,7 @@ import lab7.entities.User;
 
 /**
  *
- * @author harshalneelkamal
+ * @author A Team Has No Name
  */
 public class Lab7 {
 
@@ -94,7 +94,10 @@ public class Lab7 {
     private void runAnalysis(){
         // find user with Most Likes
         helper.userWithMostLikes();
-        
         helper.getFiveMostLikedComment();
+        helper.getAvgNumberOfLikesPerComment();
+        helper.getPostWithMostLikedComments();
+        helper.getPostWithMostComments();
+        helper.getTopFiveInactiveUsersBasedOnTotalPostNo();
     }
 }
