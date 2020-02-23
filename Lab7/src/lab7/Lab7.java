@@ -97,5 +97,9 @@ public class Lab7 {
         helper.getFiveMostLikedComment();
         helper.getAvgNumberOfLikesPerComment();
         helper.getPostWithMostLikedComments();
+        helper.getPostWithMostComments();
+        helper.getTopFiveInactiveUsersBasedOnTotalPostNo();
+        helper.getTopFiveInactiveUsersBasedOnCommentsTheyCreated();
+        helper.getTopFiveInactiveUsersOverallBasedonSumOfCommentsLikesAndPosts();
     }
 }
