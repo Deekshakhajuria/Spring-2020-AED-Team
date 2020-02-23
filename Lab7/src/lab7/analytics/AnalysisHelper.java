@@ -92,6 +92,90 @@ public class AnalysisHelper {
         System.out.println("(III) Post with most comments: " + maxId + " Total number of comments: " + max);
      }
      
+     public void getTopFiveInactiveUsersBasedOnTotalPostNo() {
+
+        Map<Integer, Post> posts = DataStore.getInstance().getPosts();
+        Map<Integer, Integer> users = new TreeMap<>();
+
+        for (Post p : posts.values()) {
+
+            int count = 1;
+
+            if (users.containsKey(p.getUserId())) {
+                count = users.get(p.getUserId());
+                count++;
+            }
+
+            users.put(p.getUserId(), count);
+        }
+
+        Set entrySet = users.entrySet();
+        
+        List<Map.Entry<Integer, Integer>> list = new ArrayList<>(entrySet);
+        Collections.sort(list, new Comparator<Map.Entry<Integer, Integer>>() {
+            
+            public int compare(Map.Entry<Integer, Integer> a, Map.Entry<Integer, Integer> b) {
+                
+                return a.getValue() - b.getValue();
+            }
+        });
+        System.out.println("------------------------------Task 4--------------------------------");
+        System.out.println("---------------------------------------------------------------------");
+        System.out.println("(IV) Top Five Inactive Users Based on Total Post Number");
+        for (int i = 0; i < list.size() && i < 5; i++) {
+            int userid = list.get(i).getKey();
+            int numberOfPosts = list.get(i).getValue();
+            System.out.println("UserID: " + userid + " Posted " + numberOfPosts + " posts");
+        }
+    }
+     
+     public void getTopFiveInactiveUsersBasedOnCommentsTheyCreated() {
+
+        Map<Integer, Comment> comments = DataStore.getInstance().getComments();
+        Map<Integer, Integer> users = new HashMap<>();
+
+        for (Comment c : comments.values()){
+            
+            c.getUserId();
+            int count = 1;
+
+        if(users.containsKey(c.getUserId())){
+            count = users.get(c.getUserId());
+            count++;
+        }
+        users.put(c.getUserId(),count);
+        }
+     
+        Set entrySet = users.entrySet(); 
+        List<Map.Entry<Integer, Integer>> list = new ArrayList<>(entrySet);
+        
+        Collections.sort(list, new Comparator<Map.Entry<Integer, Integer>>() {
+            
+            public int compare(Map.Entry<Integer, Integer> a, Map.Entry<Integer, Integer> b) {
+                return a.getValue() - b.getValue();
+            }
+        });
+        
+        System.out.println("------------------------------Task 5--------------------------------");
+        System.out.println("---------------------------------------------------------------------");
+        System.out.println("(V) Top Five Inactive Users Based on Total Comments They Created:");
+        int prevNumberOfPosts = -1;
+        int count = 0;
+        for (int i = 0; i < 5 && count <= 4; i++) {
+            int userid = list.get(i).getKey();
+            int numberOfPosts = list.get(i).getValue();
+            
+            if(prevNumberOfPosts != numberOfPosts){
+                count++;
+            }
+            prevNumberOfPosts = numberOfPosts;
+            System.out.println("UserID: " + userid + " Posted " + numberOfPosts + " comments");
+        }
+        
+        
+    }
+     
+    
     
     // find user with Most Likes
     //  key: UserId ; Value: sum of likes from all comments
