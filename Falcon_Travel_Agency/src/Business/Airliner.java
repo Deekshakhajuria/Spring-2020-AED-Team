@@ -5,17 +5,14 @@
  */
 package Business;
 
-import java.util.ArrayList;
-
 /**
  *
  * @author niramaykelkar
  */
-public class AirlinerDirectory {
+public class Airliner {
 
-    private ArrayList<Airliner> airLinerList;
-    public ArrayList<Airliner> getAirLinerList() {
-        return airLinerList;
+    public Object getAddress() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     
 }
