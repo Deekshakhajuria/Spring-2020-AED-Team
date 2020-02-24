@@ -8,6 +8,7 @@ package UserInterface.ManageAirliners;
 import Business.Airliner;
 import java.awt.CardLayout;
 import javax.swing.JPanel;
+import Business.FlightSchedule;
 
 /**
  *
@@ -20,8 +21,12 @@ public class ViewAirlinerJPanel extends javax.swing.JPanel {
      */
     private JPanel CardSequenceJPanel;
     private Airliner airliner;
+    //private FlightSchedule flightSched;
     public ViewAirlinerJPanel(JPanel CardSequenceJPanel, Airliner airliner) {
         initComponents();
+        this.CardSequenceJPanel = CardSequenceJPanel;
+        this.airliner = airliner;
+        //this.flightSched = flightSched;
     }
 
     /**

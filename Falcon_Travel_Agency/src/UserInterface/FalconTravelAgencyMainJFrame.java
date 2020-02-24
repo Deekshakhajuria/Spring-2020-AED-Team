@@ -82,7 +82,7 @@ public class FalconTravelAgencyMainJFrame extends javax.swing.JFrame {
     private void manageAirlinerBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_manageAirlinerBtnActionPerformed
         // TODO add your handling code here:
        ManageAirlinersJPanel manage = new ManageAirlinersJPanel(CardSequenceJPanel,airlineDir,fSched);
-       CardSequenceJPanel.add("ManageAirlineJPanel_1",manage);
+       CardSequenceJPanel.add("ManageAirlineJPanel",manage);
        CardLayout layout = (CardLayout)CardSequenceJPanel.getLayout();
        layout.next(CardSequenceJPanel);
     }//GEN-LAST:event_manageAirlinerBtnActionPerformed

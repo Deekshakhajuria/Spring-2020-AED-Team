@@ -6,8 +6,14 @@
 package UserInterface.ManageAirliners;
 
 import Business.AirlinerDirectory;
+import Business.Airplane;
+import Business.Fleet;
 import Business.FlightSchedule;
 import java.awt.CardLayout;
+import java.util.ArrayList;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 /**
@@ -22,6 +28,7 @@ public class CreateNewAirlinerJPanel extends javax.swing.JPanel {
     private JPanel CardSequenceJPanel;
     private AirlinerDirectory airlineDir;
     private FlightSchedule flightSched;
+    private Fleet fleetlist = new Fleet();
     public CreateNewAirlinerJPanel(JPanel CardSequenceJPanel, AirlinerDirectory airlineDir,FlightSchedule flightSched) {
         initComponents();
         this.CardSequenceJPanel = CardSequenceJPanel;
@@ -63,6 +70,11 @@ public class CreateNewAirlinerJPanel extends javax.swing.JPanel {
         });
 
         crtAirlinerBtn.setText("Create");
+        crtAirlinerBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                crtAirlinerBtnActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -115,6 +127,62 @@ public class CreateNewAirlinerJPanel extends javax.swing.JPanel {
         layout.previous(CardSequenceJPanel);
     }//GEN-LAST:event_btnBackActionPerformed
 
+    private boolean inputValid()
+    {
+        if (txtAirlineName.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Please enter Name.");
+            return false;
+        }
+        if (txtAirlineName.getText().length() > 25) {
+            JOptionPane.showMessageDialog(null, "Limit Charatcter  Reached!!");
+            return false;
+        }
+         if (txtAirlineBase.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Please enter Name.");
+            return false;
+        }
+        if (txtAirlineBase.getText().length() > 25) {
+            JOptionPane.showMessageDialog(null, "Limit Charatcter  Reached!!");
+            return false;
+        }
+        return true;
+    }
+    
+    private boolean airLinerPatternCorrect() {
+       Pattern p = Pattern.compile("^[a-zA-Z\\s]*$");
+       Matcher m = p.matcher(txtAirlineName.getText());
+       boolean b = m.matches();
+       System.out.println(b);
+       return b;
+
+    }
+    
+    private void crtAirlinerBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_crtAirlinerBtnActionPerformed
+        // TODO add your handling code here:
+        if (inputValid() == true) {
+            if(!airLinerPatternCorrect())
+            {
+                JOptionPane.showMessageDialog(null, "Do Not Enter Special Characters in Airliner Name!!");
+                return;
+            
+            }
+            ArrayList<Airplane> airplaneList3 = new ArrayList<Airplane>();
+            Airplane airplane5 = new Airplane("5", "XX", "BeeachCraft", 100);
+            Airplane airplane6 = new Airplane("6", "A320", "Airbus", 100);
+            airplaneList3.add(airplane5);
+            airplaneList3.add(airplane6);
+            fleetlist.setAirplaneList(airplaneList3);
+            airlineDir.addAirLiner(txtAirlineName.getText(),txtAirlineBase.getText(),fleetlist);
+            JOptionPane.showMessageDialog(null, "New Airliner Added!!");
+            crtAirlinerBtn.setEnabled(true);
+            clearFields();
+        }
+    }//GEN-LAST:event_crtAirlinerBtnActionPerformed
+
+    private void clearFields() {
+        txtAirlineName.setText("");
+        txtAirlineBase.setText("");
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnBack;
