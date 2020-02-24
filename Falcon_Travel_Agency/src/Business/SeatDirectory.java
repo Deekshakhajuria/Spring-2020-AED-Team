@@ -59,8 +59,7 @@ public class SeatDirectory {
         return seat;
     }
    
-public void removeSeat(Seat seat)
-{
+public void removeSeat(Seat seat) {
    
     seatDir.remove(seat);
    
