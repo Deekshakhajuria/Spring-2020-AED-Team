@@ -6,22 +6,65 @@
 package UserInterface.ManageAirliners;
 
 import Business.Airliner;
+import Business.Flight;
 import Business.FlightSchedule;
+import java.awt.CardLayout;
+import java.util.ArrayList;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
- * @author niramaykelkar
+ * @author moury
  */
 public class UpdateFleetJPanel extends javax.swing.JPanel {
 
     /**
      * Creates new form UpdateFleetJPanel
      */
+    private JPanel CardSequenceJPanel;
+    private Airliner airliner;
+    private FlightSchedule fSched;
+    
 
     UpdateFleetJPanel(JPanel CardSequenceJPanel, Airliner airliner, FlightSchedule fSched) {
         initComponents();
+        this.CardSequenceJPanel = CardSequenceJPanel;
+        this.airliner = airliner;
+        this.fSched = fSched;
+        populateTable();
     }
+    
+    void populateTable(){
+        
+       DefaultTableModel dtm=(DefaultTableModel)tblUpdateFleet.getModel();
+       ArrayList<Flight> array=new ArrayList<Flight>();
+       for(Flight f: fSched.getFlightSchedDir())
+       {
+           if(f.getAirlinerName().equals(airliner.getAirlinerName()))
+           {
+               array.add(f);
+           }
+       }
+       dtm.setRowCount(0);
+       for( Flight flight : array )
+       {
+           Object[] row=new Object[7];
+           row[0] = flight;
+           row[1] = flight.getDepartTime();
+           row[2] = flight.getArrivalTime();
+           row[3] = flight.getDepartAirport();
+           row[4]= flight.getArrivalAirport();
+           row[5] = flight.getAirplane().getManufacture()+flight.getAirplane().getModelNum();
+           row[6]= flight.getAirlinerName();
+           dtm.addRow(row);
+       }
+        
+        
+    }
+        
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -33,13 +76,13 @@ public class UpdateFleetJPanel extends javax.swing.JPanel {
     private void initComponents() {
 
         jScrollPane1 = new javax.swing.JScrollPane();
-        UpdateFleetTable = new javax.swing.JTable();
+        tblUpdateFleet = new javax.swing.JTable();
         BtnAddNewFlight = new javax.swing.JButton();
         BtnUpdateFlightDetails = new javax.swing.JButton();
         BtnDeleteFlight = new javax.swing.JButton();
         BtnBack = new javax.swing.JButton();
 
-        UpdateFleetTable.setModel(new javax.swing.table.DefaultTableModel(
+        tblUpdateFleet.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
@@ -47,17 +90,37 @@ public class UpdateFleetJPanel extends javax.swing.JPanel {
                 "Airline", "Flight No.", "From", "Departure Date", "Departure time", "To", "Arrival Date", "Arrival Time", "Duration", "Capacity", "Seat Price"
             }
         ));
-        UpdateFleetTable.setColumnSelectionAllowed(true);
-        jScrollPane1.setViewportView(UpdateFleetTable);
-        UpdateFleetTable.getColumnModel().getSelectionModel().setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
+        tblUpdateFleet.setColumnSelectionAllowed(true);
+        jScrollPane1.setViewportView(tblUpdateFleet);
+        tblUpdateFleet.getColumnModel().getSelectionModel().setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
 
         BtnAddNewFlight.setText("Add New Flight");
+        BtnAddNewFlight.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnAddNewFlightActionPerformed(evt);
+            }
+        });
 
         BtnUpdateFlightDetails.setText("Update Flight Details");
+        BtnUpdateFlightDetails.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnUpdateFlightDetailsActionPerformed(evt);
+            }
+        });
 
         BtnDeleteFlight.setText("Delete Flight");
+        BtnDeleteFlight.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnDeleteFlightActionPerformed(evt);
+            }
+        });
 
         BtnBack.setText("<- Back");
+        BtnBack.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnBackActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -97,13 +160,29 @@ public class UpdateFleetJPanel extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    private void BtnAddNewFlightActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnAddNewFlightActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_BtnAddNewFlightActionPerformed
+
+    private void BtnUpdateFlightDetailsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnUpdateFlightDetailsActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_BtnUpdateFlightDetailsActionPerformed
+
+    private void BtnDeleteFlightActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnDeleteFlightActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_BtnDeleteFlightActionPerformed
+
+    private void BtnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnBackActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_BtnBackActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton BtnAddNewFlight;
     private javax.swing.JButton BtnBack;
     private javax.swing.JButton BtnDeleteFlight;
     private javax.swing.JButton BtnUpdateFlightDetails;
-    private javax.swing.JTable UpdateFleetTable;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTable tblUpdateFleet;
     // End of variables declaration//GEN-END:variables
 }
