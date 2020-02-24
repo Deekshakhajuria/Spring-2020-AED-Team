@@ -64,7 +64,7 @@ public class ManageTravelAgencyJPanel extends javax.swing.JPanel {
             }
         });
 
-        SearchButton.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
+        SearchButton.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         SearchButton.setText("Search-->");
         SearchButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -121,8 +121,8 @@ public class ManageTravelAgencyJPanel extends javax.swing.JPanel {
                 .addContainerGap(235, Short.MAX_VALUE))
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
-                    .addGap(303, 303, 303)
-                    .addComponent(SearchButton, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(307, 307, 307)
+                    .addComponent(SearchButton, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addContainerGap(305, Short.MAX_VALUE)))
         );
         layout.setVerticalGroup(
@@ -154,8 +154,8 @@ public class ManageTravelAgencyJPanel extends javax.swing.JPanel {
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
                     .addGap(345, 345, 345)
-                    .addComponent(SearchButton, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap(123, Short.MAX_VALUE)))
+                    .addComponent(SearchButton)
+                    .addContainerGap(132, Short.MAX_VALUE)))
         );
     }// </editor-fold>//GEN-END:initComponents
 
