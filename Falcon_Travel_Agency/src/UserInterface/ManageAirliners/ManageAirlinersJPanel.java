@@ -5,6 +5,10 @@
  */
 package UserInterface.ManageAirliners;
 
+import Business.AirlinerDirectory;
+import Business.FlightSchedule;
+import javax.swing.JPanel;
+
 /**
  *
  * @author niramaykelkar
@@ -14,8 +18,14 @@ public class ManageAirlinersJPanel extends javax.swing.JPanel {
     /**
      * Creates new form ManageAirlinersJPanel
      */
-    public ManageAirlinersJPanel() {
-        initComponents();
+    private JPanel CardSequenceJPanel;
+    private AirlinerDirectory airlineDir;
+    private FlightSchedule fSched;
+    public ManageAirlinersJPanel(JPanel CardSequenceJPanel, AirlinerDirectory airlineDir, FlightSchedule fSched) {
+      initComponents();
+      this.CardSequenceJPanel=CardSequenceJPanel;
+      this.airlineDir=airlineDir;
+      this.fSched=fSched;
     }
 
     /**
@@ -27,19 +37,124 @@ public class ManageAirlinersJPanel extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jLabel1 = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        airlinerDtlTbl = new javax.swing.JTable();
+        createAirlinerBtn = new javax.swing.JButton();
+        viewUpdateAirlinerBtn = new javax.swing.JButton();
+        viewFleetBtn = new javax.swing.JButton();
+        deleteAirlineBtn = new javax.swing.JButton();
+
+        jLabel1.setFont(new java.awt.Font("Lucida Grande", 0, 24)); // NOI18N
+        jLabel1.setText("Airliner Details");
+
+        airlinerDtlTbl.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null}
+            },
+            new String [] {
+                "Airliner Name", "Base", "Fleet Size"
+            }
+        ));
+        jScrollPane1.setViewportView(airlinerDtlTbl);
+
+        createAirlinerBtn.setText("Create New Airliner");
+        createAirlinerBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                createAirlinerBtnActionPerformed(evt);
+            }
+        });
+
+        viewUpdateAirlinerBtn.setText("Update Airliner");
+        viewUpdateAirlinerBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                viewUpdateAirlinerBtnActionPerformed(evt);
+            }
+        });
+
+        viewFleetBtn.setText("Update Fleet");
+        viewFleetBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                viewFleetBtnActionPerformed(evt);
+            }
+        });
+
+        deleteAirlineBtn.setText("Delete Airliner");
+        deleteAirlineBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                deleteAirlineBtnActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(286, 286, 286)
+                        .addComponent(jLabel1))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(153, 153, 153)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(viewFleetBtn))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(147, 147, 147)
+                        .addComponent(createAirlinerBtn)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(viewUpdateAirlinerBtn)
+                        .addGap(12, 12, 12)
+                        .addComponent(deleteAirlineBtn)))
+                .addContainerGap(26, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(39, 39, 39)
+                .addComponent(jLabel1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 223, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(createAirlinerBtn)
+                            .addComponent(viewUpdateAirlinerBtn)
+                            .addComponent(deleteAirlineBtn)))
+                    .addComponent(viewFleetBtn))
+                .addContainerGap(161, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    private void createAirlinerBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_createAirlinerBtnActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_createAirlinerBtnActionPerformed
+
+    private void viewFleetBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_viewFleetBtnActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_viewFleetBtnActionPerformed
+
+    private void viewUpdateAirlinerBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_viewUpdateAirlinerBtnActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_viewUpdateAirlinerBtnActionPerformed
+
+    private void deleteAirlineBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteAirlineBtnActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_deleteAirlineBtnActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTable airlinerDtlTbl;
+    private javax.swing.JButton createAirlinerBtn;
+    private javax.swing.JButton deleteAirlineBtn;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JButton viewFleetBtn;
+    private javax.swing.JButton viewUpdateAirlinerBtn;
     // End of variables declaration//GEN-END:variables
 }
