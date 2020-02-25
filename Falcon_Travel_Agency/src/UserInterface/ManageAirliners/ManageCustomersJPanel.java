@@ -5,6 +5,7 @@
  */
 package UserInterface.ManageAirliners;
 
+import Business.AirlinerDirectory;
 import Business.CustomerDirectory;
 import Business.FlightSchedule;
 import Business.TicketDirectory;
@@ -35,6 +36,10 @@ public class ManageCustomersJPanel extends javax.swing.JPanel {
     this.flightSched=flightSched;
     this.ticketDir=ticketDir;
     
+    }
+
+    public ManageCustomersJPanel(JPanel CardSequenceJPanel, AirlinerDirectory airlineDir, FlightSchedule fSched) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     /**

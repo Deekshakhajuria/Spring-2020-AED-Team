@@ -7,7 +7,10 @@ package UserInterface;
 
 import Business.AirlinerDirectory;
 import Business.CustomerDirectory;
+import Business.Flight;
 import Business.FlightSchedule;
+import Business.Seat;
+import Business.SeatDirectory;
 import Business.TicketDirectory;
 import UserInterface.ManageAirliners.ManageAirlinersJPanel;
 import UserInterface.ManageAirliners.ManageCustomersJPanel;
@@ -31,6 +34,7 @@ public class FalconTravelAgencyMainJFrame extends javax.swing.JFrame {
     public FalconTravelAgencyMainJFrame() {
         initComponents();
     }
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -96,7 +100,7 @@ public class FalconTravelAgencyMainJFrame extends javax.swing.JFrame {
 
     private void manageAgencyBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_manageAgencyBtnActionPerformed
         // TODO add your handling code here:
-       ManageTravelAgencyJPanel manage = new  ManageTravelAgencyJPanel(CardSequenceJPanel,flightSched);
+        ManageTravelAgencyJPanel manage = new ManageTravelAgencyJPanel(CardSequenceJPanel,airlineDir,flightSched);
        CardSequenceJPanel.add("ManageTravelAgencyJPanel",manage);
        CardLayout layout = (CardLayout)CardSequenceJPanel.getLayout();
        layout.next(CardSequenceJPanel);
@@ -104,12 +108,10 @@ public class FalconTravelAgencyMainJFrame extends javax.swing.JFrame {
 
     private void manageCustomerBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_manageCustomerBtnActionPerformed
         // TODO add your handling code here:
-        ManageCustomersJPanel manage = new ManageCustomersJPanel(CardSequenceJPanel,flightSched,custdir,ticketDir);
-
-       CardSequenceJPanel.add("ManageCustomers",manage);
+        ManageCustomersJPanel manage = new ManageCustomersJPanel(CardSequenceJPanel,airlineDir,flightSched);
+       CardSequenceJPanel.add("ManageCustomersJPanel",manage);
        CardLayout layout = (CardLayout)CardSequenceJPanel.getLayout();
-    
-        layout.next(CardSequenceJPanel);
+       layout.next(CardSequenceJPanel);
     }//GEN-LAST:event_manageCustomerBtnActionPerformed
 
     /**

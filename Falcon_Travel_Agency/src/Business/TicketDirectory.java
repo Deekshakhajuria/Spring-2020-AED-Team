@@ -7,12 +7,6 @@ package Business;
 
 import java.util.ArrayList;
 
-/**
- *
- * @author deekshakhajuria
- */
-
-
 
 public class TicketDirectory {
     private ArrayList<Ticket> ticketDir;

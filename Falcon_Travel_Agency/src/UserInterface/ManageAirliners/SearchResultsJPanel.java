@@ -38,11 +38,7 @@ public class SearchResultsJPanel extends javax.swing.JPanel {
 
         SearchjTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null, null, null}
+
             },
             new String [] {
                 "Airline", "Flight No", "From", "Departure Date", "Departure Time", "To", "Arrival Date", "Arrival Time", "Preferred Time of Day", "Flight Duration", "Capacity", "Seat Price"
@@ -93,19 +89,23 @@ public class SearchResultsJPanel extends javax.swing.JPanel {
                         .addGap(274, 274, 274)
                         .addComponent(jLabel1))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(35, 35, 35)
-                        .addComponent(btnback)
-                        .addGap(123, 123, 123)
-                        .addComponent(btnlowestsort))
-                    .addGroup(layout.createSequentialGroup()
                         .addGap(263, 263, 263)
                         .addComponent(btnbookseat, javax.swing.GroupLayout.PREFERRED_SIZE, 163, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 45, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btnleastduration)
-                    .addComponent(jLabel2))
-                .addGap(45, 45, 45))
-            .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING)
+                .addComponent(jLabel2)
+                .addGap(234, 234, 234))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane1)
+                .addContainerGap())
+            .addGroup(layout.createSequentialGroup()
+                .addGap(35, 35, 35)
+                .addComponent(btnback)
+                .addGap(123, 123, 123)
+                .addComponent(btnlowestsort)
+                .addGap(18, 18, 18)
+                .addComponent(btnleastduration)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
