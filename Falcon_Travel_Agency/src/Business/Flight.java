@@ -25,6 +25,8 @@ public class Flight {
     int duration;
     int capacity;
     int seatPrice;
+    
+    private SeatDirectory seatDir;
 
     public Flight(String airline, String flightNumber, String from, String departureDate, String departureTime, String to, String arrivalDate, String arrivalTime, int duration, int capacity, int seatPrice) {
         this.airline = airline;
@@ -130,6 +132,16 @@ public class Flight {
     public void setSeatPrice(int seatPrice) {
         this.seatPrice = seatPrice;
     }
+
+    public SeatDirectory getSeatDir() {
+        return seatDir;
+    }
+
+    public void setSeatDir(SeatDirectory seatDir) {
+        this.seatDir = seatDir;
+    }
+    
+    
     
     @Override
     public String toString() {

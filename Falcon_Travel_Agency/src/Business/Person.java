@@ -5,6 +5,8 @@
  */
 package Business;
 
+import java.util.Date;
+
 /**
  *
  * @author moury
@@ -15,10 +17,10 @@ public class Person {
     private int PhoneNo;
     private String EmailId;
     private int Age;
-    String DOB;
+    Date DOB;
     private Seat seat;
 
-    public Person(String FullName, int PhoneNo, String EmailId, int Age, String DOB) {
+    public Person(String FullName, int PhoneNo, String EmailId, int Age, Date DOB) {
         this.FullName = FullName;
         this.PhoneNo = PhoneNo;
         this.EmailId = EmailId;
@@ -59,11 +61,11 @@ public class Person {
         this.Age = Age;
     }
 
-    public String getDOB() {
+    public Date getDOB() {
         return DOB;
     }
 
-    public void setDOB(String DOB) {
+    public void setDOB(Date DOB) {
         this.DOB = DOB;
     }
 
@@ -74,6 +76,8 @@ public class Person {
     public void setSeat(Seat seat) {
         this.seat = seat;
     }
+
+    
     
     
     

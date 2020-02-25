@@ -42,7 +42,7 @@ public class UpdateFleetJPanel extends javax.swing.JPanel {
        ArrayList<Flight> array=new ArrayList<Flight>();
        for(Flight f: fSched.getFlightSchedDir())
        {
-           if(f.getAirlinerName().equals(airliner.getAirlinerName()))
+           if(f.getAirline().equals(airliner.getAirlinerName()))
            {
                array.add(f);
            }
@@ -50,14 +50,18 @@ public class UpdateFleetJPanel extends javax.swing.JPanel {
        dtm.setRowCount(0);
        for( Flight flight : array )
        {
-           Object[] row=new Object[7];
-           row[0] = flight;
-           row[1] = flight.getDepartTime();
-           row[2] = flight.getArrivalTime();
-           row[3] = flight.getDepartAirport();
-           row[4]= flight.getArrivalAirport();
-           row[5] = flight.getAirplane().getManufacture()+flight.getAirplane().getModelNum();
-           row[6]= flight.getAirlinerName();
+           Object[] row=new Object[11];
+           row[0] = flight.getAirline();
+           row[1] = flight.getFlightNumber();
+           row[2] = flight.getFrom();
+           row[3] = flight.getDepartureDate();
+           row[4] = flight.getDepartureTime();
+           row[5] = flight.getTo();
+           row[6] = flight.getArrivalDate();
+           row[7] = flight.getArrivalTime();
+           row[8] = flight.getDuration();
+           row[9] = flight.getCapacity();
+           row[10] = flight.getSeatPrice();
            dtm.addRow(row);
        }
         
