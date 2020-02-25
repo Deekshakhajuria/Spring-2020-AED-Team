@@ -47,7 +47,7 @@ public class ManageAirlinersJPanel extends javax.swing.JPanel {
         airlinerDtlTbl = new javax.swing.JTable();
         createAirlinerBtn = new javax.swing.JButton();
         viewUpdateAirlinerBtn = new javax.swing.JButton();
-        viewFleetBtn = new javax.swing.JButton();
+        updateFleetBtn = new javax.swing.JButton();
         deleteAirlineBtn = new javax.swing.JButton();
 
         jLabel1.setFont(new java.awt.Font("Lucida Grande", 0, 24)); // NOI18N
@@ -80,10 +80,10 @@ public class ManageAirlinersJPanel extends javax.swing.JPanel {
             }
         });
 
-        viewFleetBtn.setText("Update Fleet");
-        viewFleetBtn.addActionListener(new java.awt.event.ActionListener() {
+        updateFleetBtn.setText("Update Fleet");
+        updateFleetBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                viewFleetBtnActionPerformed(evt);
+                updateFleetBtnActionPerformed(evt);
             }
         });
 
@@ -116,7 +116,7 @@ public class ManageAirlinersJPanel extends javax.swing.JPanel {
                                 .addGap(153, 153, 153)
                                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGap(18, 18, 18)
-                        .addComponent(viewFleetBtn)))
+                        .addComponent(updateFleetBtn)))
                 .addContainerGap(26, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -133,7 +133,7 @@ public class ManageAirlinersJPanel extends javax.swing.JPanel {
                             .addComponent(createAirlinerBtn)
                             .addComponent(viewUpdateAirlinerBtn)
                             .addComponent(deleteAirlineBtn)))
-                    .addComponent(viewFleetBtn))
+                    .addComponent(updateFleetBtn))
                 .addContainerGap(161, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
@@ -159,9 +159,21 @@ public class ManageAirlinersJPanel extends javax.swing.JPanel {
        layout.next(CardSequenceJPanel);
     }//GEN-LAST:event_createAirlinerBtnActionPerformed
 
-    private void viewFleetBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_viewFleetBtnActionPerformed
+    private void updateFleetBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updateFleetBtnActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_viewFleetBtnActionPerformed
+        int selectedRow = airlinerDtlTbl.getSelectedRow();
+        if(selectedRow>=0){ 
+            Airliner airliner = (Airliner)airlinerDtlTbl.getValueAt(selectedRow, 0);
+            UpdateFleetJPanel create = new  UpdateFleetJPanel(CardSequenceJPanel,airliner,fSched);
+            CardSequenceJPanel.add("UpdateFleetJPanel",create);
+            CardLayout layout = (CardLayout)CardSequenceJPanel.getLayout();
+            layout.next(CardSequenceJPanel);
+        }
+        else{
+            JOptionPane.showMessageDialog(null, "Please select a Row!!");
+        }
+        
+    }//GEN-LAST:event_updateFleetBtnActionPerformed
 
     private void viewUpdateAirlinerBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_viewUpdateAirlinerBtnActionPerformed
         // TODO add your handling code here:
@@ -189,7 +201,7 @@ public class ManageAirlinersJPanel extends javax.swing.JPanel {
     private javax.swing.JButton deleteAirlineBtn;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JButton viewFleetBtn;
+    private javax.swing.JButton updateFleetBtn;
     private javax.swing.JButton viewUpdateAirlinerBtn;
     // End of variables declaration//GEN-END:variables
 }

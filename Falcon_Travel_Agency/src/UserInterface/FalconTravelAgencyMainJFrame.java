@@ -6,8 +6,15 @@
 package UserInterface;
 
 import Business.AirlinerDirectory;
+import Business.CustomerDirectory;
+import Business.Flight;
 import Business.FlightSchedule;
+import Business.Seat;
+import Business.SeatDirectory;
+import Business.TicketDirectory;
 import UserInterface.ManageAirliners.ManageAirlinersJPanel;
+import UserInterface.ManageAirliners.ManageCustomersJPanel;
+import UserInterface.ManageAirliners.ManageTravelAgencyJPanel;
 import java.awt.CardLayout;
 
 /**
@@ -20,10 +27,14 @@ public class FalconTravelAgencyMainJFrame extends javax.swing.JFrame {
      * Creates new form FalconTravelAgencyMainJFrame
      */
     private AirlinerDirectory airlineDir=new AirlinerDirectory();
-    private FlightSchedule fSched=new FlightSchedule();
+    private FlightSchedule flightSched=new FlightSchedule();
+    private CustomerDirectory custdir = new CustomerDirectory();
+    private TicketDirectory ticketDir=new TicketDirectory();
+    
     public FalconTravelAgencyMainJFrame() {
         initComponents();
     }
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -81,7 +92,7 @@ public class FalconTravelAgencyMainJFrame extends javax.swing.JFrame {
 
     private void manageAirlinerBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_manageAirlinerBtnActionPerformed
         // TODO add your handling code here:
-       ManageAirlinersJPanel manage = new ManageAirlinersJPanel(CardSequenceJPanel,airlineDir,fSched);
+       ManageAirlinersJPanel manage = new ManageAirlinersJPanel(CardSequenceJPanel,airlineDir,flightSched);
        CardSequenceJPanel.add("ManageAirlineJPanel_1",manage);
        CardLayout layout = (CardLayout)CardSequenceJPanel.getLayout();
        layout.next(CardSequenceJPanel);
@@ -89,10 +100,18 @@ public class FalconTravelAgencyMainJFrame extends javax.swing.JFrame {
 
     private void manageAgencyBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_manageAgencyBtnActionPerformed
         // TODO add your handling code here:
+        ManageTravelAgencyJPanel manage = new ManageTravelAgencyJPanel(CardSequenceJPanel,airlineDir,flightSched);
+       CardSequenceJPanel.add("ManageTravelAgencyJPanel",manage);
+       CardLayout layout = (CardLayout)CardSequenceJPanel.getLayout();
+       layout.next(CardSequenceJPanel);
     }//GEN-LAST:event_manageAgencyBtnActionPerformed
 
     private void manageCustomerBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_manageCustomerBtnActionPerformed
         // TODO add your handling code here:
+        ManageCustomersJPanel manage = new ManageCustomersJPanel(CardSequenceJPanel,airlineDir,flightSched);
+       CardSequenceJPanel.add("ManageCustomersJPanel",manage);
+       CardLayout layout = (CardLayout)CardSequenceJPanel.getLayout();
+       layout.next(CardSequenceJPanel);
     }//GEN-LAST:event_manageCustomerBtnActionPerformed
 
     /**

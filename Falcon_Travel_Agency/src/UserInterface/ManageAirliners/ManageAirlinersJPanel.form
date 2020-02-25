@@ -38,7 +38,7 @@
                           </Group>
                       </Group>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Component id="viewFleetBtn" min="-2" max="-2" attributes="0"/>
+                      <Component id="updateFleetBtn" min="-2" max="-2" attributes="0"/>
                   </Group>
               </Group>
               <EmptySpace pref="26" max="32767" attributes="0"/>
@@ -61,7 +61,7 @@
                           <Component id="deleteAirlineBtn" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                   </Group>
-                  <Component id="viewFleetBtn" min="-2" max="-2" attributes="0"/>
+                  <Component id="updateFleetBtn" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace pref="161" max="32767" attributes="0"/>
           </Group>
@@ -135,12 +135,12 @@
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="viewUpdateAirlinerBtnActionPerformed"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JButton" name="viewFleetBtn">
+    <Component class="javax.swing.JButton" name="updateFleetBtn">
       <Properties>
         <Property name="text" type="java.lang.String" value="Update Fleet"/>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="viewFleetBtnActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="updateFleetBtnActionPerformed"/>
       </Events>
     </Component>
     <Component class="javax.swing.JButton" name="deleteAirlineBtn">
