@@ -12,9 +12,6 @@ import java.awt.CardLayout;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
-import UserInterface.ManageAirliners.CreateNewAirlinerJPanel;
-import UserInterface.ManageAirliners.ViewAirlinerJPanel;
-import java.util.*;
 
 /**
  *
@@ -30,10 +27,10 @@ public class ManageAirlinersJPanel extends javax.swing.JPanel {
     private FlightSchedule fSched;
     public ManageAirlinersJPanel(JPanel CardSequenceJPanel, AirlinerDirectory airlineDir, FlightSchedule fSched) {
       initComponents();
-      this.CardSequenceJPanel = CardSequenceJPanel;
-      this.airlineDir = airlineDir;
-      this.fSched = fSched;
-      populateTable();
+      this.CardSequenceJPanel=CardSequenceJPanel;
+      this.airlineDir=airlineDir;
+      this.fSched=fSched;
+      //populateTable();
     }
 
     /**
@@ -47,65 +44,53 @@ public class ManageAirlinersJPanel extends javax.swing.JPanel {
 
         jLabel1 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        tblAirliner = new javax.swing.JTable();
-        btnCreateAirliner = new javax.swing.JButton();
-        btnUpdAirliner = new javax.swing.JButton();
-        btnUpdFleet = new javax.swing.JButton();
-        btnDeleteAirliner = new javax.swing.JButton();
+        airlinerDtlTbl = new javax.swing.JTable();
+        createAirlinerBtn = new javax.swing.JButton();
+        viewUpdateAirlinerBtn = new javax.swing.JButton();
+        viewFleetBtn = new javax.swing.JButton();
+        deleteAirlineBtn = new javax.swing.JButton();
 
         jLabel1.setFont(new java.awt.Font("Lucida Grande", 0, 24)); // NOI18N
         jLabel1.setText("Airliner Details");
 
-        tblAirliner.setModel(new javax.swing.table.DefaultTableModel(
+        airlinerDtlTbl.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null}
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null}
             },
             new String [] {
-                "Airliner Name", "Airline Base"
+                "Airliner Name", "Base", "Fleet Size"
             }
-        ) {
-            boolean[] canEdit = new boolean [] {
-                false, false
-            };
+        ));
+        jScrollPane1.setViewportView(airlinerDtlTbl);
 
-            public boolean isCellEditable(int rowIndex, int columnIndex) {
-                return canEdit [columnIndex];
-            }
-        });
-        jScrollPane1.setViewportView(tblAirliner);
-        if (tblAirliner.getColumnModel().getColumnCount() > 0) {
-            tblAirliner.getColumnModel().getColumn(0).setResizable(false);
-            tblAirliner.getColumnModel().getColumn(1).setResizable(false);
-        }
-
-        btnCreateAirliner.setText("Create Airliner");
-        btnCreateAirliner.addActionListener(new java.awt.event.ActionListener() {
+        createAirlinerBtn.setText("Create Airliner");
+        createAirlinerBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnCreateAirlinerActionPerformed(evt);
+                createAirlinerBtnActionPerformed(evt);
             }
         });
 
-        btnUpdAirliner.setText("Update Airliner");
-        btnUpdAirliner.addActionListener(new java.awt.event.ActionListener() {
+        viewUpdateAirlinerBtn.setText("Update Airliner");
+        viewUpdateAirlinerBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnUpdAirlinerActionPerformed(evt);
+                viewUpdateAirlinerBtnActionPerformed(evt);
             }
         });
 
-        btnUpdFleet.setText("Update Fleet");
-        btnUpdFleet.addActionListener(new java.awt.event.ActionListener() {
+        viewFleetBtn.setText("Update Fleet");
+        viewFleetBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnUpdFleetActionPerformed(evt);
+                viewFleetBtnActionPerformed(evt);
             }
         });
 
-        btnDeleteAirliner.setText("Delete Airliner");
-        btnDeleteAirliner.addActionListener(new java.awt.event.ActionListener() {
+        deleteAirlineBtn.setText("Delete Airliner");
+        deleteAirlineBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnDeleteAirlinerActionPerformed(evt);
+                deleteAirlineBtnActionPerformed(evt);
             }
         });
 
@@ -119,17 +104,19 @@ public class ManageAirlinersJPanel extends javax.swing.JPanel {
                         .addGap(286, 286, 286)
                         .addComponent(jLabel1))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(153, 153, 153)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                                .addGap(147, 147, 147)
+                                .addComponent(createAirlinerBtn)
+                                .addGap(27, 27, 27)
+                                .addComponent(viewUpdateAirlinerBtn)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(deleteAirlineBtn))
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                                .addGap(153, 153, 153)
+                                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGap(18, 18, 18)
-                        .addComponent(btnUpdFleet))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(147, 147, 147)
-                        .addComponent(btnCreateAirliner)
-                        .addGap(32, 32, 32)
-                        .addComponent(btnUpdAirliner)
-                        .addGap(30, 30, 30)
-                        .addComponent(btnDeleteAirliner)))
+                        .addComponent(viewFleetBtn)))
                 .addContainerGap(26, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -143,100 +130,66 @@ public class ManageAirlinersJPanel extends javax.swing.JPanel {
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 223, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(btnCreateAirliner)
-                            .addComponent(btnUpdAirliner)
-                            .addComponent(btnDeleteAirliner)))
-                    .addComponent(btnUpdFleet))
+                            .addComponent(createAirlinerBtn)
+                            .addComponent(viewUpdateAirlinerBtn)
+                            .addComponent(deleteAirlineBtn)))
+                    .addComponent(viewFleetBtn))
                 .addContainerGap(161, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
     public void populateTable()
     {
-       DefaultTableModel dtm=(DefaultTableModel)tblAirliner.getModel();
+       DefaultTableModel dtm=(DefaultTableModel)airlinerDtlTbl.getModel();
        dtm.setRowCount(0);
-       for(Airliner airline : airlineDir.getAirLinerList())
+       for(Airliner airline:airlineDir.getAirLinerList())
        {
-           Object[] row = new Object[2];
-           row[0]=airline.getAirlinerName();
-           row[1]=airline.getBase();
+           Object[] row=new Object[2];
+           row[0]=airline;
+           row[1]=airline.getAddress();
            dtm.addRow(row);
        }
     }
     
-    private void btnCreateAirlinerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCreateAirlinerActionPerformed
+    private void createAirlinerBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_createAirlinerBtnActionPerformed
         // TODO add your handling code here:
        CreateNewAirlinerJPanel create = new  CreateNewAirlinerJPanel(CardSequenceJPanel,airlineDir,fSched);
        CardSequenceJPanel.add("CreateNewAirlineJPanel",create);
        CardLayout layout = (CardLayout)CardSequenceJPanel.getLayout();
        layout.next(CardSequenceJPanel);
-    }//GEN-LAST:event_btnCreateAirlinerActionPerformed
+    }//GEN-LAST:event_createAirlinerBtnActionPerformed
 
-    private void btnUpdFleetActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdFleetActionPerformed
+    private void viewFleetBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_viewFleetBtnActionPerformed
         // TODO add your handling code here:
-        int selectedRow = tblAirliner.getSelectedRow();
-        if(selectedRow>=0){
-            Airliner airliner = (Airliner) tblAirliner.getValueAt(selectedRow, 0);
+    }//GEN-LAST:event_viewFleetBtnActionPerformed
+
+    private void viewUpdateAirlinerBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_viewUpdateAirlinerBtnActionPerformed
+        // TODO add your handling code here:
+       int selectedRow = airlinerDtlTbl.getSelectedRow();
+       if(selectedRow>=0){
+            Airliner airliner = (Airliner)airlinerDtlTbl.getValueAt(selectedRow, 0);
             UpdateFleetJPanel create = new  UpdateFleetJPanel(CardSequenceJPanel,airliner,fSched);
-            CardSequenceJPanel.add("UpdateFleetJPanel",create);
-            CardLayout layout = (CardLayout)CardSequenceJPanel.getLayout();
-            layout.next(CardSequenceJPanel);
-        }
-        else{
-            JOptionPane.showMessageDialog(null, "Please select a Row!!");
-        }
-    }//GEN-LAST:event_btnUpdFleetActionPerformed
-
-    private void btnUpdAirlinerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdAirlinerActionPerformed
-        // TODO add your handling code here:
-//       int selectedRow = tblAirliner.getSelectedRow();
-//       if(selectedRow>=0){
-//            Airliner airliner = (Airliner)tblAirliner.getValueAt(selectedRow, 0);
-//            ViewAirlinerJPanel view = new  ViewAirlinerJPanel(CardSequenceJPanel, airliner);
-//            CardSequenceJPanel.add("ViewAirlinerJPanel",view);
-//            CardLayout layout = (CardLayout)CardSequenceJPanel.getLayout();
-//            layout.next(CardSequenceJPanel);
-//        }
-//        else{
-//            JOptionPane.showMessageDialog(null, "Please select a Row!!");
-//        }
-        int selectedRow = tblAirliner.getSelectedRow();
-        if(selectedRow < 0){
-            JOptionPane.showMessageDialog(null, "Please select a row from the table first to view details", "Warning", JOptionPane.WARNING_MESSAGE);
-        }
-        else{
-            Airliner airliner  = (Airliner)tblAirliner.getValueAt(selectedRow, 0);
-            ViewAirlinerJPanel viewPanel = new ViewAirlinerJPanel(CardSequenceJPanel, airliner);
-            this.CardSequenceJPanel.add("ViewAirlinerJPanel", viewPanel);
-            CardLayout cl = (CardLayout) this.CardSequenceJPanel.getLayout();
-            cl.next(CardSequenceJPanel);
-        }
-    }//GEN-LAST:event_btnUpdAirlinerActionPerformed
-
-    private void btnDeleteAirlinerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteAirlinerActionPerformed
-        // TODO add your handling code here:
-        int selectedRow = tblAirliner.getSelectedRow();
-        if(selectedRow>=0){
-            int selectionButton = JOptionPane.YES_NO_OPTION;
-            int selectionResult = JOptionPane.showConfirmDialog(null, "Are you sure to delete??","Warning",selectionButton);
-            if(selectionResult == JOptionPane.YES_OPTION){
-                Airliner airliner = (Airliner) tblAirliner.getValueAt(selectedRow, 0);
-                airlineDir.removeAirLiner(airliner);
-                populateTable();
+       CardSequenceJPanel.add("ViewAllFlights",create);
+       CardLayout layout = (CardLayout)CardSequenceJPanel.getLayout();
+       layout.next(CardSequenceJPanel);
             }
-        }else{
+        else{
             JOptionPane.showMessageDialog(null, "Please select a Row!!");
         }
-    }//GEN-LAST:event_btnDeleteAirlinerActionPerformed
+    }//GEN-LAST:event_viewUpdateAirlinerBtnActionPerformed
+
+    private void deleteAirlineBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteAirlineBtnActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_deleteAirlineBtnActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnCreateAirliner;
-    private javax.swing.JButton btnDeleteAirliner;
-    private javax.swing.JButton btnUpdAirliner;
-    private javax.swing.JButton btnUpdFleet;
+    private javax.swing.JTable airlinerDtlTbl;
+    private javax.swing.JButton createAirlinerBtn;
+    private javax.swing.JButton deleteAirlineBtn;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable tblAirliner;
+    private javax.swing.JButton viewFleetBtn;
+    private javax.swing.JButton viewUpdateAirlinerBtn;
     // End of variables declaration//GEN-END:variables
 }

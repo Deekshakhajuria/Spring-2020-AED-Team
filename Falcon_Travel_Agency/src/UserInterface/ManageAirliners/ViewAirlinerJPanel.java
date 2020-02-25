@@ -8,11 +8,6 @@ package UserInterface.ManageAirliners;
 import Business.Airliner;
 import java.awt.CardLayout;
 import javax.swing.JPanel;
-import Business.FlightSchedule;
-import java.awt.Component;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
-import javax.swing.JOptionPane;
 
 /**
  *
@@ -25,14 +20,8 @@ public class ViewAirlinerJPanel extends javax.swing.JPanel {
      */
     private JPanel CardSequenceJPanel;
     private Airliner airliner;
-    //private FlightSchedule flightSched;
-    ViewAirlinerJPanel(JPanel CardSequenceJPanel, Airliner airliner) {
+    public ViewAirlinerJPanel(JPanel CardSequenceJPanel, Airliner airliner) {
         initComponents();
-        this.CardSequenceJPanel = CardSequenceJPanel;
-        this.airliner = airliner;
-        txtAirlineName.setText(airliner.getAirlinerName());
-        txtAirlineBase.setText(airliner.getBase());
-        //this.flightSched = flightSched;
     }
 
     /**
@@ -70,18 +59,8 @@ public class ViewAirlinerJPanel extends javax.swing.JPanel {
         });
 
         btnSaveAirliner.setText("Save");
-        btnSaveAirliner.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnSaveAirlinerActionPerformed(evt);
-            }
-        });
 
         btnUpdAirliner.setText("Update");
-        btnUpdAirliner.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnUpdAirlinerActionPerformed(evt);
-            }
-        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -129,66 +108,10 @@ public class ViewAirlinerJPanel extends javax.swing.JPanel {
 
     private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
         // TODO add your handling code here:
-//        CardLayout layout = (CardLayout)CardSequenceJPanel.getLayout();
-//        CardSequenceJPanel.remove(this);
-//        layout.previous(CardSequenceJPanel);
-        
-        CardSequenceJPanel.remove(this);
         CardLayout layout = (CardLayout)CardSequenceJPanel.getLayout();
-        Component[] comps = CardSequenceJPanel.getComponents();
-        for(Component comp:comps)
-            if (comp instanceof ManageAirlinersJPanel)
-            {
-                ManageAirlinersJPanel mp = (ManageAirlinersJPanel) comp;
-                mp.populateTable();
-            }
+        CardSequenceJPanel.remove(this);
         layout.previous(CardSequenceJPanel);
     }//GEN-LAST:event_btnBackActionPerformed
-
-    private void btnUpdAirlinerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdAirlinerActionPerformed
-        // TODO add your handling code here:
-        btnSaveAirliner.setEnabled(true);
-        txtAirlineName.setEnabled(true);
-        txtAirlineBase.setEnabled(true);
-        btnUpdAirliner.setEnabled(false);
-    }//GEN-LAST:event_btnUpdAirlinerActionPerformed
-
-    private boolean airlinerPatternCorrect() {
-       Pattern p = Pattern.compile("^[a-zA-Z\\s]*$");
-       Matcher m = p.matcher(txtAirlineName.getText());
-       boolean b = m.matches();
-       System.out.println(b);
-       return b;
-
-    }
-    
-    private void btnSaveAirlinerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSaveAirlinerActionPerformed
-        // TODO add your handling code here:
-        if (txtAirlineName.getText().equals("") || txtAirlineBase.getText().equals("")){
-            JOptionPane.showMessageDialog(null, "No blank field is allowed.", "Warning", JOptionPane.WARNING_MESSAGE);
-            return;
-            
-        }
-        else if(txtAirlineName.getText().length() > 25 || txtAirlineBase.getText().length() > 25){
-             JOptionPane.showMessageDialog(null, "Character Limit Reached!!.", "Warning", JOptionPane.WARNING_MESSAGE);
-            return;
-            
-        }
-        else if (!airlinerPatternCorrect()){
-            JOptionPane.showMessageDialog(null, "Please enter valid data!!.", "Warning", JOptionPane.WARNING_MESSAGE);
-            return;
-            
-        }
-        else
-        {
-            airliner.setAirlinerName(txtAirlineName.getText());
-            airliner.setBase(txtAirlineBase.getText());
-            JOptionPane.showMessageDialog(null, "Your Updated AirLiner is Saved!! :)");
-            btnSaveAirliner.setEnabled(false);
-            txtAirlineName.setEnabled(false);
-            txtAirlineBase.setEnabled(false);
-        }
-    }//GEN-LAST:event_btnSaveAirlinerActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
