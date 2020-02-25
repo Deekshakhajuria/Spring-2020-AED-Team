@@ -15,7 +15,7 @@ public class Airliner {
     private String base;
     private Fleet FleetList;
     private FlightSchedule fsched;
-    public Airliner(String airlinerName, String base, Fleet FleetList) {
+    Airliner(String airlinerName, String base, Fleet FleetList) {
         this.airlinerName = airlinerName;
         this.base = base;
         this.FleetList = FleetList;

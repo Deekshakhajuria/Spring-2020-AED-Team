@@ -189,16 +189,27 @@ public class ManageAirlinersJPanel extends javax.swing.JPanel {
 
     private void btnUpdAirlinerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdAirlinerActionPerformed
         // TODO add your handling code here:
-       int selectedRow = tblAirliner.getSelectedRow();
-       if(selectedRow>=0){
-            Airliner airliner = (Airliner)tblAirliner.getValueAt(selectedRow, 0);
-            ViewAirlinerJPanel view = new  ViewAirlinerJPanel(CardSequenceJPanel, airliner);
-            CardSequenceJPanel.add("ViewAirlinerJPanel",view);
-            CardLayout layout = (CardLayout)CardSequenceJPanel.getLayout();
-            layout.next(CardSequenceJPanel);
+//       int selectedRow = tblAirliner.getSelectedRow();
+//       if(selectedRow>=0){
+//            Airliner airliner = (Airliner)tblAirliner.getValueAt(selectedRow, 0);
+//            ViewAirlinerJPanel view = new  ViewAirlinerJPanel(CardSequenceJPanel, airliner);
+//            CardSequenceJPanel.add("ViewAirlinerJPanel",view);
+//            CardLayout layout = (CardLayout)CardSequenceJPanel.getLayout();
+//            layout.next(CardSequenceJPanel);
+//        }
+//        else{
+//            JOptionPane.showMessageDialog(null, "Please select a Row!!");
+//        }
+        int selectedRow = tblAirliner.getSelectedRow();
+        if(selectedRow < 0){
+            JOptionPane.showMessageDialog(null, "Please select a row from the table first to view details", "Warning", JOptionPane.WARNING_MESSAGE);
         }
         else{
-            JOptionPane.showMessageDialog(null, "Please select a Row!!");
+            Airliner airliner  = (Airliner)tblAirliner.getValueAt(selectedRow, 0);
+            ViewAirlinerJPanel viewPanel = new ViewAirlinerJPanel(CardSequenceJPanel, airliner);
+            this.CardSequenceJPanel.add("ViewAirlinerJPanel", viewPanel);
+            CardLayout cl = (CardLayout) this.CardSequenceJPanel.getLayout();
+            cl.next(CardSequenceJPanel);
         }
     }//GEN-LAST:event_btnUpdAirlinerActionPerformed
 
