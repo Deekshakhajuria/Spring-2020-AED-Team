@@ -30,7 +30,7 @@ public class ManageAirlinersJPanel extends javax.swing.JPanel {
       this.CardSequenceJPanel=CardSequenceJPanel;
       this.airlineDir=airlineDir;
       this.fSched=fSched;
-      //populateTable();
+      populateTable();
     }
 
     /**
@@ -44,7 +44,7 @@ public class ManageAirlinersJPanel extends javax.swing.JPanel {
 
         jLabel1 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        airlinerDtlTbl = new javax.swing.JTable();
+        tblAirliner = new javax.swing.JTable();
         createAirlinerBtn = new javax.swing.JButton();
         viewUpdateAirlinerBtn = new javax.swing.JButton();
         updateFleetBtn = new javax.swing.JButton();
@@ -53,18 +53,18 @@ public class ManageAirlinersJPanel extends javax.swing.JPanel {
         jLabel1.setFont(new java.awt.Font("Lucida Grande", 0, 24)); // NOI18N
         jLabel1.setText("Airliner Details");
 
-        airlinerDtlTbl.setModel(new javax.swing.table.DefaultTableModel(
+        tblAirliner.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null}
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null}
             },
             new String [] {
-                "Airliner Name", "Base", "Fleet Size"
+                "Airliner Name", "Base"
             }
         ));
-        jScrollPane1.setViewportView(airlinerDtlTbl);
+        jScrollPane1.setViewportView(tblAirliner);
 
         createAirlinerBtn.setText("Create Airliner");
         createAirlinerBtn.addActionListener(new java.awt.event.ActionListener() {
@@ -140,7 +140,7 @@ public class ManageAirlinersJPanel extends javax.swing.JPanel {
 
     public void populateTable()
     {
-       DefaultTableModel dtm=(DefaultTableModel)airlinerDtlTbl.getModel();
+       DefaultTableModel dtm=(DefaultTableModel)tblAirliner.getModel();
        dtm.setRowCount(0);
        for(Airliner airline:airlineDir.getAirLinerList())
        {
@@ -161,9 +161,9 @@ public class ManageAirlinersJPanel extends javax.swing.JPanel {
 
     private void updateFleetBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updateFleetBtnActionPerformed
         // TODO add your handling code here:
-        int selectedRow = airlinerDtlTbl.getSelectedRow();
+        int selectedRow = tblAirliner.getSelectedRow();
         if(selectedRow>=0){ 
-            Airliner airliner = (Airliner)airlinerDtlTbl.getValueAt(selectedRow, 0);
+            Airliner airliner = (Airliner)tblAirliner.getValueAt(selectedRow, 0);
             UpdateFleetJPanel create = new  UpdateFleetJPanel(CardSequenceJPanel,airliner,fSched);
             CardSequenceJPanel.add("UpdateFleetJPanel",create);
             CardLayout layout = (CardLayout)CardSequenceJPanel.getLayout();
@@ -177,11 +177,11 @@ public class ManageAirlinersJPanel extends javax.swing.JPanel {
 
     private void viewUpdateAirlinerBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_viewUpdateAirlinerBtnActionPerformed
         // TODO add your handling code here:
-       int selectedRow = airlinerDtlTbl.getSelectedRow();
+       int selectedRow = tblAirliner.getSelectedRow();
        if(selectedRow>=0){
-            Airliner airliner = (Airliner)airlinerDtlTbl.getValueAt(selectedRow, 0);
-            UpdateFleetJPanel create = new  UpdateFleetJPanel(CardSequenceJPanel,airliner,fSched);
-       CardSequenceJPanel.add("ViewAllFlights",create);
+            Airliner airliner = (Airliner)tblAirliner.getValueAt(selectedRow, 0);
+            ViewAirlinerJPanel view = new  ViewAirlinerJPanel(CardSequenceJPanel,airliner);
+       CardSequenceJPanel.add("ViewAirlinerJPanel",view);
        CardLayout layout = (CardLayout)CardSequenceJPanel.getLayout();
        layout.next(CardSequenceJPanel);
             }
@@ -192,15 +192,27 @@ public class ManageAirlinersJPanel extends javax.swing.JPanel {
 
     private void deleteAirlineBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteAirlineBtnActionPerformed
         // TODO add your handling code here:
+        int selectedRow = tblAirliner.getSelectedRow();
+        if(selectedRow>=0){
+            int selectionButton = JOptionPane.YES_NO_OPTION;
+            int selectionResult = JOptionPane.showConfirmDialog(null, "Are you sure to delete??","Warning",selectionButton);
+            if(selectionResult == JOptionPane.YES_OPTION){
+                Airliner airliner = (Airliner)tblAirliner.getValueAt(selectedRow, 0);
+                airlineDir.removeAirLiner(airliner);
+                populateTable();
+            }
+        }else{
+            JOptionPane.showMessageDialog(null, "Please select a Row!!");
+        }
     }//GEN-LAST:event_deleteAirlineBtnActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JTable airlinerDtlTbl;
     private javax.swing.JButton createAirlinerBtn;
     private javax.swing.JButton deleteAirlineBtn;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTable tblAirliner;
     private javax.swing.JButton updateFleetBtn;
     private javax.swing.JButton viewUpdateAirlinerBtn;
     // End of variables declaration//GEN-END:variables

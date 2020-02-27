@@ -29,17 +29,21 @@ public class ManageCustomersJPanel extends javax.swing.JPanel {
      */
    
         
-    public ManageCustomersJPanel(JPanel CardSequenceJPanel, FlightSchedule flightSched, CustomerDirectory custdir,TicketDirectory ticketDir) {
+//    public ManageCustomersJPanel(JPanel CardSequenceJPanel, FlightSchedule flightSched, CustomerDirectory custdir,TicketDirectory ticketDir) {
+//    initComponents();
+//    this.CardSequenceJPanel=CardSequenceJPanel;
+//    this.custdir=custdir;
+//    this.flightSched=flightSched;
+//    this.ticketDir=ticketDir;
+//    
+//    }
+
+    public ManageCustomersJPanel(JPanel CardSequenceJPanel, AirlinerDirectory airlineDir, FlightSchedule fSched) {
     initComponents();
     this.CardSequenceJPanel=CardSequenceJPanel;
     this.custdir=custdir;
     this.flightSched=flightSched;
-    this.ticketDir=ticketDir;
-    
-    }
-
-    public ManageCustomersJPanel(JPanel CardSequenceJPanel, AirlinerDirectory airlineDir, FlightSchedule fSched) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    //this.ticketDir=ticketDir;
     }
 
     /**

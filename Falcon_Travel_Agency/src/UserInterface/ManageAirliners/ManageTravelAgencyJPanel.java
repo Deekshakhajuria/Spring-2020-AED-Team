@@ -24,14 +24,14 @@ public class ManageTravelAgencyJPanel extends javax.swing.JPanel {
     private JPanel CardSequenceJPanel;
     private FlightSchedule flightSched;
     private AirlinerDirectory airlineDir;
-    public ManageTravelAgencyJPanel(JPanel CardSequenceJPanel, FlightSchedule flightSched) {
-        initComponents();
-        
-        this.CardSequenceJPanel = CardSequenceJPanel;
-        this.flightSched = flightSched;
-
-        //populateButtons();
-    }
+//    public ManageTravelAgencyJPanel(JPanel CardSequenceJPanel, FlightSchedule flightSched) {
+//        initComponents();
+//        
+//        this.CardSequenceJPanel = CardSequenceJPanel;
+//        this.flightSched = flightSched;
+//
+//        //populateButtons();
+//    }
     
 ////     private ArrayList<Flight> searching(JComboBox combobox, ArrayList<Flight> flightschedule)  {
 ////
@@ -125,7 +125,10 @@ public class ManageTravelAgencyJPanel extends javax.swing.JPanel {
 ////     */
 
     public ManageTravelAgencyJPanel(JPanel CardSequenceJPanel, AirlinerDirectory airlineDir, FlightSchedule flightSched) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        initComponents();
+        this.CardSequenceJPanel = CardSequenceJPanel;
+        this.airlineDir = airlineDir;
+        this.flightSched = flightSched;
     }
 ////    @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
