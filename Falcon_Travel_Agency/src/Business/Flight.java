@@ -5,52 +5,54 @@
  */
 package Business;
 
-import java.time.LocalDate;
-import java.util.Date;
+import java.util.ArrayList;
 
 /**
  *
  * @author moury
  */
 public class Flight {
-    
-    String airline;
-    String flightNumber;
-    String from;
-    String departureDate;
-    String departureTime;
-    String to;
-    String arrivalDate;
-    String arrivalTime;
-    int duration;
-    int capacity;
-    int seatPrice;
-    
-    private SeatDirectory seatDir;
 
-    public Flight(String airline, String flightNumber, String from, String departureDate, String departureTime, String to, String arrivalDate, String arrivalTime, int duration, int capacity, int seatPrice) {
-        this.airline = airline;
+    private ArrayList<SeatAssignment> seatAssignmentDirectory = new ArrayList<SeatAssignment>();
+
+    private String flightNumber;
+    private String departureLocation;
+    private String arrivalLocation;
+    private double flightDuration;
+    private String date;
+    private String flightTime;
+    private boolean isAvailable;
+    private double price;
+    
+    
+
+    public Flight(String flightNumber, String departureLocation, String arrivalLocation, double flightDuration, String date, String flightTime, boolean isAvailable, double price) {
+        seatAssignmentDirectory = new ArrayList<SeatAssignment>();
         this.flightNumber = flightNumber;
-        this.from = from;
-        this.departureDate = departureDate;
-        this.departureTime = departureTime;
-        this.to = to;
-        this.arrivalDate = arrivalDate;
-        this.arrivalTime = arrivalTime;
-        this.duration = duration;
-        this.capacity = capacity;
-        this.seatPrice = seatPrice;
-    }
-    
-    
-    
+        this.departureLocation = departureLocation;
+        this.arrivalLocation = arrivalLocation;
+        this.flightDuration = flightDuration;
+        this.date = date;
+        this.flightTime = flightTime;
+        this.isAvailable = isAvailable;
+        this.price = price;
+        addWindowSeats();
+        addAisleSeats();
+        addMiddleSeats();
+        initializeAssignmentDirectory(flightNumber);
 
-    public String getAirline() {
-        return airline;
     }
 
-    public void setAirline(String airline) {
-        this.airline = airline;
+    public Flight() {
+        //Do not delete
+    }
+
+    public double getPrice() {
+        return price;
+    }
+
+    public void setPrice(double price) {
+        this.price = price;
     }
 
     public String getFlightNumber() {
@@ -61,92 +63,172 @@ public class Flight {
         this.flightNumber = flightNumber;
     }
 
-    public String getFrom() {
-        return from;
+    public String getDepartureLocation() {
+        return departureLocation;
     }
 
-    public void setFrom(String from) {
-        this.from = from;
+    public void setDepartureLocation(String departureLocation) {
+        this.departureLocation = departureLocation;
     }
 
-    public String getDepartureDate() {
-        return departureDate;
+    public String getArrivalLocation() {
+        return arrivalLocation;
     }
 
-    public void setDepartureDate(String departureDate) {
-        this.departureDate = departureDate;
+    public void setArrivalLocation(String arrivalLocation) {
+        this.arrivalLocation = arrivalLocation;
     }
 
-    public String getDepartureTime() {
-        return departureTime;
+    public double getFlightDuration() {
+        return flightDuration;
     }
 
-    public void setDepartureTime(String departureTime) {
-        this.departureTime = departureTime;
+    public void setFlightDuration(double flightDuration) {
+        this.flightDuration = flightDuration;
     }
 
-    public String getTo() {
-        return to;
+    public String getDate() {
+        return date;
     }
 
-    public void setTo(String to) {
-        this.to = to;
+    public void setDate(String date) {
+        this.date = date;
     }
 
-    public String getArrivalDate() {
-        return arrivalDate;
+    public String getFlightTime() {
+        return flightTime;
     }
 
-    public void setArrivalDate(String arrivalDate) {
-        this.arrivalDate = arrivalDate;
+    public void setFlightTime(String flightTime) {
+        this.flightTime = flightTime;
     }
 
-    public String getArrivalTime() {
-        return arrivalTime;
+    public boolean isIsAvailable() {
+        return isAvailable;
     }
 
-    public void setArrivalTime(String arrivalTime) {
-        this.arrivalTime = arrivalTime;
+    public void setIsAvailable(boolean isAvailable) {
+        this.isAvailable = isAvailable;
     }
 
-    public int getDuration() {
-        return duration;
+    public ArrayList<SeatAssignment> getSeatAssignmentDirectory() {
+        return seatAssignmentDirectory;
     }
 
-    public void setDuration(int duration) {
-        this.duration = duration;
+    public void setSeatAssignmentDirectory(ArrayList<SeatAssignment> seatAssignmentDirectory) {
+        this.seatAssignmentDirectory = seatAssignmentDirectory;
     }
 
-    public int getCapacity() {
-        return capacity;
+    private void addWindowSeats() {
+        for (int i = 1; i <= 25; i++) {
+            SeatAssignment seatAssignment = new SeatAssignment();
+            seatAssignment.setSeatNumber(i + "A");
+            seatAssignment.setIsAvailable(true);
+            seatAssignment.setSeatType("Window");
+            seatAssignmentDirectory.add(seatAssignment);
+        }
+        for (int i = 1; i <= 25; i++) {
+            SeatAssignment seatAssignment = new SeatAssignment();
+            seatAssignment.setSeatNumber(i + "F");
+            seatAssignment.setIsAvailable(true);
+            seatAssignment.setSeatType("Window");
+            seatAssignmentDirectory.add(seatAssignment);
+        }
     }
 
-    public void setCapacity(int capacity) {
-        this.capacity = capacity;
+    private void addAisleSeats() {
+        for (int i = 1; i <= 25; i++) {
+            SeatAssignment seatAssignment = new SeatAssignment();
+            seatAssignment.setSeatNumber(i + "C");
+            seatAssignment.setIsAvailable(true);
+            seatAssignment.setSeatType("Aisle");
+            seatAssignmentDirectory.add(seatAssignment);
+        }
+        for (int i = 1; i <= 25; i++) {
+            SeatAssignment seatAssignment = new SeatAssignment();
+            seatAssignment.setSeatNumber(i + "D");
+            seatAssignment.setIsAvailable(true);
+            seatAssignment.setSeatType("Aisle");
+            seatAssignmentDirectory.add(seatAssignment);
+        }
     }
 
-    public int getSeatPrice() {
-        return seatPrice;
+    private void addMiddleSeats() {
+        for (int i = 1; i <= 25; i++) {
+            SeatAssignment seatAssignment = new SeatAssignment();
+            seatAssignment.setSeatNumber(i + "B");
+            seatAssignment.setIsAvailable(true);
+            seatAssignment.setSeatType("Middle");
+            seatAssignmentDirectory.add(seatAssignment);
+        }
+        for (int i = 1; i <= 25; i++) {
+            SeatAssignment seatAssignment = new SeatAssignment();
+            seatAssignment.setSeatNumber(i + "E");
+            seatAssignment.setIsAvailable(true);
+            seatAssignment.setSeatType("Middle");
+            seatAssignmentDirectory.add(seatAssignment);
+        }
     }
 
-    public void setSeatPrice(int seatPrice) {
-        this.seatPrice = seatPrice;
+    public void initializeAssignmentDirectory(String flightNumber){
+        if(flightNumber.equals("DL101")){
+            for (SeatAssignment seatAssignment :seatAssignmentDirectory) {
+                    if (seatAssignment.getSeatNumber().equalsIgnoreCase("1A")) {
+                        seatAssignment.setIsAvailable(false);
+                        break;
+                    }
+            }
+        }
+        
+        if(flightNumber.equals("DL106")){
+            for (SeatAssignment seatAssignment :seatAssignmentDirectory) {
+                    if (seatAssignment.getSeatNumber().equalsIgnoreCase("2F")) {
+                        seatAssignment.setIsAvailable(false);
+                        break;
+                    }
+            }
+        }
+        
+        if(flightNumber.equals("DL111")){
+            for (SeatAssignment seatAssignment :seatAssignmentDirectory) {
+                    if (seatAssignment.getSeatNumber().equalsIgnoreCase("3E")) {
+                        seatAssignment.setIsAvailable(false);
+                        break;
+                    }
+            }
+        }
+        
+        if(flightNumber.equals("DL117")){
+            for (SeatAssignment seatAssignment :seatAssignmentDirectory) {
+                    if (seatAssignment.getSeatNumber().equalsIgnoreCase("4D")) {
+                        seatAssignment.setIsAvailable(false);
+                        break;
+                    }
+            }
+        }
+        
+        if(flightNumber.equals("DL121")){
+            for (SeatAssignment seatAssignment :seatAssignmentDirectory) {
+                    if (seatAssignment.getSeatNumber().equalsIgnoreCase("1C")) {
+                        seatAssignment.setIsAvailable(false);
+                        break;
+                    }
+            }
+        }
+        
+        if(flightNumber.equals("SW104")){
+            for (SeatAssignment seatAssignment :seatAssignmentDirectory) {
+                    if (seatAssignment.getSeatNumber().equalsIgnoreCase("21D")) {
+                        seatAssignment.setIsAvailable(false);
+                        break;
+                    }
+            }
+        }
+        
     }
-
-    public SeatDirectory getSeatDir() {
-        return seatDir;
-    }
-
-    public void setSeatDir(SeatDirectory seatDir) {
-        this.seatDir = seatDir;
-    }
-    
-    
     
     @Override
     public String toString() {
-        return flightNumber;
+        return flightNumber + "";
     }
-    
-    
 }

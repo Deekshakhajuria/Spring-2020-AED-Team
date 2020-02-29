@@ -5,49 +5,111 @@
  */
 package Business;
 
+import java.util.ArrayList;
 
+/**
+ *
+ * @author moury
+ */
 public class Airplane {
-    private String serialNum;
-    private String modelNum;
-    private String manufacture;
-    private int seatCapacity;
-  public  Airplane(String serialNum, String modelNum,String manufacture,int seatCapacity)
-    {
-        this.manufacture=manufacture;
-        this.modelNum=modelNum;
-        this.manufacture=manufacture;
-        this.seatCapacity=seatCapacity;
-    }
-    public String getSerialNum() {
-        return serialNum;
+
+    private ArrayList<Flight> flightDirectory = new ArrayList<Flight>();
+    private int serialNo;
+    private String name;
+    private String model;
+    private boolean hasEntertainment;
+    private boolean hasWifi;
+    InitializeData initializeData = new InitializeData();
+
+    public Airplane(int serialNo, String name, String model, boolean hasEntertainment, boolean hasWifi) {
+        flightDirectory = new ArrayList<Flight>();
+        this.serialNo = serialNo;
+        this.name = name;
+        this.model = model;
+        this.hasEntertainment = hasEntertainment;
+        this.hasWifi = hasWifi;
+        initializeData.initializeFlightSchedule(serialNo, flightDirectory);
+//        initializeFlightSchedule(serialNo);
     }
 
-    public String getManufacture() {
-        return manufacture;
+    public ArrayList<Flight> getFlightDirectory() {
+        return flightDirectory;
     }
 
-    public void setManufacture(String manufacture) {
-        this.manufacture = manufacture;
+    public void setFlightDirectory(ArrayList<Flight> flightDirectory) {
+        this.flightDirectory = flightDirectory;
     }
 
-    public void setSerialNum(String serialNum) {
-        this.serialNum = serialNum;
+    public Flight addFlight(Airplane airplane) {
+        System.out.println(airplane);
+        Flight flight = new Flight();
+        flightDirectory.add(flight);
+        return flight;
     }
 
-    public String getModelNum() {
-        return modelNum;
+    public void deleteFlight(Flight flight) {
+        flightDirectory.remove(flight);
     }
 
-    public void setModelNum(String modelNum) {
-        this.modelNum = modelNum;
+    public Flight searchFlight(String searchTerm) {
+        for (Flight e : flightDirectory) {
+            if (e.getFlightNumber().equalsIgnoreCase(searchTerm)) {
+                return e;
+            }
+        }
+        return null;
     }
 
-    public int getSeatCapacity() {
-        return seatCapacity;
+    public Airplane() {
+        //Do not delete
     }
 
-    public void setSeatCapacity(int seatCapacity) {
-        this.seatCapacity = seatCapacity;
+    public String getName() {
+        return name;
     }
-    
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public int getSerialNo() {
+        return serialNo;
+    }
+
+    public void setSerialNo(int serialNo) {
+        this.serialNo = serialNo;
+    }
+
+    public String getModel() {
+        return model;
+    }
+
+    public void setModelNo(String model) {
+        this.model = model;
+    }
+
+    public boolean isHasWifi() {
+        return hasWifi;
+    }
+
+    public void setHasWifi(boolean hasWifi) {
+        this.hasWifi = hasWifi;
+    }
+
+    public boolean isHasEntertainment() {
+        return hasEntertainment;
+    }
+
+    public void setHasEntertainment(boolean hasEntertainment) {
+        this.hasEntertainment = hasEntertainment;
+    }
+
+//    public void initializeFlightSchedule(int serialNo){
+//        
+//    }
+    @Override
+    public String toString() {
+        return serialNo + "";
+    }
+
 }
