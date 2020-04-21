@@ -5,9 +5,12 @@
  */
 package Business.Enterprise;
 
+import Business.Enterprise.Insurances;
 import Business.Network.Network;
 import Business.Organization.Organization;
+
 import Business.Organization.OrganizationDirectory;
+import java.util.ArrayList;
 
 /**
  *
@@ -17,6 +20,7 @@ public abstract class Enterprise extends Organization{
     
     private EnterpriseType enterpriseType;
     private OrganizationDirectory organizationDirectory;
+    private ArrayList<Insurances> insurancesList;
     private Network network;
     public OrganizationDirectory getOrganizationDirectory() {
         return organizationDirectory;
@@ -27,7 +31,7 @@ public abstract class Enterprise extends Organization{
     }
     
     public enum EnterpriseType{
-        Hospital("Hospital"),NonProfit("NonProfit"),ChildHelp("ChildHelp"),Pharmacy("Pharmacy"),Insurance("Insurance");
+        Hospital("Hospital"),ChildHelp("ChildHelp"),Pharmacy("Pharmacy"),Insurance("Insurance");
         
         private String value;
         
@@ -41,6 +45,17 @@ public abstract class Enterprise extends Organization{
         public String toString(){
         return value;
     }
+    }
+    
+    public Insurances createMenuInsurance(){
+        Insurances insurance = new Insurances(); 
+        this.insurancesList.add(insurance);
+        return insurance;
+    } 
+      
+    
+     public void deleteInsurance(Insurances insurance){
+        insurancesList.remove(insurance); 
     }
 
     public EnterpriseType getEnterpriseType() {

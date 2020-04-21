@@ -9,6 +9,7 @@ import Business.EcoSystem;
 import Business.Employee.Employee;
 import Business.Employee.EmployeeDirectory;
 import Business.Enterprise.Enterprise;
+import Business.Enterprise.ChildHelpEnterprise;
 import Business.Enterprise.HospitalEnterprise;
 import Business.Network.Network;
 import Business.Organization.ApplicantOrganization;
@@ -71,9 +72,7 @@ public class RegistrationWorkAreaJPanel extends javax.swing.JPanel {
         jLabel9 = new javax.swing.JLabel();
         addressLine2Text = new javax.swing.JTextField();
         genderComboBox = new javax.swing.JComboBox();
-        doctorRadioBtn = new javax.swing.JRadioButton();
         jLabel14 = new javax.swing.JLabel();
-        applicantRadioBtn = new javax.swing.JRadioButton();
         jLabel13 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         confirmaMailTxt = new javax.swing.JTextField();
@@ -95,6 +94,8 @@ public class RegistrationWorkAreaJPanel extends javax.swing.JPanel {
         occupationTxt = new javax.swing.JTextField();
         jLabel21 = new javax.swing.JLabel();
         registerJButton = new javax.swing.JButton();
+        doctorRadioBtn = new javax.swing.JRadioButton();
+        applicantRadioBtn = new javax.swing.JRadioButton();
 
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -206,27 +207,9 @@ public class RegistrationWorkAreaJPanel extends javax.swing.JPanel {
         genderComboBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Choose gender", "Female", "Male", "Transgender", "Unknown" }));
         add(genderComboBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 590, 144, -1));
 
-        doctorRadioBtn.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
-        doctorRadioBtn.setText("DOCTOR");
-        doctorRadioBtn.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                doctorRadioBtnActionPerformed(evt);
-            }
-        });
-        add(doctorRadioBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 100, 160, -1));
-
         jLabel14.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
         jLabel14.setText("PHONE NUMBER :");
         add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 630, -1, -1));
-
-        applicantRadioBtn.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
-        applicantRadioBtn.setText("APPLICANT");
-        applicantRadioBtn.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                applicantRadioBtnActionPerformed(evt);
-            }
-        });
-        add(applicantRadioBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 100, -1, -1));
 
         jLabel13.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
         jLabel13.setText("GENDER :");
@@ -340,6 +323,24 @@ public class RegistrationWorkAreaJPanel extends javax.swing.JPanel {
             }
         });
         add(registerJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(626, 379, 197, 56));
+
+        doctorRadioBtn.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        doctorRadioBtn.setText("DOCTOR");
+        doctorRadioBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                doctorRadioBtnActionPerformed(evt);
+            }
+        });
+        add(doctorRadioBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 100, 160, -1));
+
+        applicantRadioBtn.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        applicantRadioBtn.setText("APPLICANT");
+        applicantRadioBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                applicantRadioBtnActionPerformed(evt);
+            }
+        });
+        add(applicantRadioBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 100, -1, -1));
     }// </editor-fold>//GEN-END:initComponents
 
     private void populateCountryComboBox()
@@ -373,17 +374,17 @@ public class RegistrationWorkAreaJPanel extends javax.swing.JPanel {
                     {     
                         for(Enterprise e : n.getEnterpriseDirectory().getEnterpriseList())
                       {
-//                           if(e instanceof ChildHelpEnterprise && applicantRadioBtn.isSelected())
-//                           {
-//                             this.enterprise = e;
-//                             network = n;
-//                            }
-//                           
-//                           if(e instanceof HospitalEnterprise && doctorRadioBtn.isSelected())
-//                           {
-//                             this.enterprise = e;
-//                             network = n;
-//                            }
+                           if(e instanceof ChildHelpEnterprise && applicantRadioBtn.isSelected())
+                           {
+                             this.enterprise = e;
+                             network = n;
+                            }
+                           
+                           if(e instanceof HospitalEnterprise && doctorRadioBtn.isSelected())
+                           {
+                             this.enterprise = e;
+                             network = n;
+                            }
                     }
     }
                     }
@@ -484,16 +485,6 @@ public class RegistrationWorkAreaJPanel extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_addressLine2TextActionPerformed
 
-    private void doctorRadioBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_doctorRadioBtnActionPerformed
-        // TODO add your handling code here:
-        populateNetworkComboBox();
-    }//GEN-LAST:event_doctorRadioBtnActionPerformed
-
-    private void applicantRadioBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_applicantRadioBtnActionPerformed
-        // TODO add your handling code here:
-        populateNetworkComboBox();
-    }//GEN-LAST:event_applicantRadioBtnActionPerformed
-
     private void confirmaMailTxtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_confirmaMailTxtActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_confirmaMailTxtActionPerformed
@@ -569,11 +560,11 @@ public class RegistrationWorkAreaJPanel extends javax.swing.JPanel {
             )
 
             {
-//                if(buttonGroup1.getSelection()==null)
-//                {
-//                    JOptionPane.showMessageDialog(null, "Please select radio button to know if you are applicant or a doctor ","warning", JOptionPane.WARNING_MESSAGE);
-//                    return;
-//                }
+                if(buttonGroup1.getSelection()==null)
+                {
+                    JOptionPane.showMessageDialog(null, "Please select radio button to know if you are applicant or a doctor ","warning", JOptionPane.WARNING_MESSAGE);
+                    return;
+                }
 
                 if(!(confirmEmail.equals(emailId)))
                 {
@@ -651,9 +642,9 @@ public class RegistrationWorkAreaJPanel extends javax.swing.JPanel {
                     }
                     
                     
-//                    UserAccount userAccount = organization.getUserAccountDirectory().createUserAccount(userName, password, employee, new DoctorRole());
-//                    userAccount.setEmployee(employee);
-//                    userAccount.setNetwork(network);
+                    UserAccount userAccount = organization.getUserAccountDirectory().createUserAccount(userName, password, employee, new DoctorRole());
+                    userAccount.setEmployee(employee);
+                    userAccount.setNetwork(network);
                 }
                 
                 else if(applicantRadioBtn.isSelected())
@@ -727,9 +718,9 @@ public class RegistrationWorkAreaJPanel extends javax.swing.JPanel {
                     }
                     
                     
-//                    UserAccount userAccount1 = organization.getUserAccountDirectory().createUserAccount(userName, password, employee, new ApplicantRole());
-//                    userAccount1.setEmployee(employee);
-//                    userAccount1.setNetwork(network);
+                    UserAccount userAccount1 = organization.getUserAccountDirectory().createUserAccount(userName, password, employee, new ApplicantRole());
+                    userAccount1.setEmployee(employee);
+                    userAccount1.setNetwork(network);
                     
                    /* if (organization!=null){
                         organization.getWorkQueue().getWorkRequestList().add(request);
@@ -738,20 +729,20 @@ public class RegistrationWorkAreaJPanel extends javax.swing.JPanel {
                     }*/
                 }
             
-//                employee.setFirstName(firstName);
-//                employee.setLastname(lastName);
-//                employee.setAddress2(address2);
-//                employee.setAddress1(address1);
-//                employee.setCity(city);
-//                employee.setZipCode(zipCode);
-//                employee.setOccupation(occupation);
-//                employee.setEmailId(emailId);
-//                employee.setDob(dateOfBirthVal);
-//                employee.setPhoneNumber(phoneNumber);
-//                employee.setGender(gender);
-//                employee.setCountry(country);
-//                employee.setState(state);
-//                employee.setName(name);
+                employee.setFirstName(firstName);
+                employee.setLastname(lastName);
+                employee.setAddress2(address2);
+                employee.setAddress1(address1);
+                employee.setCity(city);
+                employee.setZipCode(zipCode);
+                employee.setOccupation(occupation);
+                employee.setEmailId(emailId);
+                employee.setDob(dateOfBirthVal);
+                employee.setPhoneNumber(phoneNumber);
+                employee.setGender(gender);
+                employee.setCountry(country);
+                employee.setState(state);
+                employee.setName(name);
                 JOptionPane.showMessageDialog(null, "Your Profile has been created successfully", "success", JOptionPane.PLAIN_MESSAGE);
                 resetFields();
             }
@@ -761,6 +752,16 @@ public class RegistrationWorkAreaJPanel extends javax.swing.JPanel {
             return;
         }
     }//GEN-LAST:event_registerJButtonActionPerformed
+
+    private void doctorRadioBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_doctorRadioBtnActionPerformed
+        // TODO add your handling code here:
+        populateNetworkComboBox();
+    }//GEN-LAST:event_doctorRadioBtnActionPerformed
+
+    private void applicantRadioBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_applicantRadioBtnActionPerformed
+        // TODO add your handling code here:
+        populateNetworkComboBox();
+    }//GEN-LAST:event_applicantRadioBtnActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

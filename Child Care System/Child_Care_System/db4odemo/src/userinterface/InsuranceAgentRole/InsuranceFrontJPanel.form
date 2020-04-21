@@ -43,11 +43,17 @@
       <Properties>
         <Property name="text" type="java.lang.String" value="Manage Orders"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="manageOrdersJButtonActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="manageInsuranceJButton">
       <Properties>
         <Property name="text" type="java.lang.String" value="Manage Insurances"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="manageInsuranceJButtonActionPerformed"/>
+      </Events>
     </Component>
   </SubComponents>
 </Form>

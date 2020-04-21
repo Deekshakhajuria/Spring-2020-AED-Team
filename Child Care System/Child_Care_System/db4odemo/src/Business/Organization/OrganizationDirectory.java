@@ -33,6 +33,26 @@ public class OrganizationDirectory {
             organization = new LabOrganization();
             organizationList.add(organization);
         }
+        else if (type.getValue().equals(Type.Donor.getValue())){
+            organization = new DonorOrganization();
+            organizationList.add(organization);
+        }
+        else if (type.getValue().equals(Type.HelpSeeker.getValue())){
+            organization = new ApplicantOrganization();
+            organizationList.add(organization);
+        }
+        else if (type.getValue().equals(Type.Manager.getValue())){
+            organization = new ManagerOrganization();
+            organizationList.add(organization);
+        }
+        else if (type.getValue().equals(Type.Pharmacy.getValue())){
+            organization = new PharmacyOrganization();
+            organizationList.add(organization);
+        }
+        else if (type.getValue().equals(Type.Insurance.getValue())){
+            organization = new InsuranceOrganization();
+            organizationList.add(organization);
+        }
         return organization;
     }
 }

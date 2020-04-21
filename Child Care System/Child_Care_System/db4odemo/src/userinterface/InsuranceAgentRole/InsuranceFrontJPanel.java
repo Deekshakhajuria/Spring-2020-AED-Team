@@ -5,6 +5,16 @@
  */
 package userinterface.InsuranceAgentRole;
 
+
+import Business.EcoSystem;
+import Business.Enterprise.Enterprise;
+import Business.Organization.ApplicantOrganization;
+import Business.Organization.Organization;
+import Business.UserAccount.UserAccount;
+import java.awt.CardLayout;
+import javax.swing.JPanel;
+import userinterface.ApplicantRole.PurchaseInsuranceJPanel;
+
 /**
  *
  * @author moury
@@ -14,7 +24,12 @@ public class InsuranceFrontJPanel extends javax.swing.JPanel {
     /**
      * Creates new form InsuranceFrontJPanel
      */
-    public InsuranceFrontJPanel() {
+    private JPanel userProcessContainer;
+    private ApplicantOrganization organization;
+    private Enterprise enterprise;
+    private UserAccount userAccount;
+    EcoSystem business;
+    public InsuranceFrontJPanel(JPanel userProcessContainer, UserAccount account, Organization organization, Enterprise enterprise, EcoSystem business) {
         initComponents();
     }
 
@@ -31,8 +46,18 @@ public class InsuranceFrontJPanel extends javax.swing.JPanel {
         manageInsuranceJButton = new javax.swing.JButton();
 
         manageOrdersJButton.setText("Manage Orders");
+        manageOrdersJButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                manageOrdersJButtonActionPerformed(evt);
+            }
+        });
 
         manageInsuranceJButton.setText("Manage Insurances");
+        manageInsuranceJButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                manageInsuranceJButtonActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -55,6 +80,22 @@ public class InsuranceFrontJPanel extends javax.swing.JPanel {
                 .addContainerGap(250, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
+
+    private void manageOrdersJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_manageOrdersJButtonActionPerformed
+        // TODO add your handling code here:
+        ManageOrdersJPanel manageOrdersJPanel = new ManageOrdersJPanel(userProcessContainer, organization, enterprise, userAccount, business);
+        CardLayout layout = (CardLayout) userProcessContainer.getLayout();
+        userProcessContainer.add("ManageOrdersJPanel", manageOrdersJPanel);
+        layout.next(userProcessContainer);
+    }//GEN-LAST:event_manageOrdersJButtonActionPerformed
+
+    private void manageInsuranceJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_manageInsuranceJButtonActionPerformed
+        // TODO add your handling code here:
+        ManageInsurancesJPanel manageInsurancesJPanel = new ManageInsurancesJPanel(userProcessContainer, organization, enterprise, userAccount, business);
+        CardLayout layout = (CardLayout) userProcessContainer.getLayout();
+        userProcessContainer.add("ManageInsurancesJPanel", manageInsurancesJPanel);
+        layout.next(userProcessContainer);
+    }//GEN-LAST:event_manageInsuranceJButtonActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

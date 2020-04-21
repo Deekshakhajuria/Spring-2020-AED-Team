@@ -4,6 +4,7 @@
  */
 package userinterface;
 
+import userinterface.RegistrationRole.RegistrationWorkAreaJPanel;
 import Business.EcoSystem;
 import Business.DB4OUtil.DB4OUtil;
 import Business.Enterprise.Enterprise;
@@ -78,6 +79,11 @@ public class MainJFrame extends javax.swing.JFrame {
         jLabel3.setText("New users?");
 
         btnRegister.setText("Register");
+        btnRegister.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRegisterActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -216,6 +222,24 @@ public class MainJFrame extends javax.swing.JFrame {
         crdLyt.next(container);
         dB4OUtil.storeSystem(system);
     }//GEN-LAST:event_logoutJButtonActionPerformed
+
+    private void btnRegisterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegisterActionPerformed
+        // TODO add your handling code here:
+        logoutJButton.setEnabled(false);
+        userNameJTextField.setEnabled(true);
+        passwordField.setEnabled(true);
+        loginJButton.setEnabled(true);
+
+        userNameJTextField.setText("");
+        passwordField.setText("");
+
+        container.removeAll();
+         RegistrationWorkAreaJPanel registrationWorkAreaJPanel = new RegistrationWorkAreaJPanel(container, system);
+         CardLayout layout = (CardLayout) container.getLayout();
+         container.add("RegisterWorkArea", registrationWorkAreaJPanel);
+         layout.next(container);
+         dB4OUtil.storeSystem(system);
+    }//GEN-LAST:event_btnRegisterActionPerformed
 
     /**
      * @param args the command line arguments

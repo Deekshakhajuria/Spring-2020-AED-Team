@@ -5,19 +5,51 @@
  */
 package userinterface.InsuranceAgentRole;
 
+import Business.EcoSystem;
+import Business.Enterprise.Enterprise;
+import Business.Enterprise.Insurances;
+import Business.Organization.ApplicantOrganization;
+import Business.Organization.Organization;
+import Business.UserAccount.UserAccount;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author moury
  */
 public class ManageInsurancesJPanel extends javax.swing.JPanel {
 
-    /**
-     * Creates new form ManageInsurancesJPanel
-     */
-    public ManageInsurancesJPanel() {
+    private JPanel userProcessContainer;
+    private Organization organization;
+    private Enterprise enterprise;
+    private UserAccount userAccount;
+    EcoSystem business;
+    
+    
+    
+    public ManageInsurancesJPanel(JPanel userProcessContainer, Organization organization, Enterprise enterprise, UserAccount userAccount, EcoSystem business) {
         initComponents();
+        this.organization=organization;
+        this.enterprise=enterprise;
+        this.userAccount=userAccount;
+        this.business=business;
+        this.userProcessContainer=userProcessContainer;
+        populateTable();
     }
 
+    public void populateTable(){
+        DefaultTableModel dtm = (DefaultTableModel) jTable1.getModel();
+        dtm.setRowCount(0);
+        
+        for(Insurances insurance:enterprise.getInsurancesList()) {
+            Object row[] = new Object[2];
+            row[0] = insurance.getInsuranceID();
+            row[1] = insurance.getPrice();
+            dtm.addRow(row);
+        }
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -38,12 +70,22 @@ public class ManageInsurancesJPanel extends javax.swing.JPanel {
         deleteJButton = new javax.swing.JButton();
 
         backJButton.setText("Back");
+        backJButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                backJButtonActionPerformed(evt);
+            }
+        });
 
         jLabel1.setText("Insurance ID:");
 
         jLabel2.setText("Price:");
 
         addJButton.setText("Add");
+        addJButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                addJButtonActionPerformed(evt);
+            }
+        });
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -64,6 +106,11 @@ public class ManageInsurancesJPanel extends javax.swing.JPanel {
         jScrollPane1.setViewportView(jTable1);
 
         deleteJButton.setText("Delete");
+        deleteJButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                deleteJButtonActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -114,6 +161,47 @@ public class ManageInsurancesJPanel extends javax.swing.JPanel {
                 .addContainerGap(287, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
+
+    private void backJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backJButtonActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_backJButtonActionPerformed
+
+    private void addJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addJButtonActionPerformed
+        // TODO add your handling code here:
+        for(Insurances insurance:enterprise.getInsurancesList()) {
+            if(insIDJField.getText().equals(insurance.getInsuranceID())){
+                
+                JOptionPane.showMessageDialog(null, "Item already exists");
+                return;
+            } 
+        }
+        if(insIDJField.getText().equals("")||insIDJField.getText()==null){
+                JOptionPane.showMessageDialog(null, "Item can't be empty");
+                return;
+        }
+        for(Enterprise e: business.getEnterpriseDirectory().getEnterpriseList()){
+            if(e.getName().equalsIgnoreCase(enterprise.getName())){
+        Insurances insurance = enterprise.createMenuInsurance();
+        insurance.setInsuranceID(insIDJField.getText());
+        insurance.setPrice(priceJField.getText());
+        populateTable();}
+        }
+    }//GEN-LAST:event_addJButtonActionPerformed
+
+    private void deleteJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteJButtonActionPerformed
+        // TODO add your handling code here:
+        int selectedRow = jTable1.getSelectedRow();
+        if (selectedRow < 0) {
+            JOptionPane.showMessageDialog(null, "Please select a row");
+            return;
+        }
+        else{
+            Insurances insurance = (Insurances)jTable1.getValueAt(selectedRow, 0);
+            enterprise.deleteInsurance(insurance);
+            JOptionPane.showMessageDialog(null, "Item deleted successfully");
+            populateTable();
+    } 
+    }//GEN-LAST:event_deleteJButtonActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

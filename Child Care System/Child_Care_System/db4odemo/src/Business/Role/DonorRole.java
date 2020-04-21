@@ -8,21 +8,26 @@ package Business.Role;
 import Business.EcoSystem;
 import Business.Enterprise.Enterprise;
 import Business.Organization.DoctorOrganization;
-import Business.Organization.InsuranceOrganization;
+import Business.Organization.DonorOrganization;
 import Business.Organization.Organization;
 import Business.UserAccount.UserAccount;
 import javax.swing.JPanel;
-import userinterface.InsuranceAgentRole.InsuranceFrontJPanel;
+import userinterface.DonorRole.DonorWorkAreaJPanel;
 
 /**
  *
  * @author moury
  */
-public class InsuranceAgentRole extends Role{
-    
+public class DonorRole extends Role{
+
     @Override
     public JPanel createWorkArea(JPanel userProcessContainer, UserAccount account, Organization organization, Enterprise enterprise, EcoSystem business) {
-        return new InsuranceFrontJPanel(userProcessContainer, account, organization, enterprise, business);
+        return new DonorWorkAreaJPanel(userProcessContainer, account, organization, enterprise, business);
+    }
+    
+    @Override
+    public String toString() {
+        return getClass().getName();
     }
     
 }
