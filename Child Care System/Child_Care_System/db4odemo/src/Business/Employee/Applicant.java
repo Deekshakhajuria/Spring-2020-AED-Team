@@ -9,13 +9,14 @@ import java.util.ArrayList;
 
 /**
  *
- * @author niramaykelkar
+ * @author moury
  */
 public class Applicant extends Employee{
     
     private String helpSeekerId;
     private static int count = 001;
     private ArrayList<VitalSign> vitalSignList =new ArrayList<VitalSign>();
+    
     public Applicant()
     {
         StringBuffer sb = new StringBuffer();
@@ -24,6 +25,13 @@ public class Applicant extends Employee{
         helpSeekerId = sb.toString();
         count++;
         //vitalSignList = new ArrayList<VitalSign>();
+    }
+    public Applicant(Employee e){
+        super(e);
+    }
+    @Override
+    public String toString() {
+        return this.getName();
     }
 
     public String getHelpSeekerId() {
@@ -34,23 +42,12 @@ public class Applicant extends Employee{
         this.helpSeekerId = helpSeekerId;
     }
 
-    public static int getCount() {
-        return count;
-    }
-
-    public static void setCount(int count) {
-        Applicant.count = count;
-    }
-
     public ArrayList<VitalSign> getVitalSignList() {
         return vitalSignList;
     }
 
     public void setVitalSignList(ArrayList<VitalSign> vitalSignList) {
         this.vitalSignList = vitalSignList;
-    }
-    public Applicant(Employee e){
-        super(e);
     }
     
     public VitalSign addVital()
@@ -66,16 +63,17 @@ public class Applicant extends Employee{
     }
     
     public ArrayList<VitalSign> getAbnormalList(double maxbp , double minbp){
-        ArrayList<VitalSign> abnList = new ArrayList<VitalSign>();
-        for(VitalSign vs : vitalSignList)
+        ArrayList<VitalSign> abnList = new ArrayList<>();
+      for(VitalSign vs : vitalSignList)
+    {
+        if(vs.getBloodPressure() > maxbp || vs.getBloodPressure() < minbp)
         {
-            if(vs.getBloodPressure() > maxbp || vs.getBloodPressure() < minbp)
-            {
-                abnList.add(vs);
-            }
+            abnList.add(vs);
         }
-        return abnList;
     }
+    return abnList;
+    }
+    
     
     public String patientCondition( VitalSign patientVitalSign)
     {
@@ -104,9 +102,5 @@ public class Applicant extends Employee{
      return patientCondition;
             
     }
-    
-    @Override
-    public String toString() {
-        return this.getName();
-    }
+
 }

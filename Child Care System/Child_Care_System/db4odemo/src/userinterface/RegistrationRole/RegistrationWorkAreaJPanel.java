@@ -422,21 +422,21 @@ public class RegistrationWorkAreaJPanel extends javax.swing.JPanel {
      
      public void resetFields()
     {
-     passswordTxt.setText("");
-     confirmPasswordTxt.setText("");
-    firstNameText.setText("");
-    LastNameText.setText("");
-    DobText.setText("");
-    addressLine1Text.setText("");
-    addressLine2Text.setText("");
-    cityText.setText("");
-    zipCodeTxt.setText("");
-    occupationTxt.setText("");
-    mailTxt.setText("");
-   confirmaMailTxt.setText("");
-    phoneTxt.setText("");
-    applicantRadioBtn.setSelected(false);
-    doctorRadioBtn.setSelected(false);
+        passswordTxt.setText("");
+        confirmPasswordTxt.setText("");
+        firstNameText.setText("");
+        LastNameText.setText("");
+        DobText.setText("");
+        addressLine1Text.setText("");
+        addressLine2Text.setText("");
+        cityText.setText("");
+        zipCodeTxt.setText("");
+        occupationTxt.setText("");
+        mailTxt.setText("");
+        confirmaMailTxt.setText("");
+        phoneTxt.setText("");
+        applicantRadioBtn.setSelected(false);
+        doctorRadioBtn.setSelected(false);
      
     }
     

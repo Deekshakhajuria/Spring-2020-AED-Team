@@ -5,6 +5,7 @@
  */
 package Business.Enterprise;
 
+import Business.Network.Network;
 import Business.Organization.Organization;
 import Business.Organization.OrganizationDirectory;
 
@@ -16,13 +17,13 @@ public abstract class Enterprise extends Organization{
     
     private EnterpriseType enterpriseType;
     private OrganizationDirectory organizationDirectory;
-
+    private Network network;
     public OrganizationDirectory getOrganizationDirectory() {
         return organizationDirectory;
     }
     
     public enum EnterpriseType{
-        Hospital("Hospital");
+        Hospital("Hospital"),NonProfit("NonProfit"),ChildHelp("ChildHelp"),Pharmacy("Pharmacy"),Insurance("Insurance");
         
         private String value;
         
@@ -50,5 +51,13 @@ public abstract class Enterprise extends Organization{
         super(name);
         this.enterpriseType=type;
         organizationDirectory=new OrganizationDirectory();
+    }
+    
+    public Network getNetwork() {
+        return network;
+    }
+
+    public void setNetwork(Network network) {
+        this.network = network;
     }
 }

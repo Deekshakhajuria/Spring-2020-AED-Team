@@ -11,7 +11,7 @@ import java.util.Date;
  *
  * @author niramaykelkar
  */
-class VitalSign {
+public class VitalSign {
     
     private double heartRate;
     private double bloodPressure;
