@@ -13,7 +13,7 @@ import javax.swing.JTextField;
 
 /**
  *
- * @author niramaykelkar
+ * @author verle
  */
 public class StringValidation extends InputVerifier{
     
@@ -22,6 +22,7 @@ public class StringValidation extends InputVerifier{
         String text = ((JTextField) input).getText();
      
         String pattern = "^[A-Za-z ]+[A-Za-z ]++$";
+        //String pattern = "^([a-zA-Z\\u0080-\\u024F]+(?:. |-| |'))[a-zA-Z\\u0080-\\u024F]$";
         if (text.length() > 0) {
             if (text.toLowerCase().startsWith(" ") || text.length() == 0 || text.matches(pattern) != true) {
                 input.setBackground(Color.red);

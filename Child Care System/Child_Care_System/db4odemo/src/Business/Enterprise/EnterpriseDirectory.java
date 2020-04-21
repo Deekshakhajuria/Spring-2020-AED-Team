@@ -35,18 +35,21 @@ public class EnterpriseDirectory {
             enterprise=new HospitalEnterprise(name);
             enterpriseList.add(enterprise);
         }
-        else if(type==Enterprise.EnterpriseType.Insurance){
-            enterprise=new InsuranceEnterprise(name);
+        else if(type==Enterprise.EnterpriseType.ChildHelp)
+        {
+        enterprise=new ChildHelpEnterprise(name);
             enterpriseList.add(enterprise);
         }
-        else if(type==Enterprise.EnterpriseType.ChildHelp){
-            enterprise=new InsuranceEnterprise(name);
+        else if(type==Enterprise.EnterpriseType.NonProfit)
+                {
+                enterprise=new NonProfitEnterprise(name);
             enterpriseList.add(enterprise);
-        }
-        else if(type==Enterprise.EnterpriseType.Pharmacy){
-            enterprise=new InsuranceEnterprise(name);
+                }
+        else if(type==Enterprise.EnterpriseType.Pharmacy)
+                {
+                enterprise=new PharmacyEnterprise(name);
             enterpriseList.add(enterprise);
-        }
+                }
         return enterprise;
     }
 }

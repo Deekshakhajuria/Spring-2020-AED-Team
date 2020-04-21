@@ -5,12 +5,9 @@
  */
 package Business.Enterprise;
 
-import Business.Enterprise.Insurances;
 import Business.Network.Network;
 import Business.Organization.Organization;
-
 import Business.Organization.OrganizationDirectory;
-import java.util.ArrayList;
 
 /**
  *
@@ -20,18 +17,13 @@ public abstract class Enterprise extends Organization{
     
     private EnterpriseType enterpriseType;
     private OrganizationDirectory organizationDirectory;
-    private ArrayList<Insurances> insurancesList;
     private Network network;
     public OrganizationDirectory getOrganizationDirectory() {
         return organizationDirectory;
     }
-
-    public Iterable<Insurances> getInsurancesList() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
     
     public enum EnterpriseType{
-        Hospital("Hospital"),ChildHelp("ChildHelp"),Pharmacy("Pharmacy"),Insurance("Insurance");
+        Hospital("Hospital"),NonProfit("NonProfit"),ChildHelp("ChildHelp"),Pharmacy("Pharmacy");
         
         private String value;
         
@@ -45,17 +37,6 @@ public abstract class Enterprise extends Organization{
         public String toString(){
         return value;
     }
-    }
-    
-    public Insurances createMenuInsurance(){
-        Insurances insurance = new Insurances(); 
-        this.insurancesList.add(insurance);
-        return insurance;
-    } 
-      
-    
-     public void deleteInsurance(Insurances insurance){
-        insurancesList.remove(insurance); 
     }
 
     public EnterpriseType getEnterpriseType() {
@@ -71,7 +52,7 @@ public abstract class Enterprise extends Organization{
         this.enterpriseType=type;
         organizationDirectory=new OrganizationDirectory();
     }
-    
+
     public Network getNetwork() {
         return network;
     }
@@ -79,4 +60,6 @@ public abstract class Enterprise extends Organization{
     public void setNetwork(Network network) {
         this.network = network;
     }
+    
+    
 }

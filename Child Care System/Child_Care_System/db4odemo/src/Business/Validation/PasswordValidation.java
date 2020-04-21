@@ -10,10 +10,9 @@ import javax.swing.InputVerifier;
 import javax.swing.JComponent;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
-
 /**
  *
- * @author niramaykelkar
+ * @author verle
  */
 public class PasswordValidation extends InputVerifier{
     
@@ -31,10 +30,10 @@ public class PasswordValidation extends InputVerifier{
                 return true;
             }
         }
-        else
-        {
+              else
+            {
             input.setBackground(Color.white);
             return true;
+            }
         }
-    }
 }

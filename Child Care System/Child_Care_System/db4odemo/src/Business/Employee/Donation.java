@@ -7,13 +7,24 @@ package Business.Employee;
 
 /**
  *
- * @author niramaykelkar
+ * @author Team SPY
  */
 public class Donation {
+    
     private String donationAmount;
     private String donationDate;
     private String donorsAccountNumber;
     private String donorsAccountName;
+   public static String receiversAccountNumber = "8577865926";
+    
+    //private static int count = 0;
+    //private int donationId;
+    
+   /* public Donation()
+    {
+        count++;
+        donationId = count;
+    }*/
 
     public String getDonationAmount() {
         return donationAmount;
@@ -51,14 +62,12 @@ public class Donation {
         return receiversAccountNumber;
     }
 
-    public static void setReceiversAccountNumber(String receiversAccountNumber) {
-        Donation.receiversAccountNumber = receiversAccountNumber;
-    }
-    public static String receiversAccountNumber = "8577865926";
+    
     
     @Override
     public String toString()  {
       //  return String.valueOf(donationId);
         return donationAmount;
     }
+    
 }

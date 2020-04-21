@@ -15,18 +15,19 @@ import javax.swing.JPanel;
 
 /**
  *
- * @author niramaykelkar
+ * @author verle
  */
 public class DonorWorkAreaJPanel extends javax.swing.JPanel {
 
-    /**
-     * Creates new form DonorWorkAreaJPanel
-     */
     private JPanel userProcessContainer;
     private UserAccount userAccount;
     private Organization organization;
     private EcoSystem ecoSystem;
     private Enterprise enterprise;
+    
+    /**
+     * Creates new form DonorWorkAreaJPanel
+     */
     public DonorWorkAreaJPanel(JPanel userProcessContainer, UserAccount userAccount, Organization organization, Enterprise enterprise, EcoSystem ecoSystem) {
         initComponents();
         this.userProcessContainer = userProcessContainer;
@@ -54,41 +55,47 @@ public class DonorWorkAreaJPanel extends javax.swing.JPanel {
 
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        viewProfileBtn.setFont(new java.awt.Font("Arial Black", 0, 14)); // NOI18N
         viewProfileBtn.setText("View/Update Profile");
         viewProfileBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 viewProfileBtnActionPerformed(evt);
             }
         });
-        add(viewProfileBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 310, 200, 70));
+        add(viewProfileBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 330, 290, 70));
 
+        manageProfile.setFont(new java.awt.Font("Arial Black", 0, 14)); // NOI18N
         manageProfile.setText("Create Profile");
         manageProfile.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 manageProfileActionPerformed(evt);
             }
         });
-        add(manageProfile, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 220, 200, 60));
+        add(manageProfile, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 210, 290, 70));
 
+        donationHistory.setFont(new java.awt.Font("Arial Black", 0, 14)); // NOI18N
         donationHistory.setText("View Donation History");
         donationHistory.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 donationHistoryActionPerformed(evt);
             }
         });
-        add(donationHistory, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 320, 220, 60));
+        add(donationHistory, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 330, 290, 70));
 
-        manageEnt.setFont(new java.awt.Font("Times New Roman", 1, 36)); // NOI18N
+        manageEnt.setFont(new java.awt.Font("Arial Black", 0, 18)); // NOI18N
         manageEnt.setText("Donor Work Area");
-        add(manageEnt, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 70, 320, -1));
+        add(manageEnt, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 90, 320, -1));
 
+        viewDonationRequestsBtn.setFont(new java.awt.Font("Arial Black", 0, 14)); // NOI18N
         viewDonationRequestsBtn.setText("View Donation Requests");
         viewDonationRequestsBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 viewDonationRequestsBtnActionPerformed(evt);
             }
         });
-        add(viewDonationRequestsBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 220, 210, 60));
+        add(viewDonationRequestsBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 210, 290, 70));
+
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Background.jpg"))); // NOI18N
         add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
     }// </editor-fold>//GEN-END:initComponents
 
@@ -113,15 +120,15 @@ public class DonorWorkAreaJPanel extends javax.swing.JPanel {
             JOptionPane.showMessageDialog(null, "There is o donation history","warning",JOptionPane.WARNING_MESSAGE);
             return;
         }
-        ViewDonationHistoryJPanel vdh = new ViewDonationHistoryJPanel(userProcessContainer, userAccount);
+        ViewDonationHistory vdh = new ViewDonationHistory(userProcessContainer, userAccount);
         userProcessContainer.add("ViewDonationHistory", vdh);
         CardLayout layout = (CardLayout) userProcessContainer.getLayout();
         layout.next(userProcessContainer);
     }//GEN-LAST:event_donationHistoryActionPerformed
 
     private void viewDonationRequestsBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_viewDonationRequestsBtnActionPerformed
-        ViewPendingRequestJPanel vpr = new ViewPendingRequestJPanel(userProcessContainer, userAccount, organization, ecoSystem);
-        userProcessContainer.add("ViewPendingRequestJPanel", vpr);
+        ViewPendingRequest vpr = new ViewPendingRequest(userProcessContainer, userAccount, organization, ecoSystem);
+        userProcessContainer.add("ViewPendingRequest", vpr);
         CardLayout layout = (CardLayout) userProcessContainer.getLayout();
         layout.next(userProcessContainer);
     }//GEN-LAST:event_viewDonationRequestsBtnActionPerformed

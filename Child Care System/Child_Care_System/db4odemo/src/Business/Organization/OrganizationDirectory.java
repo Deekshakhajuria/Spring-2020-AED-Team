@@ -49,10 +49,6 @@ public class OrganizationDirectory {
             organization = new PharmacyOrganization();
             organizationList.add(organization);
         }
-        else if (type.getValue().equals(Type.Insurance.getValue())){
-            organization = new InsuranceOrganization();
-            organizationList.add(organization);
-        }
         return organization;
     }
 }

@@ -15,7 +15,7 @@ import javax.swing.JTextField;
 
 /**
  *
- * @author niramaykelkar
+ * @author Team SPY
  */
 public class DOBValidation extends InputVerifier{
     
@@ -34,10 +34,13 @@ public class DOBValidation extends InputVerifier{
                 input.setBackground(Color.white);
                 return true;
             }
-        }    
-        else {
-            input.setBackground(Color.white);
-            return true;
-        } 
+            }    
+              else {
+                input.setBackground(Color.white);
+                return true;
+        }
+    
+   
     }
+    
 }

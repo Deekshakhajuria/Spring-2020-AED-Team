@@ -7,14 +7,15 @@ package Business.Organization;
 
 import Business.Role.PharmacyRole;
 import Business.Role.Role;
+import Business.Role.ManagerRole;
 import java.util.ArrayList;
 
 /**
  *
- * @author niramaykelkar
+ * @author hp
  */
 public class PharmacyOrganization extends Organization{
-    
+
     public PharmacyOrganization() {
         super(Organization.Type.Pharmacy.getValue());
     }
@@ -25,4 +26,5 @@ public class PharmacyOrganization extends Organization{
         roles.add(new PharmacyRole());
         return roles;
     }
+     
 }

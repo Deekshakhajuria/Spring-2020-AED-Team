@@ -4,7 +4,6 @@
  */
 package userinterface;
 
-import userinterface.RegistrationRole.RegistrationWorkAreaJPanel;
 import Business.EcoSystem;
 import Business.DB4OUtil.DB4OUtil;
 import Business.Enterprise.Enterprise;
@@ -12,12 +11,17 @@ import Business.Network.Network;
 import Business.Organization.Organization;
 import Business.UserAccount.UserAccount;
 import java.awt.CardLayout;
+import java.awt.Color;
+import java.awt.Dimension;
+import java.awt.Toolkit;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import userinterface.DoctorRole.RequestLabTestJPanel;
+import userinterface.RegistrationRole.RegistrationworkAreaJPanel;
 
 /**
  *
- * @author A_Team_Has_No_Name
+ * @author Lingfeng
  */
 public class MainJFrame extends javax.swing.JFrame {
 
@@ -31,6 +35,11 @@ public class MainJFrame extends javax.swing.JFrame {
         initComponents();
         system = dB4OUtil.retrieveSystem();
         this.setSize(1680, 1050);
+        Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
+        setSize(screenSize.width, screenSize.height);
+   
+        jPanel1.setBackground(new Color(255,255,255));
+        container.setBackground(new Color(153,197,85));
     }
 
     /**
@@ -51,23 +60,52 @@ public class MainJFrame extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         loginJLabel = new javax.swing.JLabel();
         logoutJButton = new javax.swing.JButton();
+        registerBtn = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
-        btnRegister = new javax.swing.JButton();
+        jLabel5 = new javax.swing.JLabel();
         container = new javax.swing.JPanel();
+        jLabel4 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
+        jSplitPane1.setDividerLocation(200);
+
+        jPanel1.setLayout(null);
+
+        loginJButton.setFont(new java.awt.Font("Arial Black", 0, 14)); // NOI18N
         loginJButton.setText("Login");
         loginJButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 loginJButtonActionPerformed(evt);
             }
         });
+        jPanel1.add(loginJButton);
+        loginJButton.setBounds(30, 270, 130, 30);
 
+        userNameJTextField.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        jPanel1.add(userNameJTextField);
+        userNameJTextField.setBounds(30, 100, 130, 30);
+
+        passwordField.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        jPanel1.add(passwordField);
+        passwordField.setBounds(30, 200, 130, 30);
+
+        jLabel1.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel1.setFont(new java.awt.Font("Arial Black", 0, 14)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(255, 255, 204));
         jLabel1.setText("User Name");
+        jPanel1.add(jLabel1);
+        jLabel1.setBounds(30, 70, 130, 21);
 
+        jLabel2.setFont(new java.awt.Font("Arial Black", 0, 14)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(255, 255, 204));
         jLabel2.setText("Password");
+        jPanel1.add(jLabel2);
+        jLabel2.setBounds(30, 170, 130, 21);
+        jPanel1.add(loginJLabel);
+        loginJLabel.setBounds(163, 346, 0, 0);
 
+        logoutJButton.setFont(new java.awt.Font("Arial Black", 0, 14)); // NOI18N
         logoutJButton.setText("Logout");
         logoutJButton.setEnabled(false);
         logoutJButton.addActionListener(new java.awt.event.ActionListener() {
@@ -75,69 +113,34 @@ public class MainJFrame extends javax.swing.JFrame {
                 logoutJButtonActionPerformed(evt);
             }
         });
+        jPanel1.add(logoutJButton);
+        logoutJButton.setBounds(30, 320, 130, 30);
 
-        jLabel3.setText("New users?");
-
-        btnRegister.setText("Register");
-        btnRegister.addActionListener(new java.awt.event.ActionListener() {
+        registerBtn.setFont(new java.awt.Font("Arial Black", 0, 24)); // NOI18N
+        registerBtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/button_register.png"))); // NOI18N
+        registerBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnRegisterActionPerformed(evt);
+                registerBtnActionPerformed(evt);
             }
         });
+        jPanel1.add(registerBtn);
+        registerBtn.setBounds(30, 470, 130, 40);
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                        .addComponent(passwordField, javax.swing.GroupLayout.DEFAULT_SIZE, 118, Short.MAX_VALUE)
-                        .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(userNameJTextField, javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(jPanel1Layout.createSequentialGroup()
-                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(logoutJButton, javax.swing.GroupLayout.DEFAULT_SIZE, 92, Short.MAX_VALUE)
-                                .addGroup(jPanel1Layout.createSequentialGroup()
-                                    .addGap(10, 10, 10)
-                                    .addComponent(jLabel3)
-                                    .addGap(0, 0, Short.MAX_VALUE)))
-                            .addGap(26, 26, 26)
-                            .addComponent(loginJLabel)))
-                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                        .addComponent(btnRegister, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(loginJButton, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 100, Short.MAX_VALUE)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(21, 21, 21)
-                .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(userNameJTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(14, 14, 14)
-                .addComponent(jLabel2)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(passwordField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(loginJButton)
-                .addGap(34, 34, 34)
-                .addComponent(logoutJButton)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(loginJLabel)
-                .addGap(18, 18, 18)
-                .addComponent(jLabel3)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnRegister)
-                .addContainerGap(103, Short.MAX_VALUE))
-        );
+        jLabel3.setFont(new java.awt.Font("Arial Black", 0, 14)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(255, 255, 204));
+        jLabel3.setText("   New Users");
+        jPanel1.add(jLabel3);
+        jLabel3.setBounds(20, 430, 147, 34);
+
+        jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/110547.jpg"))); // NOI18N
+        jPanel1.add(jLabel5);
+        jLabel5.setBounds(0, 0, 200, 1080);
 
         jSplitPane1.setLeftComponent(jPanel1);
 
         container.setLayout(new java.awt.CardLayout());
+        container.add(jLabel4, "card2");
+
         jSplitPane1.setRightComponent(container);
 
         getContentPane().add(jSplitPane1, java.awt.BorderLayout.CENTER);
@@ -223,7 +226,7 @@ public class MainJFrame extends javax.swing.JFrame {
         dB4OUtil.storeSystem(system);
     }//GEN-LAST:event_logoutJButtonActionPerformed
 
-    private void btnRegisterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegisterActionPerformed
+    private void registerBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_registerBtnActionPerformed
         // TODO add your handling code here:
         logoutJButton.setEnabled(false);
         userNameJTextField.setEnabled(true);
@@ -234,12 +237,13 @@ public class MainJFrame extends javax.swing.JFrame {
         passwordField.setText("");
 
         container.removeAll();
-         RegistrationWorkAreaJPanel registrationWorkAreaJPanel = new RegistrationWorkAreaJPanel(container, system);
+         RegistrationworkAreaJPanel registrationworkAreaJPanel = new RegistrationworkAreaJPanel(container, system);
          CardLayout layout = (CardLayout) container.getLayout();
-         container.add("RegisterWorkArea", registrationWorkAreaJPanel);
+         container.add("RegisterWorkArea", registrationworkAreaJPanel);
          layout.next(container);
          dB4OUtil.storeSystem(system);
-    }//GEN-LAST:event_btnRegisterActionPerformed
+         
+    }//GEN-LAST:event_registerBtnActionPerformed
 
     /**
      * @param args the command line arguments
@@ -276,17 +280,19 @@ public class MainJFrame extends javax.swing.JFrame {
         });
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnRegister;
     private javax.swing.JPanel container;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JSplitPane jSplitPane1;
     private javax.swing.JButton loginJButton;
     private javax.swing.JLabel loginJLabel;
     private javax.swing.JButton logoutJButton;
     private javax.swing.JPasswordField passwordField;
+    private javax.swing.JButton registerBtn;
     private javax.swing.JTextField userNameJTextField;
     // End of variables declaration//GEN-END:variables
 }

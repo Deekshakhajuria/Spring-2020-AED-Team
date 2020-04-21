@@ -11,10 +11,11 @@ import Business.Organization.Organization;
 import Business.UserAccount.UserAccount;
 import javax.swing.JPanel;
 import userinterface.PharmacyRole.PharmacyWorkAreaJPanel;
+//import userinterface.LabAssistantRole.LabAssistantWorkAreaJPanel;
 
 /**
  *
- * @author niramaykelkar
+ * @author verle
  */
 public class PharmacyRole extends Role{
     

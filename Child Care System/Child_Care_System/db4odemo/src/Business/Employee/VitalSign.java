@@ -9,10 +9,9 @@ import java.util.Date;
 
 /**
  *
- * @author niramaykelkar
+ * @author hp
  */
 public class VitalSign {
-    
     private double heartRate;
     private double bloodPressure;
     private int pulse;
@@ -26,6 +25,18 @@ public class VitalSign {
     public void setHeartRate(double heartRate) {
         this.heartRate = heartRate;
     }
+
+    public double getWeightInPounds() {
+        return weightInPounds;
+    }
+
+    public void setWeightInPounds(double weightInPounds) {
+        this.weightInPounds = weightInPounds;
+    }
+
+    
+    
+    
 
     public double getBloodPressure() {
         return bloodPressure;
@@ -43,14 +54,6 @@ public class VitalSign {
         this.pulse = pulse;
     }
 
-    public double getWeightInPounds() {
-        return weightInPounds;
-    }
-
-    public void setWeightInPounds(double weightInPounds) {
-        this.weightInPounds = weightInPounds;
-    }
-
     public Date getTimeStamp() {
         return timeStamp;
     }
@@ -58,10 +61,12 @@ public class VitalSign {
     public void setTimeStamp(Date timeStamp) {
         this.timeStamp = timeStamp;
     }
-    
+
+   
     @Override
     public String toString() {
         
         return Double.toString(bloodPressure);
     }
+    
 }

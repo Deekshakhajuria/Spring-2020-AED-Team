@@ -16,7 +16,7 @@ import userinterface.DonorRole.DonorWorkAreaJPanel;
 
 /**
  *
- * @author moury
+ * @author hp
  */
 public class DonorRole extends Role{
 
