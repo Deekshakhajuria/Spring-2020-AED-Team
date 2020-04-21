@@ -6,11 +6,13 @@
 package userinterface.DonorRole;
 
 import Business.EcoSystem;
+import Business.Organization.ManagerOrganization;
 import Business.UserAccount.UserAccount;
 import java.awt.CardLayout;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.Date;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
@@ -44,7 +46,6 @@ public class DonorDetailsJPanel extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPanel1 = new javax.swing.JPanel();
         manageEnt = new javax.swing.JLabel();
         submitBtn = new javax.swing.JButton();
         cancelBtn = new javax.swing.JButton();
@@ -62,68 +63,54 @@ public class DonorDetailsJPanel extends javax.swing.JPanel {
         jLabel1 = new javax.swing.JLabel();
         backJButton = new javax.swing.JButton();
 
-        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         manageEnt.setFont(new java.awt.Font("Malayalam MN", 3, 24)); // NOI18N
         manageEnt.setText("Donation Details");
-        jPanel1.add(manageEnt, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 50, 202, -1));
+        add(manageEnt, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 30, 202, -1));
 
+        submitBtn.setFont(new java.awt.Font("Lucida Grande", 1, 14)); // NOI18N
         submitBtn.setText("Submit");
         submitBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 submitBtnActionPerformed(evt);
             }
         });
-        jPanel1.add(submitBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 350, 130, 60));
+        add(submitBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 330, 130, 60));
 
+        cancelBtn.setFont(new java.awt.Font("Lucida Grande", 1, 14)); // NOI18N
         cancelBtn.setText("Cancel");
-        cancelBtn.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cancelBtnActionPerformed(evt);
-            }
-        });
-        jPanel1.add(cancelBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 350, 130, 60));
+        add(cancelBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 330, 130, 60));
 
-        name.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
+        name.setFont(new java.awt.Font("Lucida Grande", 1, 18)); // NOI18N
         name.setText("Name:");
-        jPanel1.add(name, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 180, 90, -1));
-        jPanel1.add(nameTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 180, 246, -1));
+        add(name, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 160, 90, -1));
+        add(nameTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 160, 246, -1));
 
-        helpName.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
+        helpName.setFont(new java.awt.Font("Lucida Grande", 1, 18)); // NOI18N
         helpName.setText("Card Number:");
-        jPanel1.add(helpName, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 220, -1, -1));
+        add(helpName, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 200, -1, -1));
+        add(cardNoTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 200, 246, -1));
 
-        cardNoTextField.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cardNoTextFieldActionPerformed(evt);
-            }
-        });
-        jPanel1.add(cardNoTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 220, 246, -1));
-
-        expiryDate.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
+        expiryDate.setFont(new java.awt.Font("Lucida Grande", 1, 18)); // NOI18N
         expiryDate.setText("Expiry Date(MM/YYYY)");
-        jPanel1.add(expiryDate, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 260, -1, -1));
-        jPanel1.add(monthTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(870, 260, 64, -1));
-        jPanel1.add(yearTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(950, 260, 64, -1));
+        add(expiryDate, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 240, -1, -1));
+        add(monthTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 240, 64, -1));
+        add(yearTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 240, 64, -1));
 
-        amount.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
+        amount.setFont(new java.awt.Font("Lucida Grande", 1, 18)); // NOI18N
         amount.setText("Enter Amount:");
-        jPanel1.add(amount, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 300, -1, -1));
-        jPanel1.add(amountTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 300, 246, -1));
+        add(amount, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 280, -1, -1));
+        add(amountTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 280, 246, -1));
 
         toAccntNumber.setFont(new java.awt.Font("Lucida Grande", 0, 14)); // NOI18N
         toAccntNumber.setText("Receiver Account Number");
-        jPanel1.add(toAccntNumber, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 470, 183, -1));
+        add(toAccntNumber, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 437, 183, 30));
 
         receiverAccountNumber.setEditable(false);
         receiverAccountNumber.setEnabled(false);
-        receiverAccountNumber.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                receiverAccountNumberActionPerformed(evt);
-            }
-        });
-        jPanel1.add(receiverAccountNumber, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 460, 196, -1));
-        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1610, -1));
+        add(receiverAccountNumber, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 440, 196, -1));
+        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(-330, -10, 1610, -1));
 
         backJButton.setFont(new java.awt.Font("Lucida Grande", 1, 14)); // NOI18N
         backJButton.setText("< Back");
@@ -132,44 +119,43 @@ public class DonorDetailsJPanel extends javax.swing.JPanel {
                 backJButtonActionPerformed(evt);
             }
         });
-        jPanel1.add(backJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 50, 110, 60));
-
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        this.setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1514, Short.MAX_VALUE)
-            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                    .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 1502, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 713, Short.MAX_VALUE)
-            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                    .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 701, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-        );
+        add(backJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 330, 110, 60));
     }// </editor-fold>//GEN-END:initComponents
 
-    public void refresh()
-    {
-     cardNoTextField.setText("");
-     monthTextField.setText("");
-     yearTextField.setText("");
-     amountTextField.setText("");
-     nameTextField.setText("");
-    }
+//    public UserAccount getManagerAccount()
+//    {
+//        try
+//        {
+//            ManagerOrganization managerOrganization = (ManagerOrganization)MainValidation.getManagerOrganization(ecoSystem, userAccount);
+//            UserAccount managerAccount = null;
+//            if(managerOrganization==null)
+//            {
+//                JOptionPane.showMessageDialog(null, "Manager Organization dose not exist!", "warning",JOptionPane.WARNING_MESSAGE);
+//                return managerAccount;
+//            }
+//            
+//            for(UserAccount ua : managerOrganization.getUserAccountDirectory().getUserAccountList())
+//                {
+//                    if((ua.getRole().toString()).equals("ManagerRole"))  
+//                        {
+//                            managerAccount = ua;   
+//                        }
+//                }
+//            return managerAccount;
+//        }
+//        catch(Exception e)
+//        {
+//            JOptionPane.showMessageDialog(null, "Manager Organization dose not exist!", "warning",JOptionPane.WARNING_MESSAGE);
+//            return null;      
+//        }
+//    }
     
     private void submitBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_submitBtnActionPerformed
+        // TODO add your handling code here:
         if( nameTextField.getText().trim().isEmpty() ||
             cardNoTextField.getText().length()>10 ||
             monthTextField.getText().length()>2 ||
-            yearTextField.getText().length()>4 ||
+            yearTextField.getText().length()>4 || 
             amountTextField.getText().length()<0 )
         {
             JOptionPane.showMessageDialog(null, "Details entered are not valid!", "warning",JOptionPane.WARNING_MESSAGE);
@@ -201,8 +187,8 @@ public class DonorDetailsJPanel extends javax.swing.JPanel {
 //            donation.setDonorsAccountName(nameTextField.getText());
 //            donation.setDonorsAccountNumber(cardNoTextField.getText());
 
-            try
-            {
+//            try
+//            {
 //                DonationWorkRequest donReq = new DonationWorkRequest();
 //                donReq.setDonation(donation);
 //                donReq.setDonatedBy(userAccount.getUsername());
@@ -229,12 +215,12 @@ public class DonorDetailsJPanel extends javax.swing.JPanel {
 //                {
 //                    userAccount.getWorkQueue().getWorkRequestList().remove(donReq);
 //                }
-            }
-            catch(Exception e)
-            {
-                JOptionPane.showMessageDialog(null, "Account does not exist!", "warning",JOptionPane.WARNING_MESSAGE);
-                return;
-            }
+//            }
+//            catch(Exception e)
+//            {
+//                JOptionPane.showMessageDialog(null, "Account does not exist!", "warning",JOptionPane.WARNING_MESSAGE);
+//                return;
+//            }
             refresh();
         }
         catch(Exception e)
@@ -244,18 +230,6 @@ public class DonorDetailsJPanel extends javax.swing.JPanel {
         }
     }//GEN-LAST:event_submitBtnActionPerformed
 
-    private void cancelBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelBtnActionPerformed
-        refresh();
-    }//GEN-LAST:event_cancelBtnActionPerformed
-
-    private void cardNoTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cardNoTextFieldActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_cardNoTextFieldActionPerformed
-
-    private void receiverAccountNumberActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_receiverAccountNumberActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_receiverAccountNumberActionPerformed
-
     private void backJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backJButtonActionPerformed
         // TODO add your handling code here:
         userProcessContainer.remove(this);
@@ -263,6 +237,15 @@ public class DonorDetailsJPanel extends javax.swing.JPanel {
         layout.previous(userProcessContainer);
     }//GEN-LAST:event_backJButtonActionPerformed
 
+    public void refresh()
+    {
+     cardNoTextField.setText("");
+     monthTextField.setText("");
+     yearTextField.setText("");
+     amountTextField.setText("");
+     nameTextField.setText("");
+    }
+    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel amount;
@@ -273,7 +256,6 @@ public class DonorDetailsJPanel extends javax.swing.JPanel {
     private javax.swing.JLabel expiryDate;
     private javax.swing.JLabel helpName;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JPanel jPanel1;
     private javax.swing.JLabel manageEnt;
     private javax.swing.JTextField monthTextField;
     private javax.swing.JLabel name;

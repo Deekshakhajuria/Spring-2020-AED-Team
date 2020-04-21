@@ -60,7 +60,7 @@ public class DonorWorkAreaJPanel extends javax.swing.JPanel {
                 viewProfileBtnActionPerformed(evt);
             }
         });
-        add(viewProfileBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 380, 200, 100));
+        add(viewProfileBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 310, 200, 70));
 
         manageProfile.setText("Create Profile");
         manageProfile.addActionListener(new java.awt.event.ActionListener() {
@@ -68,7 +68,7 @@ public class DonorWorkAreaJPanel extends javax.swing.JPanel {
                 manageProfileActionPerformed(evt);
             }
         });
-        add(manageProfile, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 220, 200, 100));
+        add(manageProfile, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 220, 200, 60));
 
         donationHistory.setText("View Donation History");
         donationHistory.addActionListener(new java.awt.event.ActionListener() {
@@ -76,11 +76,11 @@ public class DonorWorkAreaJPanel extends javax.swing.JPanel {
                 donationHistoryActionPerformed(evt);
             }
         });
-        add(donationHistory, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 380, 200, 100));
+        add(donationHistory, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 320, 220, 60));
 
         manageEnt.setFont(new java.awt.Font("Times New Roman", 1, 36)); // NOI18N
         manageEnt.setText("Donor Work Area");
-        add(manageEnt, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 120, 320, -1));
+        add(manageEnt, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 70, 320, -1));
 
         viewDonationRequestsBtn.setText("View Donation Requests");
         viewDonationRequestsBtn.addActionListener(new java.awt.event.ActionListener() {
@@ -88,7 +88,7 @@ public class DonorWorkAreaJPanel extends javax.swing.JPanel {
                 viewDonationRequestsBtnActionPerformed(evt);
             }
         });
-        add(viewDonationRequestsBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 220, 196, 100));
+        add(viewDonationRequestsBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 220, 210, 60));
         add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
     }// </editor-fold>//GEN-END:initComponents
 

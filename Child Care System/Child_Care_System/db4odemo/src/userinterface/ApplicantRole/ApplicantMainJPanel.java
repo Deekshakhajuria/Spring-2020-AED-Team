@@ -43,7 +43,7 @@ public class ApplicantMainJPanel extends javax.swing.JPanel {
         jPanel1 = new javax.swing.JPanel();
         valueLabel = new javax.swing.JLabel();
         enterpriseLabel = new javax.swing.JLabel();
-        sendDonorBtn = new javax.swing.JButton();
+        insuranceJButton = new javax.swing.JButton();
         childHelpProfileBtn = new javax.swing.JButton();
         enterpriseLabel1 = new javax.swing.JLabel();
         valueLabel1 = new javax.swing.JLabel();
@@ -51,6 +51,7 @@ public class ApplicantMainJPanel extends javax.swing.JPanel {
         vitalSignHistoryJPanel = new javax.swing.JButton();
         childHelpProfileBtn1 = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
+        sendDonorBtn1 = new javax.swing.JButton();
 
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -62,14 +63,14 @@ public class ApplicantMainJPanel extends javax.swing.JPanel {
         enterpriseLabel.setText("Enterprise :");
         jPanel1.add(enterpriseLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 40, 127, 30));
 
-        sendDonorBtn.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        sendDonorBtn.setText("Help seeking from Donor");
-        sendDonorBtn.addActionListener(new java.awt.event.ActionListener() {
+        insuranceJButton.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        insuranceJButton.setText("Insurance");
+        insuranceJButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                sendDonorBtnActionPerformed(evt);
+                insuranceJButtonActionPerformed(evt);
             }
         });
-        jPanel1.add(sendDonorBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 300, 220, 70));
+        jPanel1.add(insuranceJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 430, 220, 70));
 
         childHelpProfileBtn.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         childHelpProfileBtn.setText("Manager Approval");
@@ -116,6 +117,15 @@ public class ApplicantMainJPanel extends javax.swing.JPanel {
         jPanel1.add(childHelpProfileBtn1, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 300, 250, 70));
         jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1610, -1));
 
+        sendDonorBtn1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        sendDonorBtn1.setText("Help seeking from Donor");
+        sendDonorBtn1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                sendDonorBtn1ActionPerformed(evt);
+            }
+        });
+        jPanel1.add(sendDonorBtn1, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 300, 220, 70));
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -148,12 +158,10 @@ public class ApplicantMainJPanel extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void sendDonorBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sendDonorBtnActionPerformed
+    private void insuranceJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_insuranceJButtonActionPerformed
         // TODO add your handling code here:
-        CardLayout layout = (CardLayout) userProcessContainer.getLayout();
-        userProcessContainer.add("ApplicantUpdateJPanel", new ApplicantWorkAreaJPanel(userProcessContainer, userAccount, organization,enterprise,business));
-        layout.next(userProcessContainer);
-    }//GEN-LAST:event_sendDonorBtnActionPerformed
+        
+    }//GEN-LAST:event_insuranceJButtonActionPerformed
 
     private void childHelpProfileBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_childHelpProfileBtnActionPerformed
         // TODO add your handling code here:
@@ -192,6 +200,10 @@ public class ApplicantMainJPanel extends javax.swing.JPanel {
         layout.next(userProcessContainer);
     }//GEN-LAST:event_childHelpProfileBtn1ActionPerformed
 
+    private void sendDonorBtn1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sendDonorBtn1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_sendDonorBtn1ActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton addVitalSignsBtn;
@@ -199,10 +211,11 @@ public class ApplicantMainJPanel extends javax.swing.JPanel {
     private javax.swing.JButton childHelpProfileBtn1;
     private javax.swing.JLabel enterpriseLabel;
     private javax.swing.JLabel enterpriseLabel1;
+    private javax.swing.JButton insuranceJButton;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JButton sendDonorBtn;
+    private javax.swing.JButton sendDonorBtn1;
     private javax.swing.JLabel valueLabel;
     private javax.swing.JLabel valueLabel1;
     private javax.swing.JButton vitalSignHistoryJPanel;
