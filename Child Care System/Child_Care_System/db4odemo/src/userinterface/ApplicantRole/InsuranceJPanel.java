@@ -5,6 +5,13 @@
  */
 package userinterface.ApplicantRole;
 
+import Business.EcoSystem;
+import Business.Enterprise.Enterprise;
+import Business.Organization.ApplicantOrganization;
+import Business.UserAccount.UserAccount;
+import java.awt.CardLayout;
+import javax.swing.JPanel;
+
 /**
  *
  * @author moury
@@ -14,8 +21,27 @@ public class InsuranceJPanel extends javax.swing.JPanel {
     /**
      * Creates new form InsuranceJPanel
      */
+    private JPanel userProcessContainer;
+    private ApplicantOrganization organization;
+    private Enterprise enterprise;
+    private UserAccount userAccount;
+    EcoSystem business;
+    
+   
+
     public InsuranceJPanel() {
         initComponents();
+        
+
+     //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    public InsuranceJPanel(JPanel userProcessContainer, UserAccount userAccount, ApplicantOrganization organization, Enterprise enterprise, EcoSystem business) {
+        this.userProcessContainer = userProcessContainer;
+        this.organization = organization;
+        this.enterprise = enterprise;
+        this.userAccount = userAccount;
+        this.business = business;
     }
 
     /**
@@ -39,8 +65,18 @@ public class InsuranceJPanel extends javax.swing.JPanel {
         });
 
         viewInsuranceJButton.setText("View Insurance");
+        viewInsuranceJButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                viewInsuranceJButtonActionPerformed(evt);
+            }
+        });
 
         verifyInsuranceJButton.setText("Verify Insurance");
+        verifyInsuranceJButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                verifyInsuranceJButtonActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -69,7 +105,28 @@ public class InsuranceJPanel extends javax.swing.JPanel {
 
     private void purchaseInsuranceJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_purchaseInsuranceJButtonActionPerformed
         // TODO add your handling code here:
+        PurchaseInsuranceJPanel purchaseInsuranceJPanel = new PurchaseInsuranceJPanel(userProcessContainer, userAccount, organization,enterprise,business);
+        CardLayout layout = (CardLayout) userProcessContainer.getLayout();
+        userProcessContainer.add("PurchaseInsuranceJPanel", purchaseInsuranceJPanel);
+        layout.next(userProcessContainer);
     }//GEN-LAST:event_purchaseInsuranceJButtonActionPerformed
+
+    private void viewInsuranceJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_viewInsuranceJButtonActionPerformed
+        // TODO add your handling code here:
+        ViewInsuranceJPanel viewInsuranceJPanel = new ViewInsuranceJPanel(userProcessContainer, userAccount, organization,enterprise,business);
+        CardLayout layout = (CardLayout) userProcessContainer.getLayout();
+        userProcessContainer.add("ViewInsuranceJPanel", viewInsuranceJPanel);
+        layout.next(userProcessContainer);
+        
+    }//GEN-LAST:event_viewInsuranceJButtonActionPerformed
+
+    private void verifyInsuranceJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_verifyInsuranceJButtonActionPerformed
+        // TODO add your handling code here:
+//        VerifyInsuranceJPanel verifyInsuranceJPanel = new VerifyInsuranceJPanel(userProcessContainer, userAccount, organization,enterprise,business);
+//        CardLayout layout = (CardLayout) userProcessContainer.getLayout();
+//        userProcessContainer.add("VerifyInsuranceJPanel", verifyInsuranceJPanel);
+//        layout.next(userProcessContainer);
+    }//GEN-LAST:event_verifyInsuranceJButtonActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

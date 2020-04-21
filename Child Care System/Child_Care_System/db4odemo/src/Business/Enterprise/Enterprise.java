@@ -21,6 +21,10 @@ public abstract class Enterprise extends Organization{
     public OrganizationDirectory getOrganizationDirectory() {
         return organizationDirectory;
     }
+
+    public Iterable<Insurances> getInsurancesList() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
     
     public enum EnterpriseType{
         Hospital("Hospital"),NonProfit("NonProfit"),ChildHelp("ChildHelp"),Pharmacy("Pharmacy"),Insurance("Insurance");

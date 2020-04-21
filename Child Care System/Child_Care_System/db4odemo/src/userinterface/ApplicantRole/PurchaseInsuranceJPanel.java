@@ -6,7 +6,17 @@
 
 package userinterface.ApplicantRole;
 
+import Business.EcoSystem;
+import Business.Enterprise.Enterprise;
+import Business.Enterprise.Insurances;
+import Business.Order;
+import Business.Organization.ApplicantOrganization;
+import Business.UserAccount.UserAccount;
+import java.awt.CardLayout;
+import javax.swing.DefaultComboBoxModel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -17,10 +27,48 @@ public class PurchaseInsuranceJPanel extends javax.swing.JPanel {
     /** Creates new form PurchaseInsuranceJPanel */
     
     private JPanel userProcessContainer;
+    private ApplicantOrganization organization;
+    private Enterprise enterprise;
+    private UserAccount userAccount;
+    EcoSystem business;
+    private Order order;
     
   
-    public PurchaseInsuranceJPanel() {
+    public PurchaseInsuranceJPanel(JPanel userProcessContainer, UserAccount userAccount, ApplicantOrganization organization, Enterprise enterprise, EcoSystem business) {
         initComponents();
+        this.userProcessContainer = userProcessContainer;
+        this.organization = organization;
+        this.enterprise = enterprise;
+        this.userAccount = userAccount;
+        this.business = business;
+        this.order=business.getOrderDirectory().createOrder();
+        populateComboBox();
+    }
+    
+    public void populateComboBox(){
+         DefaultComboBoxModel dm=new DefaultComboBoxModel();
+           for(Enterprise e:business.getEnterpriseDirectory().getEnterpriseList()){
+           dm.addElement(e);    
+   }
+       insJComboBox.setModel(dm);
+    }
+    
+    public void populateinsJTable(String insAgency){
+     DefaultTableModel dtm = (DefaultTableModel) insJTable.getModel();
+        dtm.setRowCount(0);
+        for(Enterprise e:business.getEnterpriseDirectory().getEnterpriseList())
+        {
+         if(e.getName().equals(insAgency))
+   {
+       for(Insurances insurance:e.getInsurancesList())
+       {
+            Object row[] = new Object[2];
+            row[0] = insurance;
+            row[1] = insurance.getPrice();
+            dtm.addRow(row);
+        }
+    }
+        }
     }
 
     /** This method is called from within the constructor to
@@ -148,14 +196,30 @@ public class PurchaseInsuranceJPanel extends javax.swing.JPanel {
 
     private void searchInsJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchInsJButtonActionPerformed
         // TODO add your handling code here:
+        Enterprise e = (Enterprise) insJComboBox.getSelectedItem();
+        if (e.getName() == null || e.getName()==""){
+            return;
+        }
+        populateinsJTable(e.getName());
     }//GEN-LAST:event_searchInsJButtonActionPerformed
 
     private void purchaseInsJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_purchaseInsJButtonActionPerformed
         // TODO add your handling code here:
+        Enterprise selectedItem = (Enterprise) insJComboBox.getSelectedItem();
+        order.setInsAgency(selectedItem.getName());
+        order.setStatus("order placed");
+        //order.setApplicantName(userAccount.getUsername());
+        order.setApplicantName(userAccount.getEmployee().getName());
+        order.setApplicantId(userAccount.getEmployee().getId());
+        
+        JOptionPane.showMessageDialog(null, "Insurance Order placed successfully");
     }//GEN-LAST:event_purchaseInsJButtonActionPerformed
 
     private void backJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backJButtonActionPerformed
         // TODO add your handling code here:
+        CardLayout layout = (CardLayout)userProcessContainer.getLayout();
+        userProcessContainer.remove(this);
+        layout.previous(userProcessContainer);
     }//GEN-LAST:event_backJButtonActionPerformed
 
 

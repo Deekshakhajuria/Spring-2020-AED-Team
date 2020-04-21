@@ -9,6 +9,7 @@ import Business.EcoSystem;
 import Business.Organization.Organization;
 import Business.UserAccount.UserAccount;
 import Business.UserAccount.UserAccountDirectory;
+import Business.WorkQueue.DonorWorkRequest;
 import Business.WorkQueue.WorkRequest;
 import java.awt.CardLayout;
 import javax.swing.JOptionPane;
@@ -165,30 +166,30 @@ public class ViewPendingRequestJPanel extends javax.swing.JPanel {
             JOptionPane.showMessageDialog(null, "Please select a row fromt the table", "warning", JOptionPane.WARNING_MESSAGE);
             return;
         }
-//        DonorTestWorkRequest request = (DonorTestWorkRequest)populateJTable.getValueAt(selectedRow, 0);
-//        if(request.getReceiver() == null)
-//        {
-//            JOptionPane.showMessageDialog(null, "Need to assign the request first", "warning", JOptionPane.WARNING_MESSAGE);
-//            return;
-//        }
-//        if(request.getStatus().equalsIgnoreCase("Completed"))
-//        {
-//            JOptionPane.showMessageDialog(null, "It has already been completed", "warning", JOptionPane.WARNING_MESSAGE);
-//            return;
-//        }
-//        if(request.getStatus().equalsIgnoreCase("Processing") ||  request.getStatus().equalsIgnoreCase("Pending"))
-//        {
-//            if(request.getReceiver()!=userAccount)
-//            {
-//                JOptionPane.showMessageDialog(null, "It is under process currently!", "warning", JOptionPane.WARNING_MESSAGE);
-//                return;
-//            }
-//        }
-//        request.setStatus("Processing");
-//        ProcessRequestAreaJPanel pwrjp = new ProcessRequestAreaJPanel(userProcessContainer, request, userAccount);
-//        userProcessContainer.add("ProcessWorkRequestJPanel", pwrjp);
-//        CardLayout layout = (CardLayout) userProcessContainer.getLayout();
-//        layout.next(userProcessContainer);
+        DonorWorkRequest request = (DonorWorkRequest)populateJTable.getValueAt(selectedRow, 0);
+        if(request.getReceiver() == null)
+        {
+            JOptionPane.showMessageDialog(null, "Need to assign the request first", "warning", JOptionPane.WARNING_MESSAGE);
+            return;
+        }
+        if(request.getStatus().equalsIgnoreCase("Completed"))
+        {
+            JOptionPane.showMessageDialog(null, "It has already been completed", "warning", JOptionPane.WARNING_MESSAGE);
+            return;
+        }
+        if(request.getStatus().equalsIgnoreCase("Processing") ||  request.getStatus().equalsIgnoreCase("Pending"))
+        {
+            if(request.getReceiver()!=userAccount)
+            {
+                JOptionPane.showMessageDialog(null, "It is under process currently!", "warning", JOptionPane.WARNING_MESSAGE);
+                return;
+            }
+        }
+        request.setStatus("Processing");
+        ProcessRequestAreaJPanel pwrjp = new ProcessRequestAreaJPanel(userProcessContainer, request, userAccount);
+        userProcessContainer.add("ProcessWorkRequestJPanel", pwrjp);
+        CardLayout layout = (CardLayout) userProcessContainer.getLayout();
+        layout.next(userProcessContainer);
     }//GEN-LAST:event_processJButtonActionPerformed
 
     private void assignJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_assignJButtonActionPerformed
@@ -199,14 +200,14 @@ public class ViewPendingRequestJPanel extends javax.swing.JPanel {
             return;
         }
         try{
-//            DonorTestWorkRequest request = (DonorTestWorkRequest)populateJTable.getValueAt(selectedRow, 0);
-//            if(request.getReceiver()!=null)
-//            {
-//                JOptionPane.showMessageDialog(null, "It has already being processed by someone else", "warning", JOptionPane.WARNING_MESSAGE);
-//                return;
-//            }
-//            request.setReceiver(userAccount);
-//            request.setStatus("Pending");
+            DonorWorkRequest request = (DonorWorkRequest)populateJTable.getValueAt(selectedRow, 0);
+            if(request.getReceiver()!=null)
+            {
+                JOptionPane.showMessageDialog(null, "It has already being processed by someone else", "warning", JOptionPane.WARNING_MESSAGE);
+                return;
+            }
+            request.setReceiver(userAccount);
+            request.setStatus("Pending");
             populateJTable();
         }
         catch(Exception e)

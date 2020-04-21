@@ -6,16 +6,52 @@
 
 package userinterface.ApplicantRole;
 
+import Business.EcoSystem;
+import Business.Enterprise.Enterprise;
+import Business.Order;
+import Business.Organization.ApplicantOrganization;
+import Business.UserAccount.UserAccount;
+import java.awt.CardLayout;
+import javax.swing.JPanel;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author moury
  */
 public class ViewInsuranceJPanel extends javax.swing.JPanel {
 
-    /** Creates new form ViewInsuranceJPanel */
-    public ViewInsuranceJPanel() {
+    private JPanel userProcessContainer;
+    private UserAccount userAccount;
+    private EcoSystem business;
+    
+    public ViewInsuranceJPanel(JPanel userProcessContainer, UserAccount userAccount, ApplicantOrganization organization, Enterprise enterprise, EcoSystem business) {
         initComponents();
+        this.userProcessContainer = userProcessContainer;
+        this.userAccount = userAccount;
+        this.business=business;
+        populateJTable1();
+        
     }
+    
+    public void populateJTable1(){
+        DefaultTableModel dtm = (DefaultTableModel) jTable1.getModel();
+        dtm.setRowCount(0);
+        for(Order o:business.getOrderDirectory().getOrderList()){
+           if(o.getApplicantName()!=null&&o.getApplicantName().equals(userAccount.getUsername()))
+         {
+            Object row[] = new Object[5];
+            row[0] = o;
+            row[1] = o.getInsuranceID();
+            row[2] = o.getPrice();
+            row[3] = o.getStatus();
+            dtm.addRow(row);
+        } 
+        }
+        
+    }
+    
+    
 
     /** This method is called from within the constructor to
      * initialize the form.
@@ -32,6 +68,11 @@ public class ViewInsuranceJPanel extends javax.swing.JPanel {
         jTable1 = new javax.swing.JTable();
 
         backJButton.setText("Back");
+        backJButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                backJButtonActionPerformed(evt);
+            }
+        });
 
         jLabel1.setText("View Insurance Status");
 
@@ -81,6 +122,13 @@ public class ViewInsuranceJPanel extends javax.swing.JPanel {
                 .addContainerGap(393, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
+
+    private void backJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backJButtonActionPerformed
+        // TODO add your handling code here:
+        CardLayout layout = (CardLayout)userProcessContainer.getLayout();
+        userProcessContainer.remove(this);
+        layout.previous(userProcessContainer);
+    }//GEN-LAST:event_backJButtonActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

@@ -5,6 +5,13 @@
  */
 package userinterface.DonorRole;
 
+import Business.UserAccount.UserAccount;
+import Business.Validation.StringValidation;
+import Business.WorkQueue.DonorWorkRequest;
+import Business.WorkQueue.ManagerWorkRequest;
+import javax.swing.InputVerifier;
+import javax.swing.JPanel;
+
 /**
  *
  * @author niramaykelkar
@@ -14,8 +21,18 @@ public class ProcessRequestAreaJPanel extends javax.swing.JPanel {
     /**
      * Creates new form ProcessRequestAreaJPanel
      */
-    public ProcessRequestAreaJPanel() {
+    private JPanel userProcessContainer;
+    private DonorWorkRequest donorTestWorkRequest;
+    private UserAccount userAccount;
+    public ProcessRequestAreaJPanel(JPanel userProcessContainer, DonorWorkRequest donorTestWorkRequest, UserAccount userAccount) {
         initComponents();
+        this.userProcessContainer = userProcessContainer;
+        this.donorTestWorkRequest = donorTestWorkRequest;
+        this.userAccount = userAccount;
+        resultComboBox.removeAllItems();
+        resultComboBox.addItem(ManagerWorkRequest.REQUEST_ACCEPT);
+        resultComboBox.addItem(ManagerWorkRequest.REQUEST_REJECT);
+        inputVerifiers();
     }
 
     /**
@@ -103,6 +120,12 @@ public class ProcessRequestAreaJPanel extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    private void inputVerifiers() {
+          
+        InputVerifier strValidation = new StringValidation();
+        commentTextField.setInputVerifier(strValidation);
+    }
+    
     private void submitJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_submitJButtonActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_submitJButtonActionPerformed

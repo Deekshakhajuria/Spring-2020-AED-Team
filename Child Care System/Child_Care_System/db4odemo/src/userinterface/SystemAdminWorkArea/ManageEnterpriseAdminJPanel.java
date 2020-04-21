@@ -10,8 +10,12 @@ import Business.Enterprise.Enterprise;
 import Business.Network.Network;
 import Business.Role.AdminRole;
 import Business.UserAccount.UserAccount;
+import Business.Validation.PasswordValidation;
+import Business.Validation.StringValidation;
 import java.awt.CardLayout;
 import java.awt.Component;
+import javax.swing.InputVerifier;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
 
@@ -29,13 +33,17 @@ public class ManageEnterpriseAdminJPanel extends javax.swing.JPanel {
      */
     public ManageEnterpriseAdminJPanel(JPanel userProcessContainer, EcoSystem system) {
         initComponents();
-
+        
         this.userProcessContainer = userProcessContainer;
         this.system = system;
 
         populateTable();
         populateNetworkComboBox();
     }
+    
+   
+        
+    
 
     private void populateTable() {
         DefaultTableModel model = (DefaultTableModel) enterpriseJTable.getModel();
@@ -71,6 +79,7 @@ public class ManageEnterpriseAdminJPanel extends javax.swing.JPanel {
         }
         
     }
+
     
     /**
      * This method is called from within the constructor to initialize the form.
@@ -248,6 +257,13 @@ public class ManageEnterpriseAdminJPanel extends javax.swing.JPanel {
         String password = String.valueOf(passwordJPasswordField.getPassword());
         String name = nameJTextField.getText();
         
+        if( usernameJTextField.getText().trim().isEmpty() ||
+            nameJTextField.getText().trim().isEmpty() )
+        {
+            JOptionPane.showMessageDialog(null, "Please enter all the details");
+            return;
+        }
+        
         Employee employee = enterprise.getEmployeeDirectory().createEmployee(name);
         
         UserAccount account = enterprise.getUserAccountDirectory().createUserAccount(username, password, employee, new AdminRole());
@@ -257,7 +273,7 @@ public class ManageEnterpriseAdminJPanel extends javax.swing.JPanel {
 
     private void backJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backJButtonActionPerformed
         userProcessContainer.remove(this);
-         Component[] componentArray = userProcessContainer.getComponents();
+        Component[] componentArray = userProcessContainer.getComponents();
         Component component = componentArray[componentArray.length - 1];
         SystemAdminWorkAreaJPanel sysAdminwjp = (SystemAdminWorkAreaJPanel) component;
         sysAdminwjp.populateTree();
