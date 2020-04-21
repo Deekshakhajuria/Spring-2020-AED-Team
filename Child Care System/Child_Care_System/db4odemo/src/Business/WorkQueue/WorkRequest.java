@@ -19,6 +19,16 @@ public abstract class WorkRequest {
     private String status;
     private Date requestDate;
     private Date resolveDate;
+    private String InsuranceID;
+
+    public String getInsuranceID() {
+        return InsuranceID;
+    }
+
+    public void setInsuranceID(String InsuranceID) {
+        this.InsuranceID = InsuranceID;
+    }
+   
     
     public WorkRequest(){
         requestDate = new Date();
