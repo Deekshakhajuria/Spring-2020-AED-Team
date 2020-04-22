@@ -7,44 +7,53 @@ package userinterface.DonorRole;
 
 import Business.Employee.Employee;
 import Business.UserAccount.UserAccount;
+import Business.Validation.DOBValidation;
+import Business.Validation.EmailValidation;
+import Business.Validation.NumberValidation;
+import Business.Validation.PhoneNoValidation;
+import Business.Validation.StringValidation;
 import java.awt.CardLayout;
 import java.text.DateFormat;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.Date;
+import javax.swing.InputVerifier;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 /**
  *
- * @author niramaykelkar
+ * @author moury
  */
 public class ViewDonorJPanel extends javax.swing.JPanel {
 
-    /**
-     * Creates new form ViewOrderJPanel
-     */
     private JPanel userProcessContainer;
     private UserAccount userAccount;
     private Employee employee;
+    /**
+     * Creates new form ViewDonorJPanel
+     */
     public ViewDonorJPanel(JPanel userProcessContainer, UserAccount account) {
         initComponents();
         this.userProcessContainer = userProcessContainer;
         this.userAccount = account;
-        
+        inputVerifiers();
         employee = userAccount.getEmployee();
         DateFormat dateFormat = new SimpleDateFormat("MM/dd/yyyy");
-        nameTextField.setText(employee.getName());
-//        if(employee.getDob()!=null && employee.getAddress1()!=null && employee.getCity()!=null 
-//                && employee.getZipCode()!=null && employee.getOccupation()!=null &&
-//                employee.getEmailId()!=null && employee.getPhoneNumber()!=null
-//                )
-//        {
-//        dobTextField.setText(dateFormat.format(employee.getDob()));
-//        addressTextField.setText(employee.getAddress1());
-//        cityTextField.setText(employee.getCity());
-//        zipcodeTextField.setText(employee.getZipCode());
-//        occupationTextField.setText(employee.getOccupation());
-//        emailTextField.setText(employee.getEmailId());
-//        phoneNumberTextField.setText(employee.getPhoneNumber());
-//        }
+        jTextField2.setText(employee.getName());
+        if(employee.getDob()!=null && employee.getAddress1()!=null && employee.getCity()!=null 
+                && employee.getZipCode()!=null && employee.getOccupation()!=null &&
+                employee.getEmailId()!=null && employee.getPhoneNumber()!=null
+                )
+        {
+        dobTextField.setText(dateFormat.format(employee.getDob()));
+        addressTextField.setText(employee.getAddress1());
+        cityTextField.setText(employee.getCity());
+        zipcodeTextField.setText(employee.getZipCode());
+        occupationTextField.setText(employee.getOccupation());
+        emailTextField.setText(employee.getEmailId());
+        phoneNumberTextField.setText(employee.getPhoneNumber());
+        }
     }
 
     /**
@@ -57,7 +66,7 @@ public class ViewDonorJPanel extends javax.swing.JPanel {
     private void initComponents() {
 
         name5 = new javax.swing.JLabel();
-        nameTextField = new javax.swing.JTextField();
+        jTextField2 = new javax.swing.JTextField();
         name6 = new javax.swing.JLabel();
         manageEnt = new javax.swing.JLabel();
         cityTextField = new javax.swing.JTextField();
@@ -68,39 +77,39 @@ public class ViewDonorJPanel extends javax.swing.JPanel {
         dobTextField = new javax.swing.JTextField();
         name7 = new javax.swing.JLabel();
         name2 = new javax.swing.JLabel();
+        backJButton = new javax.swing.JButton();
         occupationTextField = new javax.swing.JTextField();
+        saveBtn = new javax.swing.JButton();
         name3 = new javax.swing.JLabel();
         emailTextField = new javax.swing.JTextField();
         name4 = new javax.swing.JLabel();
         name = new javax.swing.JLabel();
+        updateBtn = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
-        backJButton = new javax.swing.JButton();
-        updateJButton = new javax.swing.JButton();
-        saveJButton = new javax.swing.JButton();
 
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        name5.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        name5.setFont(new java.awt.Font("Arial Black", 0, 14)); // NOI18N
         name5.setText("City:");
-        add(name5, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 370, 194, 28));
+        add(name5, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 360, 194, 28));
 
-        nameTextField.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
-        nameTextField.addActionListener(new java.awt.event.ActionListener() {
+        jTextField2.setFont(new java.awt.Font("Arial Black", 0, 14)); // NOI18N
+        jTextField2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                nameTextFieldActionPerformed(evt);
+                jTextField2ActionPerformed(evt);
             }
         });
-        add(nameTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 170, 180, -1));
+        add(jTextField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 170, 180, -1));
 
-        name6.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        name6.setFont(new java.awt.Font("Arial Black", 0, 14)); // NOI18N
         name6.setText("Zipcode:");
-        add(name6, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 410, 194, 28));
+        add(name6, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 400, 194, 28));
 
-        manageEnt.setFont(new java.awt.Font("Times New Roman", 1, 36)); // NOI18N
+        manageEnt.setFont(new java.awt.Font("Arial Black", 0, 18)); // NOI18N
         manageEnt.setText("Donor Details");
         add(manageEnt, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 90, 281, -1));
 
-        cityTextField.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        cityTextField.setFont(new java.awt.Font("Arial Black", 0, 14)); // NOI18N
         cityTextField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cityTextFieldActionPerformed(evt);
@@ -108,7 +117,7 @@ public class ViewDonorJPanel extends javax.swing.JPanel {
         });
         add(cityTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 370, 180, -1));
 
-        addressTextField.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        addressTextField.setFont(new java.awt.Font("Arial Black", 0, 14)); // NOI18N
         addressTextField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 addressTextFieldActionPerformed(evt);
@@ -116,7 +125,7 @@ public class ViewDonorJPanel extends javax.swing.JPanel {
         });
         add(addressTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 210, 180, -1));
 
-        zipcodeTextField.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        zipcodeTextField.setFont(new java.awt.Font("Arial Black", 0, 14)); // NOI18N
         zipcodeTextField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 zipcodeTextFieldActionPerformed(evt);
@@ -124,11 +133,11 @@ public class ViewDonorJPanel extends javax.swing.JPanel {
         });
         add(zipcodeTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 410, 180, -1));
 
-        name1.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        name1.setFont(new java.awt.Font("Arial Black", 0, 14)); // NOI18N
         name1.setText("Address:");
         add(name1, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 210, 194, 28));
 
-        phoneNumberTextField.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        phoneNumberTextField.setFont(new java.awt.Font("Arial Black", 0, 14)); // NOI18N
         phoneNumberTextField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 phoneNumberTextFieldActionPerformed(evt);
@@ -136,7 +145,7 @@ public class ViewDonorJPanel extends javax.swing.JPanel {
         });
         add(phoneNumberTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 450, 180, -1));
 
-        dobTextField.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        dobTextField.setFont(new java.awt.Font("Arial Black", 0, 14)); // NOI18N
         dobTextField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 dobTextFieldActionPerformed(evt);
@@ -144,15 +153,24 @@ public class ViewDonorJPanel extends javax.swing.JPanel {
         });
         add(dobTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 250, 180, -1));
 
-        name7.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        name7.setFont(new java.awt.Font("Arial Black", 0, 14)); // NOI18N
         name7.setText("Phone Number:");
-        add(name7, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 450, 194, 28));
+        add(name7, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 440, 194, 28));
 
-        name2.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        name2.setFont(new java.awt.Font("Arial Black", 0, 14)); // NOI18N
         name2.setText("Email Address:");
         add(name2, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 330, 194, 28));
 
-        occupationTextField.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        backJButton.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
+        backJButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Double Left_100px.png"))); // NOI18N
+        backJButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                backJButtonActionPerformed(evt);
+            }
+        });
+        add(backJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 70, 60, 50));
+
+        occupationTextField.setFont(new java.awt.Font("Arial Black", 0, 14)); // NOI18N
         occupationTextField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 occupationTextFieldActionPerformed(evt);
@@ -160,11 +178,20 @@ public class ViewDonorJPanel extends javax.swing.JPanel {
         });
         add(occupationTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 290, 180, -1));
 
-        name3.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        saveBtn.setFont(new java.awt.Font("Arial Black", 0, 14)); // NOI18N
+        saveBtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/button_save (1).png"))); // NOI18N
+        saveBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                saveBtnActionPerformed(evt);
+            }
+        });
+        add(saveBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 520, 110, 40));
+
+        name3.setFont(new java.awt.Font("Arial Black", 0, 14)); // NOI18N
         name3.setText("Date Of Birth:");
         add(name3, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 250, 194, 28));
 
-        emailTextField.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        emailTextField.setFont(new java.awt.Font("Arial Black", 0, 14)); // NOI18N
         emailTextField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 emailTextFieldActionPerformed(evt);
@@ -172,41 +199,30 @@ public class ViewDonorJPanel extends javax.swing.JPanel {
         });
         add(emailTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 330, 180, -1));
 
-        name4.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        name4.setFont(new java.awt.Font("Arial Black", 0, 14)); // NOI18N
         name4.setText("Occupation:");
         add(name4, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 290, 194, 28));
 
-        name.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        name.setFont(new java.awt.Font("Arial Black", 0, 14)); // NOI18N
         name.setText("Full Name:");
         add(name, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 170, 194, 28));
-        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
-        backJButton.setFont(new java.awt.Font("Lucida Grande", 1, 14)); // NOI18N
-        backJButton.setText("< Back");
-        backJButton.addActionListener(new java.awt.event.ActionListener() {
+        updateBtn.setFont(new java.awt.Font("Arial Black", 0, 14)); // NOI18N
+        updateBtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/button_update.png"))); // NOI18N
+        updateBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                backJButtonActionPerformed(evt);
+                updateBtnActionPerformed(evt);
             }
         });
-        add(backJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 90, 100, 50));
+        add(updateBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 520, 110, 40));
 
-        updateJButton.setFont(new java.awt.Font("Lucida Grande", 1, 14)); // NOI18N
-        updateJButton.setText("Update");
-        updateJButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                updateJButtonActionPerformed(evt);
-            }
-        });
-        add(updateJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 510, 180, 40));
-
-        saveJButton.setFont(new java.awt.Font("Lucida Grande", 1, 14)); // NOI18N
-        saveJButton.setText("Save");
-        add(saveJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 510, 180, 40));
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/blue-and-silver-stetoscope-40568.jpg"))); // NOI18N
+        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1680, 1080));
     }// </editor-fold>//GEN-END:initComponents
 
-    private void nameTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nameTextFieldActionPerformed
+    private void jTextField2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField2ActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_nameTextFieldActionPerformed
+    }//GEN-LAST:event_jTextField2ActionPerformed
 
     private void cityTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cityTextFieldActionPerformed
         // TODO add your handling code here:
@@ -228,18 +244,91 @@ public class ViewDonorJPanel extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_dobTextFieldActionPerformed
 
+    private void backJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backJButtonActionPerformed
+
+        userProcessContainer.remove(this);
+        CardLayout layout = (CardLayout)userProcessContainer.getLayout();
+        layout.previous(userProcessContainer);
+    }//GEN-LAST:event_backJButtonActionPerformed
+
+    private void inputVerifiers()
+    {
+        InputVerifier dobValidation = new DOBValidation();
+        dobTextField.setInputVerifier(dobValidation);
+        InputVerifier noValidation = new NumberValidation();
+        zipcodeTextField.setInputVerifier(noValidation);
+        InputVerifier phnValidation = new PhoneNoValidation();
+        phoneNumberTextField.setInputVerifier(phnValidation);
+        InputVerifier emailValidation = new EmailValidation();
+        emailTextField.setInputVerifier(emailValidation);
+        InputVerifier strValidation = new StringValidation();
+        jTextField2.setInputVerifier(strValidation);
+        addressTextField.setInputVerifier(strValidation);
+        cityTextField.setInputVerifier(strValidation);
+        occupationTextField.setInputVerifier(strValidation);
+    }
     private void occupationTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_occupationTextFieldActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_occupationTextFieldActionPerformed
+
+    private void saveBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveBtnActionPerformed
+        try
+            {
+                DateFormat dateFormat = new SimpleDateFormat("MM/dd/yyyy");
+                Date dobVal  = dateFormat.parse(dobTextField.getText());
+                employee.setFirstName(jTextField2.getText());
+                employee.setAddress1(addressTextField.getText());
+                employee.setCity(cityTextField.getText());
+                employee.setZipCode(zipcodeTextField.getText());
+                employee.setOccupation(occupationTextField.getText());
+                employee.setDob(dobVal);
+                employee.setPhoneNumber(phoneNumberTextField.getText());
+                employee.setEmailId(emailTextField.getText());
+                if( addressTextField.getText().trim().isEmpty() ||
+                cityTextField.getText().trim().isEmpty() ||
+                occupationTextField.getText().trim().isEmpty() ||
+                emailTextField.getText().trim().isEmpty() ||
+                phoneNumberTextField.getText().trim().isEmpty() ||
+                dobTextField.getText().trim().isEmpty() ||
+                zipcodeTextField.getText().trim().isEmpty() )
+                {
+                    JOptionPane.showMessageDialog(null, "Please enter all the details");
+                    return;
+                }
+                userAccount.setEmployee(employee);
+            }
+            catch(NumberFormatException nfe)
+            {
+                JOptionPane.showMessageDialog(this, "Enter valid details", "warning",JOptionPane.WARNING_MESSAGE);
+                return;
+            }
+            catch(ParseException pe)
+            {
+                JOptionPane.showMessageDialog(this, "Enter Valid Date of Birth", "warning",JOptionPane.WARNING_MESSAGE);
+                 return;
+            }
+                JOptionPane.showMessageDialog(null, "Details Updated Successfully", "success", JOptionPane.PLAIN_MESSAGE);
+                updateBtn.setEnabled(true);
+                saveBtn.setEnabled(false);
+                jTextField2.setEnabled(false);
+                dobTextField.setEnabled(false);
+                addressTextField.setEnabled(false);
+                cityTextField.setEnabled(false);
+                zipcodeTextField.setEnabled(false);
+                occupationTextField.setEnabled(false);
+                emailTextField.setEnabled(false);
+                phoneNumberTextField.setEnabled(false);
+    }//GEN-LAST:event_saveBtnActionPerformed
 
     private void emailTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_emailTextFieldActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_emailTextFieldActionPerformed
 
-    private void updateJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updateJButtonActionPerformed
+    private void updateBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updateBtnActionPerformed
+
         // TODO add your handling code here:
-        nameTextField.setEnabled(true);
-        nameTextField.setEditable(true);
+        jTextField2.setEnabled(true);
+        jTextField2.setEditable(true);
         dobTextField.setEnabled(true);
         dobTextField.setEditable(true);
         addressTextField.setEnabled(true);
@@ -254,16 +343,9 @@ public class ViewDonorJPanel extends javax.swing.JPanel {
         cityTextField.setEnabled(true);
         emailTextField.setEditable(true);
         emailTextField.setEnabled(true);
-        saveJButton.setEnabled(true);
-        updateJButton.setEnabled(false); 
-    }//GEN-LAST:event_updateJButtonActionPerformed
-
-    private void backJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backJButtonActionPerformed
-        // TODO add your handling code here:
-        userProcessContainer.remove(this);
-        CardLayout layout = (CardLayout)userProcessContainer.getLayout();
-        layout.previous(userProcessContainer);
-    }//GEN-LAST:event_backJButtonActionPerformed
+        saveBtn.setEnabled(true);
+        updateBtn.setEnabled(false); 
+    }//GEN-LAST:event_updateBtnActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -273,6 +355,7 @@ public class ViewDonorJPanel extends javax.swing.JPanel {
     private javax.swing.JTextField dobTextField;
     private javax.swing.JTextField emailTextField;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JTextField jTextField2;
     private javax.swing.JLabel manageEnt;
     private javax.swing.JLabel name;
     private javax.swing.JLabel name1;
@@ -282,11 +365,10 @@ public class ViewDonorJPanel extends javax.swing.JPanel {
     private javax.swing.JLabel name5;
     private javax.swing.JLabel name6;
     private javax.swing.JLabel name7;
-    private javax.swing.JTextField nameTextField;
     private javax.swing.JTextField occupationTextField;
     private javax.swing.JTextField phoneNumberTextField;
-    private javax.swing.JButton saveJButton;
-    private javax.swing.JButton updateJButton;
+    private javax.swing.JButton saveBtn;
+    private javax.swing.JButton updateBtn;
     private javax.swing.JTextField zipcodeTextField;
     // End of variables declaration//GEN-END:variables
 }

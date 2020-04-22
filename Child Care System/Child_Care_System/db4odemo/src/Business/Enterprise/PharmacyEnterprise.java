@@ -10,10 +10,10 @@ import java.util.ArrayList;
 
 /**
  *
- * @author niramaykelkar
+ * @author verle
  */
-public class PharmacyEnterprise extends Enterprise {
-
+public class PharmacyEnterprise extends Enterprise{
+    
     public PharmacyEnterprise(String name){
         super(name,Enterprise.EnterpriseType.Pharmacy);
     }
@@ -21,5 +21,4 @@ public class PharmacyEnterprise extends Enterprise {
     public ArrayList<Role> getSupportedRole() {
         return null;
     }
-    
 }

@@ -10,7 +10,7 @@ import java.util.ArrayList;
 
 /**
  *
- * @author niramaykelkar
+ * @author verle
  */
 public class DonationWorkRequest extends WorkRequest{
     
@@ -19,7 +19,7 @@ public class DonationWorkRequest extends WorkRequest{
     private static int count = 0;
     private Donation donation;
     private ArrayList<Donation> donationList;
-
+    
     public DonationWorkRequest()
     {
         StringBuffer sb = new StringBuffer();
@@ -28,7 +28,7 @@ public class DonationWorkRequest extends WorkRequest{
         reqId.toString();
         count++;
     }
-    
+
     public String getDonatedBy() {
         return donatedBy;
     }
@@ -37,28 +37,18 @@ public class DonationWorkRequest extends WorkRequest{
         this.donatedBy = donatedBy;
     }
 
-    public String getReqId() {
-        return reqId;
-    }
-
-    public void setReqId(String reqId) {
-        this.reqId = reqId;
-    }
-
-    public static int getCount() {
-        return count;
-    }
-
-    public static void setCount(int count) {
-        DonationWorkRequest.count = count;
-    }
-
     public Donation getDonation() {
         return donation;
     }
 
     public void setDonation(Donation donation) {
         this.donation = donation;
+    }
+    
+    @Override
+    public String toString()
+    {
+        return this.reqId;
     }
 
     public ArrayList<Donation> getDonationList() {
@@ -69,9 +59,5 @@ public class DonationWorkRequest extends WorkRequest{
         this.donationList = donationList;
     }
     
-    @Override
-    public String toString()
-    {
-        return this.reqId;
-    }
+    
 }

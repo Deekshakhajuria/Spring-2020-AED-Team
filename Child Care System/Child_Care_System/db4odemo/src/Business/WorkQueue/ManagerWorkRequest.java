@@ -7,7 +7,7 @@ package Business.WorkQueue;
 
 /**
  *
- * @author niramaykelkar
+ * @author verle
  */
 public class ManagerWorkRequest extends WorkRequest{
     
@@ -19,9 +19,6 @@ public class ManagerWorkRequest extends WorkRequest{
     public static String REQUEST_ACCEPT = "Accepted";
     public static String REQUEST_COMPLETED = "Completed";
     
-    private String testResult;
-    private String comments;
-
     public String getTestResult() {
         return testResult;
     }
@@ -38,5 +35,6 @@ public class ManagerWorkRequest extends WorkRequest{
         this.comments = comments;
     }
     
-    
+    private String testResult;
+    private String comments;
 }

@@ -7,7 +7,7 @@ package Business.WorkQueue;
 
 /**
  *
- * @author niramaykelkar
+ * @author verle
  */
 public class PharmacyTestWorkRequest extends WorkRequest{
     
@@ -20,5 +20,4 @@ public class PharmacyTestWorkRequest extends WorkRequest{
     public void setTestResult(String testResult) {
         this.testResult = testResult;
     }
-    
 }

@@ -10,16 +10,17 @@ import java.util.ArrayList;
 
 /**
  *
- * @author niramaykelkar
+ * @author hp
  */
-public class NonProfitEnterprise extends Enterprise {
-
-    public NonProfitEnterprise(String name){
+public class NonProfitEnterprise extends Enterprise{
+    
+     public NonProfitEnterprise(String name){
         super(name,EnterpriseType.NonProfit);
     }
     @Override
     public ArrayList<Role> getSupportedRole() {
         return null;
     }
+    
     
 }

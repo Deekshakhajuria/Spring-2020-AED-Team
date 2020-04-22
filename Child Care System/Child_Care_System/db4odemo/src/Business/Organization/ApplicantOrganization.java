@@ -11,10 +11,10 @@ import java.util.ArrayList;
 
 /**
  *
- * @author niramaykelkar
+ * @author hp
  */
 public class ApplicantOrganization extends Organization{
-    
+
     public ApplicantOrganization() {
         super(Organization.Type.HelpSeeker.getValue());
     }
@@ -25,4 +25,5 @@ public class ApplicantOrganization extends Organization{
         roles.add(new ApplicantRole());
         return roles;
     }
+     
 }

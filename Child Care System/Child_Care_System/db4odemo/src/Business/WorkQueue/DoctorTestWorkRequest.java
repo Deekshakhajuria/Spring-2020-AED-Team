@@ -10,16 +10,32 @@ import java.util.ArrayList;
 
 /**
  *
- * @author niramaykelkar
+ * @author hp
  */
 public class DoctorTestWorkRequest extends WorkRequest{
-    
     private String sendDataRequestId;
     private static int count = 000;
     private String medication;
     private String newMedication;
     private String testResult;
     private ArrayList<VitalSign> vitalSignList;
+
+    public ArrayList<VitalSign> getVitalSignList() {
+        return vitalSignList;
+    }
+
+    public void setVitalSignList(ArrayList<VitalSign> vitalSignList) {
+        this.vitalSignList = vitalSignList;
+    }
+    
+    
+    public String getTestResult() {
+        return testResult;
+    }
+
+    public void setTestResult(String testResult) {
+        this.testResult = testResult;
+    }
 
     public String getSendDataRequestId() {
         return sendDataRequestId;
@@ -52,24 +68,7 @@ public class DoctorTestWorkRequest extends WorkRequest{
     public void setNewMedication(String newMedication) {
         this.newMedication = newMedication;
     }
-
-    public String getTestResult() {
-        return testResult;
-    }
-
-    public void setTestResult(String testResult) {
-        this.testResult = testResult;
-    }
-
-    public ArrayList<VitalSign> getVitalSignList() {
-        return vitalSignList;
-    }
-
-    public void setVitalSignList(ArrayList<VitalSign> vitalSignList) {
-        this.vitalSignList = vitalSignList;
-    }
-    
-    public VitalSign addVital()
+     public VitalSign addVital()
     {
         VitalSign vs=new VitalSign();
         vitalSignList.add(vs);
@@ -80,4 +79,6 @@ public class DoctorTestWorkRequest extends WorkRequest{
         vitalSignList.remove(v);
         
     }
+    
+    
 }

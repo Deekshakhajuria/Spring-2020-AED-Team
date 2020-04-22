@@ -7,7 +7,11 @@ package userinterface.ApplicantRole;
 
 import Business.EcoSystem;
 import Business.Enterprise.Enterprise;
+import Business.Organization.DonorOrganization;
+import Business.Organization.ManagerOrganization;
 import Business.UserAccount.UserAccount;
+import Business.Validation.MainValidation;
+import Business.WorkQueue.ManagerWorkRequest;
 import java.awt.CardLayout;
 import java.awt.Component;
 import javax.swing.JOptionPane;
@@ -15,19 +19,19 @@ import javax.swing.JPanel;
 
 /**
  *
- * @author niramaykelkar
+ * @author hp
  */
 public class SendToManagerJPanel extends javax.swing.JPanel {
 
     /**
      * Creates new form SendToManagerJPanel
      */
-    private JPanel userProcessContainer;
+     private JPanel userProcessContainer;
     private Enterprise enterprise;
     private UserAccount userAccount;
     EcoSystem business;
-    //private ManagerOrganization managerOrganization;
-    public SendToManagerJPanel(JPanel userProcessContainer, UserAccount account, Enterprise enterprise,EcoSystem business) {
+    private ManagerOrganization managerOrganization;
+    SendToManagerJPanel(JPanel userProcessContainer, UserAccount account, Enterprise enterprise,EcoSystem business) {
         initComponents();
         this.userProcessContainer = userProcessContainer;
         this.enterprise = enterprise;
@@ -35,7 +39,6 @@ public class SendToManagerJPanel extends javax.swing.JPanel {
         this.business=business;
         valueLabel1.setText(enterprise.getName());
     }
-
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -45,70 +48,52 @@ public class SendToManagerJPanel extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPanel1 = new javax.swing.JPanel();
         valueLabel1 = new javax.swing.JLabel();
         requestTestJButton = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         messageJTextField = new javax.swing.JTextField();
+        backJButton = new javax.swing.JButton();
         enterpriseLabel = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        backJButton = new javax.swing.JButton();
 
-        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        valueLabel1.setFont(new java.awt.Font("Arial Black", 0, 18)); // NOI18N
         valueLabel1.setText("<value>");
-        jPanel1.add(valueLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 100, 158, 26));
+        add(valueLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 50, 158, 26));
 
-        requestTestJButton.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        requestTestJButton.setFont(new java.awt.Font("Arial Black", 0, 14)); // NOI18N
         requestTestJButton.setText("Request Test");
         requestTestJButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 requestTestJButtonActionPerformed(evt);
             }
         });
-        jPanel1.add(requestTestJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 190, -1, -1));
+        add(requestTestJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 140, -1, -1));
 
-        jLabel1.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
-        jLabel1.setText("Message");
-        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 140, -1, -1));
+        jLabel1.setFont(new java.awt.Font("Arial Black", 0, 14)); // NOI18N
+        jLabel1.setText("Enter Message:");
+        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 140, 130, -1));
 
-        messageJTextField.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
-        jPanel1.add(messageJTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 140, 180, -1));
+        messageJTextField.setFont(new java.awt.Font("Arial Black", 0, 14)); // NOI18N
+        add(messageJTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 140, 180, -1));
 
-        enterpriseLabel.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        enterpriseLabel.setText("ENTERPRISE");
-        jPanel1.add(enterpriseLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 100, 120, 30));
-        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1610, -1));
-
-        backJButton.setFont(new java.awt.Font("Lucida Grande", 1, 13)); // NOI18N
-        backJButton.setText("< Back");
+        backJButton.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        backJButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Double Left_100px.png"))); // NOI18N
         backJButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 backJButtonActionPerformed(evt);
             }
         });
-        jPanel1.add(backJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 190, -1, -1));
+        add(backJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 40, 60, 40));
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        this.setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1605, Short.MAX_VALUE)
-            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(layout.createSequentialGroup()
-                    .addGap(0, 0, Short.MAX_VALUE)
-                    .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 1605, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(0, 0, Short.MAX_VALUE)))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1080, Short.MAX_VALUE)
-            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(layout.createSequentialGroup()
-                    .addGap(0, 0, Short.MAX_VALUE)
-                    .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 1080, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(0, 0, Short.MAX_VALUE)))
-        );
+        enterpriseLabel.setFont(new java.awt.Font("Arial Black", 0, 18)); // NOI18N
+        enterpriseLabel.setText("ENTERPRISE:");
+        add(enterpriseLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 50, 130, 30));
+
+        jLabel2.setFont(new java.awt.Font("Arial Black", 0, 14)); // NOI18N
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/blue-and-silver-stetoscope-40568.jpg"))); // NOI18N
+        add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1610, -1));
     }// </editor-fold>//GEN-END:initComponents
 
     private void requestTestJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_requestTestJButtonActionPerformed
@@ -119,16 +104,16 @@ public class SendToManagerJPanel extends javax.swing.JPanel {
             JOptionPane.showMessageDialog(null, "Please enter all the details");
             return;
         }
-//        ManagerWorkRequest request = new ManagerWorkRequest();
-//        request.setMessage(message);
-//        request.setSender(userAccount);
-//        request.setStatus("Sent");
-//
-//        managerOrganization =  MainValidation.getManagerOrganization(business, userAccount);
-//        managerOrganization.getWorkQueue().getWorkRequestList().add(request);
-//        userAccount.getWorkQueue().getWorkRequestList().add(request);
-//        JOptionPane.showMessageDialog(null, "Request Send to Manager for Approval", "warning", JOptionPane.WARNING_MESSAGE);
+        ManagerWorkRequest request = new ManagerWorkRequest();
+        request.setMessage(message);
+        request.setSender(userAccount);
+        request.setStatus("Sent");
 
+        managerOrganization =  MainValidation.getManagerOrganization(business, userAccount);
+        managerOrganization.getWorkQueue().getWorkRequestList().add(request);
+        userAccount.getWorkQueue().getWorkRequestList().add(request);
+        JOptionPane.showMessageDialog(null, "Request Send to Manager for Approval", "warning", JOptionPane.WARNING_MESSAGE);
+            
         /*Organization org = null;
         for (Organization organization : enterprise.getOrganizationDirectory().getOrganizationList()){
             if (organization instanceof DonorOrganization){
@@ -141,10 +126,11 @@ public class SendToManagerJPanel extends javax.swing.JPanel {
             org.getWorkQueue().getWorkRequestList().add(request);
             userAccount.getWorkQueue().getWorkRequestList().add(request);
         }*/
+
     }//GEN-LAST:event_requestTestJButtonActionPerformed
 
     private void backJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backJButtonActionPerformed
-        // TODO add your handling code here:
+
         userProcessContainer.remove(this);
         Component[] componentArray = userProcessContainer.getComponents();
         Component component = componentArray[componentArray.length - 1];
@@ -160,7 +146,6 @@ public class SendToManagerJPanel extends javax.swing.JPanel {
     private javax.swing.JLabel enterpriseLabel;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JPanel jPanel1;
     private javax.swing.JTextField messageJTextField;
     private javax.swing.JButton requestTestJButton;
     private javax.swing.JLabel valueLabel1;

@@ -5,15 +5,18 @@
  */
 package Business.Employee;
 
+import java.util.ArrayList;
+
 /**
  *
- * @author niramaykelkar
+ * @author verle
  */
 public class Donor extends Employee{
     
     private String donorId;
     private static int count = 1;
-    
+    //private ArrayList<Donation> donationList ;
+
     public Donor()
     {
         StringBuffer sb = new StringBuffer();
@@ -21,18 +24,24 @@ public class Donor extends Employee{
         sb.append(count);
         donorId = sb.toString();
         count++;
-    }
-
-    public String getDonorId() {
-        return donorId;
-    }
-
-    public void setDonorId(String donorId) {
-        this.donorId = donorId;
+        //donationList = new ArrayList<>();
     }
     
-     @Override
+    @Override
     public String toString() {
         return this.getName();
     }
+    
+    public String getDonorId() {
+        return donorId;
+    }
+    
+    /*public Donation addDonation()
+    {
+        Donation vs=new Donation();
+        donationList.add(vs);
+        return vs;
+    }*/
 }
+
+    

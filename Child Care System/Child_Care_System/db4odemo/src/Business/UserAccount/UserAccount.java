@@ -4,7 +4,10 @@
  */
 package Business.UserAccount;
 
+import Business.Employee.Applicant;
+import Business.Employee.Donor;
 import Business.Employee.Employee;
+import Business.Network.Network;
 import Business.Role.Role;
 import Business.WorkQueue.WorkQueue;
 
@@ -17,14 +20,32 @@ public class UserAccount {
     private String username;
     private String password;
     private Employee employee;
+    private Donor donor;
+    private Applicant applicant;
     private Role role;
     private WorkQueue workQueue;
+    private Network network;
+    private boolean enabled = true;
 
     public UserAccount() {
         workQueue = new WorkQueue();
     }
     
+    public Donor getDonor() {
+        return donor;
+    }
+
+    public void setDonor(Donor donor) {
+        this.donor = donor;
+    }
     
+    public void setEnabled(boolean enabled) {
+        this.enabled = enabled;
+    }
+
+    public boolean isEnabled() {
+        return enabled;
+    }
     
     public String getUsername() {
         return username;
@@ -67,6 +88,22 @@ public class UserAccount {
     @Override
     public String toString() {
         return username;
+    }
+
+    public Network getNetwork() {
+        return network;
+    }
+
+    public void setNetwork(Network network) {
+        this.network = network;
+    }
+
+    public Applicant getApplicant() {
+        return applicant;
+    }
+
+    public void setApplicant(Applicant applicant) {
+        this.applicant = applicant;
     }
     
     

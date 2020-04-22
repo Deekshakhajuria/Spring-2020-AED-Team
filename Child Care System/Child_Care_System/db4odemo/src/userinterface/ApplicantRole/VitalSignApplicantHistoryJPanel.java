@@ -5,41 +5,80 @@
  */
 package userinterface.ApplicantRole;
 
+import Business.Employee.Applicant;
 import Business.Employee.Employee;
+import Business.Employee.VitalSign;
 import Business.UserAccount.UserAccount;
 import Business.UserAccount.UserAccountDirectory;
+import Business.Validation.NumberValidation;
+import Business.WorkQueue.DoctorTestWorkRequest;
+import Business.WorkQueue.DonorTestWorkRequest;
 import Business.WorkQueue.LabTestWorkRequest;
+import Business.WorkQueue.ManagerWorkRequest;
 import Business.WorkQueue.WorkRequest;
+import java.awt.BorderLayout;
 import java.awt.CardLayout;
+import java.awt.Color;
+import javax.swing.InputVerifier;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
+import org.jfree.chart.ChartFactory;
+import org.jfree.chart.ChartPanel;
+import org.jfree.chart.JFreeChart;
+import org.jfree.chart.plot.CategoryPlot;
+import org.jfree.chart.plot.PlotOrientation;
+import org.jfree.data.category.DefaultCategoryDataset;
 
 /**
  *
- * @author niramaykelkar
+ * @author hp
  */
 public class VitalSignApplicantHistoryJPanel extends javax.swing.JPanel {
 
     /**
-     * Creates new form VitalSignApplicantHistoryJPanel
+     * Creates new form VitalSignApplicantHistoryJpanel
      */
     private JPanel userProcessContainer;
     private UserAccount userAccount; 
     private Employee employee;
     private UserAccountDirectory userAccountDirectory;
-    //private Applicant customer;
-    //private DoctorTestWorkRequest dtwr;
+    private Applicant customer;
+    private DoctorTestWorkRequest dtwr;
+    
     public VitalSignApplicantHistoryJPanel(JPanel userProcessContainer, UserAccount userAccount, UserAccountDirectory userAccountDirectory) {
         initComponents();
+        inputVerifier();
         this.userProcessContainer = userProcessContainer;
         this.userAccount = userAccount;
         employee = userAccount.getEmployee();
         this.userAccountDirectory = userAccountDirectory;
-        //customer = new Applicant(userAccount.getEmployee());
+        customer = new Applicant(userAccount.getEmployee());
         populateTable();
     }
-
+    
+    public void populateTable()
+    {
+        DefaultTableModel dtm =(DefaultTableModel) vitalTable.getModel();
+        dtm.setRowCount(0);
+        for(WorkRequest request : userAccount.getWorkQueue().getWorkRequestList())
+        {
+            if(!(request instanceof LabTestWorkRequest)&& !(request instanceof DonorTestWorkRequest) && !(request instanceof ManagerWorkRequest))
+            {
+        dtwr = (DoctorTestWorkRequest)request;
+        
+        
+        
+        for (VitalSign vs : dtwr.getVitalSignList())
+        {
+            Object row[]= new Object[2];
+            row[0]=vs;
+            row[1]=vs.getTimeStamp();
+            dtm.addRow(row);
+        }
+        
+    }}}
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -49,7 +88,6 @@ public class VitalSignApplicantHistoryJPanel extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPanel1 = new javax.swing.JPanel();
         manageEnt2 = new javax.swing.JLabel();
         weightTextField = new javax.swing.JTextField();
         weight = new javax.swing.JLabel();
@@ -61,91 +99,102 @@ public class VitalSignApplicantHistoryJPanel extends javax.swing.JPanel {
         heartRateTextField = new javax.swing.JTextField();
         BarCharJButton = new javax.swing.JButton();
         respiratoryRate = new javax.swing.JLabel();
+        backJButton = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
         manageEnt5 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         vitalTable = new javax.swing.JTable();
         BarCharJButton1 = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
 
-        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        manageEnt2.setFont(new java.awt.Font("Malayalam MN", 3, 24)); // NOI18N
-        manageEnt2.setText("CHILD VITAL HISTORY");
-        jPanel1.add(manageEnt2, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 30, 283, -1));
+        manageEnt2.setFont(new java.awt.Font("Arial Black", 0, 18)); // NOI18N
+        manageEnt2.setText("Vital Signs History");
+        add(manageEnt2, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 30, 283, -1));
 
         weightTextField.setEditable(false);
-        weightTextField.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
-        jPanel1.add(weightTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 660, 160, -1));
+        weightTextField.setFont(new java.awt.Font("Arial Black", 0, 14)); // NOI18N
+        add(weightTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 620, 80, -1));
 
-        weight.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        weight.setFont(new java.awt.Font("Arial Black", 0, 14)); // NOI18N
         weight.setText("Weight (Pounds):");
-        jPanel1.add(weight, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 670, -1, -1));
+        add(weight, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 620, -1, -1));
 
         pulseTextField.setEditable(false);
-        pulseTextField.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
-        jPanel1.add(pulseTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 610, 160, -1));
+        pulseTextField.setFont(new java.awt.Font("Arial Black", 0, 14)); // NOI18N
+        add(pulseTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 580, 80, -1));
 
-        systollicBloodPressure.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
-        systollicBloodPressure.setText("PULSE:");
-        jPanel1.add(systollicBloodPressure, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 620, -1, -1));
+        systollicBloodPressure.setFont(new java.awt.Font("Arial Black", 0, 14)); // NOI18N
+        systollicBloodPressure.setText("Pulse:");
+        add(systollicBloodPressure, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 580, -1, -1));
 
         bloodPressueTextField.setEditable(false);
-        bloodPressueTextField.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        bloodPressueTextField.setFont(new java.awt.Font("Arial Black", 0, 14)); // NOI18N
         bloodPressueTextField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 bloodPressueTextFieldActionPerformed(evt);
             }
         });
-        jPanel1.add(bloodPressueTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 560, 160, -1));
+        add(bloodPressueTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 540, 80, -1));
 
         javax.swing.GroupLayout barChartPanelLayout = new javax.swing.GroupLayout(barChartPanel);
         barChartPanel.setLayout(barChartPanelLayout);
         barChartPanelLayout.setHorizontalGroup(
             barChartPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 640, Short.MAX_VALUE)
+            .addGap(0, 590, Short.MAX_VALUE)
         );
         barChartPanelLayout.setVerticalGroup(
             barChartPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 570, Short.MAX_VALUE)
+            .addGap(0, 530, Short.MAX_VALUE)
         );
 
-        jPanel1.add(barChartPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 110, 640, 570));
+        add(barChartPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 170, 590, 530));
 
-        heartRate.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
-        heartRate.setText("BLOOD PRESSURE:");
-        jPanel1.add(heartRate, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 570, -1, -1));
+        heartRate.setFont(new java.awt.Font("Arial Black", 0, 14)); // NOI18N
+        heartRate.setText("Blood Pressure:");
+        add(heartRate, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 540, -1, -1));
 
         heartRateTextField.setEditable(false);
-        heartRateTextField.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        heartRateTextField.setFont(new java.awt.Font("Arial Black", 0, 14)); // NOI18N
         heartRateTextField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 heartRateTextFieldActionPerformed(evt);
             }
         });
-        jPanel1.add(heartRateTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 520, 160, -1));
+        add(heartRateTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 500, 80, -1));
 
-        BarCharJButton.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
+        BarCharJButton.setFont(new java.awt.Font("Arial Black", 0, 14)); // NOI18N
+        BarCharJButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Barchat.jpg"))); // NOI18N
         BarCharJButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 BarCharJButtonActionPerformed(evt);
             }
         });
-        jPanel1.add(BarCharJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 340, 180, 60));
+        add(BarCharJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 310, 160, 40));
 
-        respiratoryRate.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
-        respiratoryRate.setText("HEART RATE:");
-        jPanel1.add(respiratoryRate, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 530, -1, -1));
+        respiratoryRate.setFont(new java.awt.Font("Arial Black", 0, 14)); // NOI18N
+        respiratoryRate.setText("Heart Rate:");
+        add(respiratoryRate, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 500, -1, -1));
 
-        jLabel3.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
-        jLabel3.setText("Vital Signs");
-        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 460, -1, -1));
+        backJButton.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
+        backJButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Double Left_100px.png"))); // NOI18N
+        backJButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                backJButtonActionPerformed(evt);
+            }
+        });
+        add(backJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 60, 60, 40));
 
-        manageEnt5.setFont(new java.awt.Font("Malayalam MN", 3, 24)); // NOI18N
+        jLabel3.setFont(new java.awt.Font("Arial Black", 0, 14)); // NOI18N
+        jLabel3.setText("Vital Signs:");
+        add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 420, 130, 30));
+
+        manageEnt5.setFont(new java.awt.Font("Arial Black", 0, 14)); // NOI18N
         manageEnt5.setText("View Vital Sign History ");
-        jPanel1.add(manageEnt5, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 150, -1, -1));
+        add(manageEnt5, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 170, -1, -1));
 
+        vitalTable.setFont(new java.awt.Font("Arial Black", 0, 14)); // NOI18N
         vitalTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -164,70 +213,28 @@ public class VitalSignApplicantHistoryJPanel extends javax.swing.JPanel {
         });
         jScrollPane1.setViewportView(vitalTable);
 
-        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 210, 412, 94));
+        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 200, 330, 94));
 
-        BarCharJButton1.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        BarCharJButton1.setFont(new java.awt.Font("Arial Black", 0, 14)); // NOI18N
         BarCharJButton1.setText("View Details");
         BarCharJButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 BarCharJButton1ActionPerformed(evt);
             }
         });
-        jPanel1.add(BarCharJButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 340, 190, 60));
-        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(-20, 0, 1760, -1));
+        add(BarCharJButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 310, 140, 40));
 
-        jButton1.setFont(new java.awt.Font("Lucida Grande", 1, 15)); // NOI18N
-        jButton1.setText("< Back");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
-            }
-        });
-        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 59, 110, 60));
-
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        this.setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1598, Short.MAX_VALUE)
-            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(layout.createSequentialGroup()
-                    .addGap(0, 0, Short.MAX_VALUE)
-                    .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 1598, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(0, 0, Short.MAX_VALUE)))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1080, Short.MAX_VALUE)
-            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(layout.createSequentialGroup()
-                    .addGap(0, 0, Short.MAX_VALUE)
-                    .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 1080, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(0, 0, Short.MAX_VALUE)))
-        );
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/blue-and-silver-stetoscope-40568.jpg"))); // NOI18N
+        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(-20, 0, 1760, -1));
     }// </editor-fold>//GEN-END:initComponents
 
-    public void populateTable()
+    public void inputVerifier()
     {
-        DefaultTableModel dtm =(DefaultTableModel) vitalTable.getModel();
-        dtm.setRowCount(0);
-//        for(WorkRequest request : userAccount.getWorkQueue().getWorkRequestList())
-//        {
-//            if(!(request instanceof LabTestWorkRequest)&& !(request instanceof DonorTestWorkRequest) && !(request instanceof ManagerWorkRequest))
-//            {
-//        dtwr = (DoctorTestWorkRequest)request;
-//        
-//        
-//        
-//        for (VitalSign vs : dtwr.getVitalSignList())
-//        {
-//            Object row[]= new Object[2];
-//            row[0]=vs;
-//            row[1]=vs.getTimeStamp();
-//            dtm.addRow(row);
-//        }
-        
-//    }}
+        InputVerifier noValidation = new NumberValidation();
+        heartRateTextField.setInputVerifier(noValidation);
+        pulseTextField.setInputVerifier(noValidation);
+        weightTextField.setInputVerifier(noValidation);
+        bloodPressueTextField.setInputVerifier(noValidation);
     }
     private void bloodPressueTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bloodPressueTextFieldActionPerformed
         // TODO add your handling code here:
@@ -241,92 +248,92 @@ public class VitalSignApplicantHistoryJPanel extends javax.swing.JPanel {
         int selectedRow = vitalTable.getSelectedRow();
         barChartPanel.removeAll();
         barChartPanel.revalidate();
-//        if(selectedRow >= 0)
-//        {
-//            VitalSign vitalSign = (VitalSign)vitalTable.getValueAt(selectedRow, 0);
-//            double bloodPressure = vitalSign.getBloodPressure();
-//            double heartRate = vitalSign.getHeartRate();
-//            int pulse = vitalSign.getPulse();
-//            double weight = vitalSign.getWeightInPounds();
-//            // Code for bar chart
-//
-//            DefaultCategoryDataset dataSet = new DefaultCategoryDataset();
-//            if(bloodPressure != 0)
-//            {
-//                dataSet.setValue(bloodPressure, "Values", "BLOOD PRESSURE");
-//            }
-//            if(heartRate != 0)
-//            {
-//                dataSet.setValue(heartRate, "Values", "HEART RATE");
-//            }
-//            if(pulse != 0)
-//            {
-//                dataSet.setValue(pulse, "Values", "PULSE");
-//            }
-//            if(weight != 0)
-//            {
-//                dataSet.setValue(weight, "Values", "WEIGHT (POUNDS)");
-//            }
-//            JFreeChart barchart = ChartFactory.createBarChart("Test Results on " + vitalSign.getTimeStamp(),"Vital Signs" ,"Values", dataSet,PlotOrientation.VERTICAL, false, true, false);
-//            barchart.removeLegend();
-//            barchart.setBackgroundPaint(Color.CYAN);
-//            barchart.getTitle().setPaint(Color.BLUE);
-//            CategoryPlot plot = barchart.getCategoryPlot();
-//            plot.setBackgroundPaint(Color.WHITE);
-//
-//            ChartPanel chartpanel = new ChartPanel(barchart);
-//            chartpanel.setDomainZoomable(true);
-//
-//            barChartPanel.setLayout(new BorderLayout());
-//            barChartPanel.add(chartpanel, BorderLayout.EAST);
-//            barChartPanel.repaint();
-//            barChartPanel.setVisible(true);
-//
-//        }
-//        else
-//        {
-//            JOptionPane.showMessageDialog(this, "Please select a row", "warning", JOptionPane.PLAIN_MESSAGE);
-//        }
+        if(selectedRow >= 0)
+        {
+            VitalSign vitalSign = (VitalSign)vitalTable.getValueAt(selectedRow, 0);
+            double bloodPressure = vitalSign.getBloodPressure();
+            double heartRate = vitalSign.getHeartRate();
+            int pulse = vitalSign.getPulse();
+            double weight = vitalSign.getWeightInPounds();
+            // Code for bar chart
+
+            DefaultCategoryDataset dataSet = new DefaultCategoryDataset();
+            if(bloodPressure != 0)
+            {
+                dataSet.setValue(bloodPressure, "Values", "BLOOD PRESSURE");
+            }
+            if(heartRate != 0)
+            {
+                dataSet.setValue(heartRate, "Values", "HEART RATE");
+            }
+            if(pulse != 0)
+            {
+                dataSet.setValue(pulse, "Values", "PULSE");
+            }
+            if(weight != 0)
+            {
+                dataSet.setValue(weight, "Values", "WEIGHT (POUNDS)");
+            }
+            JFreeChart barchart = ChartFactory.createBarChart("Test Results on " + vitalSign.getTimeStamp(),"Vital Signs" ,"Values", dataSet,PlotOrientation.VERTICAL, false, true, false);
+            barchart.removeLegend();
+            barchart.setBackgroundPaint(Color.CYAN);
+            barchart.getTitle().setPaint(Color.BLUE);
+            CategoryPlot plot = barchart.getCategoryPlot();
+            plot.setBackgroundPaint(Color.WHITE);
+
+            ChartPanel chartpanel = new ChartPanel(barchart);
+            chartpanel.setDomainZoomable(true);
+
+            barChartPanel.setLayout(new BorderLayout());
+            barChartPanel.add(chartpanel, BorderLayout.EAST);
+            barChartPanel.repaint();
+            barChartPanel.setVisible(true);
+
+        }
+        else
+        {
+            JOptionPane.showMessageDialog(this, "Please select a row", "warning", JOptionPane.PLAIN_MESSAGE);
+        }
     }//GEN-LAST:event_BarCharJButtonActionPerformed
+
+    private void backJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backJButtonActionPerformed
+
+        userProcessContainer.remove(this);
+        CardLayout layout = (CardLayout)userProcessContainer.getLayout();
+        layout.previous(userProcessContainer);
+    }//GEN-LAST:event_backJButtonActionPerformed
 
     private void BarCharJButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BarCharJButton1ActionPerformed
         // TODO add your handling code here:
         int selectedrow = vitalTable.getSelectedRow();
 
-//        if (selectedrow>=0)
-//        {
-//            VitalSign vs=(VitalSign)vitalTable.getValueAt(selectedrow, 0);
-//
-//            heartRateTextField.setText(String.valueOf(vs.getHeartRate()));
-//            bloodPressueTextField.setText(String.valueOf(vs.getBloodPressure()));
-//            pulseTextField.setText(String.valueOf(vs.getPulse()));
-//            weightTextField.setText(String.valueOf(vs.getWeightInPounds()));
-//        }
-//        else
-//        {
-//            JOptionPane.showMessageDialog(null,"Please select any row");
-//        }
+        if (selectedrow>=0)
+        {
+            VitalSign vs=(VitalSign)vitalTable.getValueAt(selectedrow, 0);
+            
+            
+            heartRateTextField.setText(String.valueOf(vs.getHeartRate()));
+            bloodPressueTextField.setText(String.valueOf(vs.getBloodPressure()));
+            pulseTextField.setText(String.valueOf(vs.getPulse()));
+            weightTextField.setText(String.valueOf(vs.getWeightInPounds()));
+        }
+        else
+        {
+            JOptionPane.showMessageDialog(null,"Please select any row");
+        }
     }//GEN-LAST:event_BarCharJButton1ActionPerformed
-
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
-        userProcessContainer.remove(this);
-        CardLayout layout = (CardLayout)userProcessContainer.getLayout();
-        layout.previous(userProcessContainer);
-    }//GEN-LAST:event_jButton1ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton BarCharJButton;
     private javax.swing.JButton BarCharJButton1;
+    private javax.swing.JButton backJButton;
     private javax.swing.JPanel barChartPanel;
     private javax.swing.JTextField bloodPressueTextField;
     private javax.swing.JLabel heartRate;
     private javax.swing.JTextField heartRateTextField;
-    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel manageEnt2;
     private javax.swing.JLabel manageEnt5;

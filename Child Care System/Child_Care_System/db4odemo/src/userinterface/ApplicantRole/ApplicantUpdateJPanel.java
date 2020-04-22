@@ -8,18 +8,30 @@ package userinterface.ApplicantRole;
 import Business.Employee.Employee;
 import Business.UserAccount.UserAccount;
 import Business.UserAccount.UserAccountDirectory;
+import Business.Validation.DOBValidation;
+import Business.Validation.EmailValidation;
+import Business.Validation.NumberValidation;
+import Business.Validation.PhoneNoValidation;
+import Business.Validation.StringValidation;
 import java.awt.CardLayout;
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import javax.swing.InputVerifier;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 /**
  *
- * @author niramaykelkar
+ * @author hp
  */
 public class ApplicantUpdateJPanel extends javax.swing.JPanel {
 
     /**
      * Creates new form ApplicantUpdateJPanel
      */
+    
     private JPanel userProcessContainer;
     private UserAccount userAccount; 
     private Employee employee;
@@ -28,7 +40,28 @@ public class ApplicantUpdateJPanel extends javax.swing.JPanel {
         initComponents();
         this.userProcessContainer = userProcessContainer;
         this.userAccount = userAccount;
+        employee = userAccount.getEmployee();
         this.userAccountDirectory = userAccountDirectory;
+        try{
+        DateFormat dateformat = new SimpleDateFormat("MM/dd/yyyy");
+        inputVerifiers();    
+        firstNameText.setText(employee.getFirstName());
+        LastNameText.setText(employee.getLastname());
+        DobText.setText(dateformat.format(employee.getDob()));
+        genderComboBox.setSelectedItem(employee.getGender());
+        addressLine1Text.setText(employee.getAddress1());
+        addressLine2Text.setText(employee.getAddress2());
+        cityText.setText(employee.getCity());
+        zipCodeTxt.setText(employee.getZipCode());
+        occupationTxt.setText(employee.getZipCode());
+        mailTxt.setText(employee.getEmailId());
+        userNameTxt.setText(userAccount.getUsername());
+        phoneTxt.setText(String.valueOf(employee.getPhoneNumber()));
+        }
+        catch(Exception e)
+        {
+        JOptionPane.showMessageDialog(null, "Please Update Profile ","Success", JOptionPane.PLAIN_MESSAGE);
+        }
     }
 
     /**
@@ -40,7 +73,6 @@ public class ApplicantUpdateJPanel extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPanel1 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         firstNameText = new javax.swing.JTextField();
         DobText = new javax.swing.JTextField();
@@ -65,200 +97,215 @@ public class ApplicantUpdateJPanel extends javax.swing.JPanel {
         occupationTxt = new javax.swing.JTextField();
         jLabel16 = new javax.swing.JLabel();
         userNameTxt = new javax.swing.JTextField();
+        updateJButton = new javax.swing.JButton();
+        saveJButton = new javax.swing.JButton();
+        backJButton = new javax.swing.JButton();
         jLabel15 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
-        saveJButton = new javax.swing.JButton();
-        updateJButton = new javax.swing.JButton();
-        backJButton = new javax.swing.JButton();
 
-        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel2.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        jLabel2.setFont(new java.awt.Font("Arial Black", 0, 14)); // NOI18N
         jLabel2.setText("FIRST NAME :");
-        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 200, -1, -1));
+        add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 170, -1, -1));
 
-        firstNameText.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        firstNameText.setFont(new java.awt.Font("Arial Black", 0, 14)); // NOI18N
         firstNameText.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 firstNameTextActionPerformed(evt);
             }
         });
-        jPanel1.add(firstNameText, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 200, 144, -1));
+        add(firstNameText, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 170, 144, -1));
 
-        DobText.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        DobText.setFont(new java.awt.Font("Arial Black", 0, 14)); // NOI18N
         DobText.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 DobTextActionPerformed(evt);
             }
         });
-        jPanel1.add(DobText, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 360, 144, -1));
+        add(DobText, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 330, 144, -1));
 
-        jLabel4.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        jLabel4.setFont(new java.awt.Font("Arial Black", 0, 14)); // NOI18N
         jLabel4.setText("DATE OF BIRTH :");
-        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 360, -1, -1));
+        add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 330, -1, -1));
 
-        LastNameText.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        LastNameText.setFont(new java.awt.Font("Arial Black", 0, 14)); // NOI18N
         LastNameText.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 LastNameTextActionPerformed(evt);
             }
         });
-        jPanel1.add(LastNameText, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 240, 144, -1));
+        add(LastNameText, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 210, 144, -1));
 
-        jLabel3.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        jLabel3.setFont(new java.awt.Font("Arial Black", 0, 14)); // NOI18N
         jLabel3.setText("LAST NAME :");
-        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 240, -1, -1));
+        add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 210, -1, -1));
 
-        genderComboBox.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        genderComboBox.setFont(new java.awt.Font("Arial Black", 0, 14)); // NOI18N
         genderComboBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Choose gender", "Female", "Male", "Transgender", "Unknown" }));
-        jPanel1.add(genderComboBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 290, 144, -1));
+        add(genderComboBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 250, 144, -1));
 
-        jLabel13.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        jLabel13.setFont(new java.awt.Font("Arial Black", 0, 14)); // NOI18N
         jLabel13.setText("GENDER :");
-        jPanel1.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 290, -1, -1));
+        add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 250, -1, -1));
 
-        mailTxt.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        mailTxt.setFont(new java.awt.Font("Arial Black", 0, 14)); // NOI18N
         mailTxt.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 mailTxtActionPerformed(evt);
             }
         });
-        jPanel1.add(mailTxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 240, 144, -1));
+        add(mailTxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 210, 144, -1));
 
-        jLabel11.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        jLabel11.setFont(new java.awt.Font("Arial Black", 0, 14)); // NOI18N
         jLabel11.setText("E-MAIL ADDRESS :");
-        jPanel1.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 240, -1, -1));
+        add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 210, -1, -1));
 
-        zipCodeTxt.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        zipCodeTxt.setFont(new java.awt.Font("Arial Black", 0, 14)); // NOI18N
         zipCodeTxt.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 zipCodeTxtActionPerformed(evt);
             }
         });
-        jPanel1.add(zipCodeTxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 460, 144, -1));
+        add(zipCodeTxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 410, 144, -1));
 
-        jLabel10.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        jLabel10.setFont(new java.awt.Font("Arial Black", 0, 14)); // NOI18N
         jLabel10.setText("ZIP CODE:");
-        jPanel1.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 460, -1, -1));
+        add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 410, -1, -1));
 
-        cityText.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        cityText.setFont(new java.awt.Font("Arial Black", 0, 14)); // NOI18N
         cityText.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cityTextActionPerformed(evt);
             }
         });
-        jPanel1.add(cityText, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 420, 144, -1));
+        add(cityText, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 370, 144, -1));
 
-        jLabel9.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        jLabel9.setFont(new java.awt.Font("Arial Black", 0, 14)); // NOI18N
         jLabel9.setText("CITY :");
-        jPanel1.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 420, -1, -1));
+        add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 370, -1, -1));
 
-        addressLine2Text.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        addressLine2Text.setFont(new java.awt.Font("Arial Black", 0, 14)); // NOI18N
         addressLine2Text.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 addressLine2TextActionPerformed(evt);
             }
         });
-        jPanel1.add(addressLine2Text, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 380, 144, -1));
+        add(addressLine2Text, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 330, 144, -1));
 
-        jLabel8.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        jLabel8.setFont(new java.awt.Font("Arial Black", 0, 14)); // NOI18N
         jLabel8.setText("ADDRESS LINE 2 :");
-        jPanel1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 380, -1, -1));
+        add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 330, -1, -1));
 
-        addressLine1Text.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        addressLine1Text.setFont(new java.awt.Font("Arial Black", 0, 14)); // NOI18N
         addressLine1Text.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 addressLine1TextActionPerformed(evt);
             }
         });
-        jPanel1.add(addressLine1Text, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 340, 144, -1));
+        add(addressLine1Text, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 290, 144, -1));
 
-        jLabel7.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        jLabel7.setFont(new java.awt.Font("Arial Black", 0, 14)); // NOI18N
         jLabel7.setText("ADDRESS LINE 1 :");
-        jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 340, -1, -1));
+        add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 290, -1, -1));
 
-        jLabel14.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        jLabel14.setFont(new java.awt.Font("Arial Black", 0, 14)); // NOI18N
         jLabel14.setText("PHONE NUMBER :");
-        jPanel1.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 280, -1, -1));
+        add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 250, -1, -1));
 
-        phoneTxt.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        phoneTxt.setFont(new java.awt.Font("Arial Black", 0, 14)); // NOI18N
         phoneTxt.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 phoneTxtActionPerformed(evt);
             }
         });
-        jPanel1.add(phoneTxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 280, 144, -1));
+        add(phoneTxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 250, 144, -1));
 
-        jLabel18.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        jLabel18.setFont(new java.awt.Font("Arial Black", 0, 14)); // NOI18N
         jLabel18.setText("OCCUPATION:");
-        jPanel1.add(jLabel18, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 320, -1, -1));
+        add(jLabel18, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 290, -1, -1));
 
-        occupationTxt.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        occupationTxt.setFont(new java.awt.Font("Arial Black", 0, 14)); // NOI18N
         occupationTxt.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 occupationTxtActionPerformed(evt);
             }
         });
-        jPanel1.add(occupationTxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 320, 144, -1));
+        add(occupationTxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 290, 144, -1));
 
-        jLabel16.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        jLabel16.setFont(new java.awt.Font("Arial Black", 0, 14)); // NOI18N
         jLabel16.setText("USERNAME :");
-        jPanel1.add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 200, -1, -1));
+        add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 170, -1, -1));
 
-        userNameTxt.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        userNameTxt.setFont(new java.awt.Font("Arial Black", 0, 14)); // NOI18N
         userNameTxt.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 userNameTxtActionPerformed(evt);
             }
         });
-        jPanel1.add(userNameTxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 200, 144, -1));
+        add(userNameTxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 170, 144, -1));
 
-        jLabel15.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
-        jLabel15.setText("UPDATE HELP SEEKER DETAILS");
-        jPanel1.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 60, 600, -1));
-        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1610, -1));
-
-        saveJButton.setText("Save");
-        jPanel1.add(saveJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 440, 120, 40));
-
-        updateJButton.setText("Update");
+        updateJButton.setFont(new java.awt.Font("Arial Black", 0, 14)); // NOI18N
+        updateJButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/button_update.png"))); // NOI18N
         updateJButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 updateJButtonActionPerformed(evt);
             }
         });
-        jPanel1.add(updateJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 440, 120, 40));
+        add(updateJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 530, 130, 40));
 
-        backJButton.setText("< Back");
+        saveJButton.setFont(new java.awt.Font("Arial Black", 0, 14)); // NOI18N
+        saveJButton.setText("Save");
+        saveJButton.setEnabled(false);
+        saveJButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                saveJButtonActionPerformed(evt);
+            }
+        });
+        add(saveJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 530, 130, 40));
+
+        backJButton.setFont(new java.awt.Font("Arial Black", 0, 14)); // NOI18N
+        backJButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Double Left_100px.png"))); // NOI18N
         backJButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 backJButtonActionPerformed(evt);
             }
         });
-        jPanel1.add(backJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 60, 100, 50));
+        add(backJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 60, 60, 40));
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        this.setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1607, Short.MAX_VALUE)
-            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(layout.createSequentialGroup()
-                    .addGap(0, 0, Short.MAX_VALUE)
-                    .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 1607, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(0, 0, Short.MAX_VALUE)))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1080, Short.MAX_VALUE)
-            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(layout.createSequentialGroup()
-                    .addGap(0, 0, Short.MAX_VALUE)
-                    .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 1080, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(0, 0, Short.MAX_VALUE)))
-        );
+        jLabel15.setFont(new java.awt.Font("Arial Black", 0, 18)); // NOI18N
+        jLabel15.setText("Update Applicant Details");
+        add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 50, 260, -1));
+
+        jLabel5.setFont(new java.awt.Font("Arial Black", 0, 14)); // NOI18N
+        jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/blue-and-silver-stetoscope-40568.jpg"))); // NOI18N
+        add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1610, -1));
     }// </editor-fold>//GEN-END:initComponents
 
+    private void inputVerifiers() {
+          
+        InputVerifier strValidation = new StringValidation();
+        firstNameText.setInputVerifier(strValidation);
+        LastNameText.setInputVerifier(strValidation);
+        userNameTxt.setInputVerifier(strValidation);
+        addressLine1Text.setInputVerifier(strValidation);
+        addressLine2Text.setInputVerifier(strValidation);
+        cityText.setInputVerifier(strValidation);
+        occupationTxt.setInputVerifier(strValidation);
+        
+        InputVerifier noValidation = new NumberValidation();
+        zipCodeTxt.setInputVerifier(noValidation);
+        
+        InputVerifier phnValidation = new PhoneNoValidation();
+        phoneTxt.setInputVerifier(phnValidation);
+        
+        InputVerifier emailValidation = new EmailValidation();
+        mailTxt.setInputVerifier(emailValidation);
+        
+        InputVerifier dobValidation = new DOBValidation();
+        DobText.setInputVerifier(dobValidation);
+     }
+    
     private void firstNameTextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_firstNameTextActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_firstNameTextActionPerformed
@@ -303,15 +350,8 @@ public class ApplicantUpdateJPanel extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_userNameTxtActionPerformed
 
-    private void backJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backJButtonActionPerformed
-        // TODO add your handling code here:
-        userProcessContainer.remove(this);
-        CardLayout layout = (CardLayout)userProcessContainer.getLayout();
-        layout.previous(userProcessContainer);
-    }//GEN-LAST:event_backJButtonActionPerformed
-
     private void updateJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updateJButtonActionPerformed
-        // TODO add your handling code here:
+
         firstNameText.setEnabled(true);
         LastNameText.setEnabled(true);
         DobText.setEnabled(true);
@@ -337,6 +377,81 @@ public class ApplicantUpdateJPanel extends javax.swing.JPanel {
         phoneTxt.setEditable(true);
     }//GEN-LAST:event_updateJButtonActionPerformed
 
+    private void saveJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveJButtonActionPerformed
+
+        if(firstNameText.getText()!= null && !firstNameText.getText().isEmpty() &&
+            LastNameText.getText()!= null && !LastNameText.getText().isEmpty() &&
+            addressLine1Text.getText()!=null && !addressLine1Text.getText().isEmpty() &&
+            addressLine2Text.getText()!=null && !addressLine2Text.getText().isEmpty() &&
+            cityText.getText()!=null && !cityText.getText().isEmpty() &&
+            occupationTxt.getText()!=null && !occupationTxt.getText().isEmpty() &&
+            mailTxt.getText()!=null && !mailTxt.getText().isEmpty() &&
+            userNameTxt.getText()!=null && !userNameTxt.getText().isEmpty()
+            && genderComboBox.getSelectedIndex()>=1 && DobText.getText()!=null &&
+            !DobText.getText().isEmpty() &&
+            zipCodeTxt.getText()!=null && !zipCodeTxt.getText().isEmpty())
+        {
+            try
+            {
+                if(!(userAccount.getUsername().equals(userNameTxt.getText()))&&!(userAccountDirectory.checkIfUsernameIsUnique(userNameTxt.getText())))
+                {
+                    JOptionPane.showMessageDialog(null, "User Name already exists!, Please Enter valid user name","warning", JOptionPane.WARNING_MESSAGE);
+                    return;
+                }
+
+                Date dateOfBirthVal = new SimpleDateFormat("MM/dd/yyyy").parse(DobText.getText()) ;
+               
+                employee.setFirstName(firstNameText.getText());
+                employee.setLastname(LastNameText.getText());
+                employee.setAddress2(addressLine2Text.getText());
+                employee.setAddress1(addressLine1Text.getText());
+                employee.setCity(cityText.getText());
+                employee.setZipCode(zipCodeTxt.getText());
+                employee.setOccupation(occupationTxt.getText());
+                userAccount.setUsername(userNameTxt.getText());
+                employee.setDob(dateOfBirthVal);
+                employee.setPhoneNumber(phoneTxt.getText());
+            }
+            catch(NumberFormatException nfe)
+            {
+                JOptionPane.showMessageDialog(this, "Please Enter valid details", "warning",JOptionPane.WARNING_MESSAGE);
+                return;
+            }
+            catch(ParseException pe)
+            {
+                JOptionPane.showMessageDialog(this, "Please Enter valid details", "warning",JOptionPane.WARNING_MESSAGE);
+                return;
+            }
+
+            JOptionPane.showMessageDialog(null, "Your Profile has been updated successfully", "success", JOptionPane.PLAIN_MESSAGE);
+            updateJButton.setEnabled(true);
+            saveJButton.setEnabled(false);
+            firstNameText.setEnabled(false);
+            LastNameText.setEnabled(false);
+            addressLine1Text.setEnabled(false);
+            DobText.setEnabled(false);
+            genderComboBox.setEnabled(false);
+            addressLine2Text.setEnabled(false);
+            cityText.setEnabled(false);
+            zipCodeTxt.setEnabled(false);
+            occupationTxt.setEnabled(false);
+            mailTxt.setEnabled(false);
+            userNameTxt.setEnabled(false);
+            phoneTxt.setEnabled(false);
+        }
+        else
+        {
+            JOptionPane.showMessageDialog(null, "Please Enter data in all the fields");
+        }
+    }//GEN-LAST:event_saveJButtonActionPerformed
+
+    private void backJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backJButtonActionPerformed
+
+        userProcessContainer.remove(this);
+        CardLayout layout = (CardLayout)userProcessContainer.getLayout();
+        layout.previous(userProcessContainer);
+    }//GEN-LAST:event_backJButtonActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField DobText;
@@ -361,7 +476,6 @@ public class ApplicantUpdateJPanel extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
-    private javax.swing.JPanel jPanel1;
     private javax.swing.JTextField mailTxt;
     private javax.swing.JTextField occupationTxt;
     private javax.swing.JTextField phoneTxt;

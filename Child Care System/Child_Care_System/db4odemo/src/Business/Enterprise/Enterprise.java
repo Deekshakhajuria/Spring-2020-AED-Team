@@ -23,7 +23,7 @@ public abstract class Enterprise extends Organization{
     }
     
     public enum EnterpriseType{
-        Hospital("Hospital"),NonProfit("NonProfit"),ChildHelp("ChildHelp"),Pharmacy("Pharmacy"),Insurance("Insurance");
+        Hospital("Hospital"),NonProfit("NonProfit"),ChildHelp("ChildHelp"),Pharmacy("Pharmacy");
         
         private String value;
         
@@ -52,7 +52,7 @@ public abstract class Enterprise extends Organization{
         this.enterpriseType=type;
         organizationDirectory=new OrganizationDirectory();
     }
-    
+
     public Network getNetwork() {
         return network;
     }
@@ -60,4 +60,6 @@ public abstract class Enterprise extends Organization{
     public void setNetwork(Network network) {
         this.network = network;
     }
+    
+    
 }

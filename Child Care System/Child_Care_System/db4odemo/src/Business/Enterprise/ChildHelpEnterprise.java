@@ -10,17 +10,17 @@ import java.util.ArrayList;
 
 /**
  *
- * @author niramaykelkar
+ * @author hp
  */
-public class ChildHelpEnterprise extends Enterprise {
-
-    public ChildHelpEnterprise(String name){
+public class ChildHelpEnterprise extends Enterprise{
+    
+     public ChildHelpEnterprise(String name){
         super(name,EnterpriseType.ChildHelp);
     }
-    
     @Override
     public ArrayList<Role> getSupportedRole() {
         return null;
     }
+    
     
 }
