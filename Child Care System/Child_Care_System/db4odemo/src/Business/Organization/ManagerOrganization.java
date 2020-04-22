@@ -5,16 +5,16 @@
  */
 package Business.Organization;
 
-import Business.Role.ManagerRole;
 import Business.Role.Role;
+import Business.Role.ManagerRole;
 import java.util.ArrayList;
 
 /**
  *
- * @author niramaykelkar
+ * @author hp
  */
 public class ManagerOrganization extends Organization{
-    
+
     public ManagerOrganization() {
         super(Organization.Type.Manager.getValue());
     }
@@ -25,4 +25,5 @@ public class ManagerOrganization extends Organization{
         roles.add(new ManagerRole());
         return roles;
     }
+     
 }

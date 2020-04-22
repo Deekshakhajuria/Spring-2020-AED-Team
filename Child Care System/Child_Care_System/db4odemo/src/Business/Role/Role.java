@@ -19,7 +19,12 @@ public abstract class Role {
     public enum RoleType{
         Admin("Admin"),
         Doctor("Doctor"),
-        LabAssistant("Lab Assistant");
+        LabAssistant("Lab Assistant"),
+        Driver("Driver"),
+        Donor("Donor"),
+        HelpSeeker("HelpSeeker"),
+        Supervisor("Supervisor");
+        
         
         private String value;
         private RoleType(String value){

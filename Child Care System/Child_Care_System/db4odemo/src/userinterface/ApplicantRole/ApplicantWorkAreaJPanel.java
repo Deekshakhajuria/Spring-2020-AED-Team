@@ -4,12 +4,14 @@
  * and open the template in the editor.
  */
 package userinterface.ApplicantRole;
-
 import Business.EcoSystem;
 import Business.Enterprise.Enterprise;
 import Business.Organization.ApplicantOrganization;
 import Business.UserAccount.UserAccount;
+import Business.WorkQueue.DoctorTestWorkRequest;
+import Business.WorkQueue.DonorTestWorkRequest;
 import Business.WorkQueue.LabTestWorkRequest;
+import Business.WorkQueue.ManagerWorkRequest;
 import Business.WorkQueue.WorkRequest;
 import java.awt.CardLayout;
 import javax.swing.JPanel;
@@ -17,7 +19,7 @@ import javax.swing.table.DefaultTableModel;
 
 /**
  *
- * @author niramaykelkar
+ * @author hp
  */
 public class ApplicantWorkAreaJPanel extends javax.swing.JPanel {
 
@@ -29,6 +31,7 @@ public class ApplicantWorkAreaJPanel extends javax.swing.JPanel {
     private Enterprise enterprise;
     private UserAccount userAccount;
     EcoSystem business;
+
     public ApplicantWorkAreaJPanel(JPanel userProcessContainer, UserAccount account, ApplicantOrganization organization, Enterprise enterprise, EcoSystem business) {
         initComponents();
         this.userProcessContainer = userProcessContainer;
@@ -37,6 +40,29 @@ public class ApplicantWorkAreaJPanel extends javax.swing.JPanel {
         this.userAccount = account;
         this.business=business;
         valueLabel.setText(enterprise.getName());
+        populateRequestTable();
+    }
+    
+    
+    public void populateRequestTable(){
+        DefaultTableModel model = (DefaultTableModel) workRequestJTable.getModel();
+        
+        model.setRowCount(0);
+        for (WorkRequest request : userAccount.getWorkQueue().getWorkRequestList()){
+            if(!(request instanceof LabTestWorkRequest)&& !(request instanceof ManagerWorkRequest) && !(request instanceof DoctorTestWorkRequest))
+            {
+            Object[] row = new Object[4];
+            row[0] = request;
+            row[1] = request.getReceiver();
+            row[2] = request.getStatus();
+            
+            String result = ((DonorTestWorkRequest) request).getTestResult();
+            row[3] = result == null ? "Waiting" : result;
+            
+            
+            model.addRow(row);
+            }
+        }
     }
 
     /**
@@ -48,7 +74,6 @@ public class ApplicantWorkAreaJPanel extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPanel1 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         workRequestJTable = new javax.swing.JTable();
         refreshTestJButton = new javax.swing.JButton();
@@ -58,9 +83,9 @@ public class ApplicantWorkAreaJPanel extends javax.swing.JPanel {
         jLabel2 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
 
-        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        workRequestJTable.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        workRequestJTable.setFont(new java.awt.Font("Arial Black", 0, 14)); // NOI18N
         workRequestJTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -86,85 +111,46 @@ public class ApplicantWorkAreaJPanel extends javax.swing.JPanel {
         });
         jScrollPane1.setViewportView(workRequestJTable);
 
-        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 180, 382, 114));
+        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 180, 382, 114));
 
-        refreshTestJButton.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        refreshTestJButton.setFont(new java.awt.Font("Arial Black", 0, 14)); // NOI18N
         refreshTestJButton.setText("Refresh");
         refreshTestJButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 refreshTestJButtonActionPerformed(evt);
             }
         });
-        jPanel1.add(refreshTestJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 340, 150, 50));
+        add(refreshTestJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 180, 140, 30));
 
-        enterpriseLabel.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
+        enterpriseLabel.setFont(new java.awt.Font("Arial Black", 0, 18)); // NOI18N
         enterpriseLabel.setText("EnterPrise :");
-        jPanel1.add(enterpriseLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 60, 127, 30));
+        add(enterpriseLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 60, 127, 30));
 
-        valueLabel.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
+        valueLabel.setFont(new java.awt.Font("Arial Black", 0, 18)); // NOI18N
         valueLabel.setText("<value>");
-        jPanel1.add(valueLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 60, 158, 26));
+        add(valueLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 60, 158, 26));
 
-        requestDonor.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        requestDonor.setFont(new java.awt.Font("Arial Black", 0, 14)); // NOI18N
         requestDonor.setText("Request Donor");
         requestDonor.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 requestDonorActionPerformed(evt);
             }
         });
-        jPanel1.add(requestDonor, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 340, -1, 50));
+        add(requestDonor, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 220, -1, 30));
 
-        jLabel2.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel2.setFont(new java.awt.Font("Arial Black", 0, 14)); // NOI18N
         jLabel2.setText("DONOR DASHBOARD");
-        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 140, -1, -1));
-        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1600, -1));
+        add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 140, -1, -1));
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        this.setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1599, Short.MAX_VALUE)
-            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(layout.createSequentialGroup()
-                    .addGap(0, 0, Short.MAX_VALUE)
-                    .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 1599, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(0, 0, Short.MAX_VALUE)))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1080, Short.MAX_VALUE)
-            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(layout.createSequentialGroup()
-                    .addGap(0, 0, Short.MAX_VALUE)
-                    .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 1080, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(0, 0, Short.MAX_VALUE)))
-        );
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Background.jpg"))); // NOI18N
+        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1600, -1));
     }// </editor-fold>//GEN-END:initComponents
 
-    public void populateRequestTable(){
-        DefaultTableModel model = (DefaultTableModel) workRequestJTable.getModel();
-        
-        model.setRowCount(0);
-//        for (WorkRequest request : userAccount.getWorkQueue().getWorkRequestList()){
-//            if(!(request instanceof LabTestWorkRequest)&& !(request instanceof ManagerWorkRequest) && !(request instanceof DoctorTestWorkRequest))
-//            {
-//            Object[] row = new Object[4];
-//            row[0] = request;
-//            row[1] = request.getReceiver();
-//            row[2] = request.getStatus();
-//            
-//            String result = ((DonorTestWorkRequest) request).getTestResult();
-//            row[3] = result == null ? "Waiting" : result;
-//            
-//            
-//            model.addRow(row);
-//            }
-//        }
-    }
-    
     private void refreshTestJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_refreshTestJButtonActionPerformed
 
         populateRequestTable();
+
     }//GEN-LAST:event_refreshTestJButtonActionPerformed
 
     private void requestDonorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_requestDonorActionPerformed
@@ -179,7 +165,6 @@ public class ApplicantWorkAreaJPanel extends javax.swing.JPanel {
     private javax.swing.JLabel enterpriseLabel;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JButton refreshTestJButton;
     private javax.swing.JButton requestDonor;

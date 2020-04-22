@@ -40,7 +40,7 @@ public abstract class Organization {
         employeeDirectory = new EmployeeDirectory();
         userAccountDirectory = new UserAccountDirectory();
         organizationID = counter;
-        ++counter;
+        counter++;
     }
 
     public abstract ArrayList<Role> getSupportedRole();

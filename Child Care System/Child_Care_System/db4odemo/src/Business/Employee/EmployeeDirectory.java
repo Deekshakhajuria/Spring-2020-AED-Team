@@ -28,4 +28,16 @@ public class EmployeeDirectory {
         employeeList.add(employee);
         return employee;
     }
+    
+    public Employee addEmployee()
+    {
+        Employee employee = new Employee();
+       employeeList.add(employee);
+        return employee;
+    }
+    
+    public void removePerson(Employee employee)
+    {
+        employeeList.remove(employee);
+    }
 }

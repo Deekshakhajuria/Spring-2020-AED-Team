@@ -7,33 +7,44 @@ package userinterface.ApplicantRole;
 
 import Business.EcoSystem;
 import Business.Enterprise.Enterprise;
+import Business.Network.Network;
+import Business.Organization.DonorOrganization;
+import Business.Organization.ManagerOrganization;
+import Business.Organization.Organization;
 import Business.UserAccount.UserAccount;
+import Business.Validation.MainValidation;
+import Business.Validation.StringValidation;
+import Business.WorkQueue.DonorTestWorkRequest;
+import Business.WorkQueue.ManagerWorkRequest;
 import java.awt.CardLayout;
 import java.awt.Component;
+import javax.swing.InputVerifier;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 /**
  *
- * @author niramaykelkar
+ * @author hp
  */
 public class RequestDonorTestJPanel extends javax.swing.JPanel {
 
     /**
-     * Creates new form RequestDonorTestJPanel
+     * Creates new form RequestDonorTestJpanel
      */
-    private JPanel userProcessContainer;
+     private JPanel userProcessContainer;
     private Enterprise enterprise;
     private UserAccount userAccount;
     EcoSystem business;
-    //private DonorOrganization donorOrganization;
-    public RequestDonorTestJPanel(JPanel userProcessContainer, UserAccount account, Enterprise enterprise,EcoSystem business) {
+    private DonorOrganization donorOrganization;
+    RequestDonorTestJPanel(JPanel userProcessContainer, UserAccount account, Enterprise enterprise,EcoSystem business) {
         initComponents();
         this.userProcessContainer = userProcessContainer;
         this.enterprise = enterprise;
         this.userAccount = account;
         this.business=business;
         valueLabel1.setText(enterprise.getName());
+        inputVerifier();
+        populateDoctorComboBx();
     }
 
     /**
@@ -45,82 +56,107 @@ public class RequestDonorTestJPanel extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         messageJTextField = new javax.swing.JTextField();
+        backJButton = new javax.swing.JButton();
         enterpriseLabel = new javax.swing.JLabel();
         valueLabel1 = new javax.swing.JLabel();
         requestTestJButton = new javax.swing.JButton();
         doctorComboBx = new javax.swing.JComboBox();
         enterpriseLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        backJButton = new javax.swing.JButton();
 
-        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel1.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Arial Black", 0, 14)); // NOI18N
         jLabel1.setText("Message");
-        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 230, 80, -1));
+        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 220, 80, -1));
 
-        messageJTextField.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
-        jPanel1.add(messageJTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 220, 160, -1));
+        messageJTextField.setFont(new java.awt.Font("Arial Black", 0, 14)); // NOI18N
+        add(messageJTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 220, 180, -1));
 
-        enterpriseLabel.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
-        enterpriseLabel.setText("DONOR NAME");
-        jPanel1.add(enterpriseLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 90, 170, 30));
+        backJButton.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
+        backJButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Double Left_100px.png"))); // NOI18N
+        backJButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                backJButtonActionPerformed(evt);
+            }
+        });
+        add(backJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 50, 60, 40));
 
-        valueLabel1.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
+        enterpriseLabel.setFont(new java.awt.Font("Arial Black", 0, 14)); // NOI18N
+        enterpriseLabel.setText("Donor Name:");
+        add(enterpriseLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 150, 110, 30));
+
+        valueLabel1.setFont(new java.awt.Font("Arial Black", 0, 18)); // NOI18N
         valueLabel1.setText("<value>");
-        jPanel1.add(valueLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 170, 158, 26));
+        add(valueLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 70, 158, 26));
 
-        requestTestJButton.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        requestTestJButton.setFont(new java.awt.Font("Arial Black", 0, 14)); // NOI18N
         requestTestJButton.setText("Request Test");
         requestTestJButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 requestTestJButtonActionPerformed(evt);
             }
         });
-        jPanel1.add(requestTestJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 280, 140, 40));
+        add(requestTestJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 290, 140, 40));
 
-        doctorComboBx.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        doctorComboBx.setFont(new java.awt.Font("Arial Black", 0, 14)); // NOI18N
         doctorComboBx.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        jPanel1.add(doctorComboBx, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 90, 180, 40));
+        add(doctorComboBx, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 150, 180, 30));
 
-        enterpriseLabel1.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
-        enterpriseLabel1.setText("ENTERPRISE");
-        jPanel1.add(enterpriseLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 170, 160, 30));
-        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1610, -1));
+        enterpriseLabel1.setFont(new java.awt.Font("Arial Black", 0, 18)); // NOI18N
+        enterpriseLabel1.setText("ENTERPRISE:");
+        add(enterpriseLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 70, 120, 30));
 
-        backJButton.setFont(new java.awt.Font("Lucida Grande", 1, 13)); // NOI18N
-        backJButton.setText("< Back");
-        backJButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                backJButtonActionPerformed(evt);
-            }
-        });
-        jPanel1.add(backJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 280, 110, 40));
-
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        this.setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1608, Short.MAX_VALUE)
-            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(layout.createSequentialGroup()
-                    .addGap(0, 0, Short.MAX_VALUE)
-                    .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 1608, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(0, 0, Short.MAX_VALUE)))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1080, Short.MAX_VALUE)
-            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(layout.createSequentialGroup()
-                    .addGap(0, 0, Short.MAX_VALUE)
-                    .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 1080, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(0, 0, Short.MAX_VALUE)))
-        );
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Background.jpg"))); // NOI18N
+        add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1610, -1));
     }// </editor-fold>//GEN-END:initComponents
+
+    public void inputVerifier()
+    {
+        InputVerifier strValidation = new StringValidation();
+        messageJTextField.setInputVerifier(strValidation);
+    }
+    
+     public void populateDoctorComboBx()
+    {
+       try
+       {
+        doctorComboBx.removeAllItems();
+        donorOrganization =  MainValidation.getDonorOrganization(business, userAccount);
+   //    System.out.println("doctorOrganization"+doctorOrganization.getName());
+       if(donorOrganization!=null)
+       {
+        if(donorOrganization.getUserAccountDirectory().getUserAccountList().isEmpty())
+        {
+        JOptionPane.showMessageDialog(null, "No doctors exists in our records as of now!","warning", JOptionPane.WARNING_MESSAGE);
+         return;    
+        }
+         doctorComboBx.removeAllItems();
+        for(UserAccount userAccount : donorOrganization.getUserAccountDirectory().getUserAccountList())
+        {
+        doctorComboBx.addItem(userAccount);
+        }   
+       }
+       }
+       catch(NullPointerException npe)
+       {
+       JOptionPane.showMessageDialog(null, "Donor Organization exists in our records as of now!","warning", JOptionPane.WARNING_MESSAGE);
+         return;       
+       }        
+    }
+    
+    private void backJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backJButtonActionPerformed
+
+        userProcessContainer.remove(this);
+        Component[] componentArray = userProcessContainer.getComponents();
+        Component component = componentArray[componentArray.length - 1];
+        ApplicantWorkAreaJPanel dwjp = (ApplicantWorkAreaJPanel) component;
+        dwjp.populateRequestTable();
+        CardLayout layout = (CardLayout)userProcessContainer.getLayout();
+        layout.previous(userProcessContainer);
+    }//GEN-LAST:event_backJButtonActionPerformed
 
     private void requestTestJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_requestTestJButtonActionPerformed
 
@@ -130,16 +166,16 @@ public class RequestDonorTestJPanel extends javax.swing.JPanel {
             JOptionPane.showMessageDialog(null, "Please enter all the details");
             return;
         }
-//        DonorTestWorkRequest request = new DonorTestWorkRequest();
-//        request.setMessage(message);
-//        request.setSender(userAccount);
-//        request.setStatus("Sent");
-//
-//        UserAccount docAccount = (UserAccount) doctorComboBx.getSelectedItem();
-//
-//        donorOrganization =  MainValidation.getDonorOrganization(business, userAccount);
-//        donorOrganization.getWorkQueue().getWorkRequestList().add(request);
-//        docAccount.getWorkQueue().getWorkRequestList().add(request);
+        DonorTestWorkRequest request = new DonorTestWorkRequest();
+        request.setMessage(message);
+        request.setSender(userAccount);
+        request.setStatus("Sent");
+
+        UserAccount docAccount = (UserAccount) doctorComboBx.getSelectedItem();
+        
+        donorOrganization =  MainValidation.getDonorOrganization(business, userAccount);
+        donorOrganization.getWorkQueue().getWorkRequestList().add(request);
+            docAccount.getWorkQueue().getWorkRequestList().add(request);
         /*Organization org = null;
         for (Organization organization : enterprise.getOrganizationDirectory().getOrganizationList()){
             if (organization instanceof DonorOrganization){
@@ -152,21 +188,10 @@ public class RequestDonorTestJPanel extends javax.swing.JPanel {
             org.getWorkQueue().getWorkRequestList().add(request);
             userAccount.getWorkQueue().getWorkRequestList().add(request);
         }*/
-
-        JOptionPane.showMessageDialog(null, "Request is sent to Donor","Success", JOptionPane.PLAIN_MESSAGE);
-
+                    
+                JOptionPane.showMessageDialog(null, "Request is sent to Donor","Success", JOptionPane.PLAIN_MESSAGE);
+        
     }//GEN-LAST:event_requestTestJButtonActionPerformed
-
-    private void backJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backJButtonActionPerformed
-        // TODO add your handling code here:
-        userProcessContainer.remove(this);
-        Component[] componentArray = userProcessContainer.getComponents();
-        Component component = componentArray[componentArray.length - 1];
-        ApplicantWorkAreaJPanel dwjp = (ApplicantWorkAreaJPanel) component;
-        dwjp.populateRequestTable();
-        CardLayout layout = (CardLayout)userProcessContainer.getLayout();
-        layout.previous(userProcessContainer);
-    }//GEN-LAST:event_backJButtonActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -176,7 +201,6 @@ public class RequestDonorTestJPanel extends javax.swing.JPanel {
     private javax.swing.JLabel enterpriseLabel1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JPanel jPanel1;
     private javax.swing.JTextField messageJTextField;
     private javax.swing.JButton requestTestJButton;
     private javax.swing.JLabel valueLabel1;
