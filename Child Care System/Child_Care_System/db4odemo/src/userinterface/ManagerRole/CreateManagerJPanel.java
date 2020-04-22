@@ -204,9 +204,9 @@ public class CreateManagerJPanel extends javax.swing.JPanel {
         occupationTextField.setBounds(510, 350, 184, 30);
 
         jLabel1.setFont(new java.awt.Font("Arial Black", 0, 14)); // NOI18N
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Background.jpg"))); // NOI18N
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/blue-and-silver-stetoscope-40568.jpg"))); // NOI18N
         add(jLabel1);
-        jLabel1.setBounds(0, 0, 1620, 1080);
+        jLabel1.setBounds(-220, -30, 1620, 1080);
     }// </editor-fold>//GEN-END:initComponents
 
     private void backJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backJButtonActionPerformed

@@ -229,7 +229,7 @@ public class CreateDonorProfileJPanel extends javax.swing.JPanel {
         jLabel1.setText("Enter Donor Details");
         add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 40, 210, 52));
 
-        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Background.jpg"))); // NOI18N
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/blue-and-silver-stetoscope-40568.jpg"))); // NOI18N
         add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1610, -1));
     }// </editor-fold>//GEN-END:initComponents
 

@@ -186,6 +186,7 @@ public class LabAssistantWorkAreaJPanel extends javax.swing.JPanel {
         refreshJButton.setBounds(710, 80, 150, 30);
 
         jLabel1.setFont(new java.awt.Font("Arial Black", 0, 14)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("MESSAGE FROM DOCTOR :");
         add(jLabel1);
         jLabel1.setBounds(260, 340, 208, 21);
@@ -200,6 +201,7 @@ public class LabAssistantWorkAreaJPanel extends javax.swing.JPanel {
         doctorMessageTxtFld.setBounds(500, 340, 320, 30);
 
         jLabel2.setFont(new java.awt.Font("Arial Black", 0, 14)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setText("STATUS OF LAB:");
         add(jLabel2);
         jLabel2.setBounds(260, 410, 130, 21);
@@ -214,6 +216,7 @@ public class LabAssistantWorkAreaJPanel extends javax.swing.JPanel {
         statusTxtFld.setBounds(500, 400, 320, 30);
 
         jLabel3.setFont(new java.awt.Font("Arial Black", 0, 14)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
         jLabel3.setText("RESULT FROM LAB:");
         add(jLabel3);
         jLabel3.setBounds(260, 470, 153, 21);
@@ -237,9 +240,9 @@ public class LabAssistantWorkAreaJPanel extends javax.swing.JPanel {
         add(DataBtn);
         DataBtn.setBounds(710, 120, 150, 30);
 
-        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Background.jpg"))); // NOI18N
+        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/blue-and-silver-stetoscope-40568.jpg"))); // NOI18N
         add(jLabel4);
-        jLabel4.setBounds(0, 0, 1610, 1080);
+        jLabel4.setBounds(0, 0, 1610, 2000);
     }// </editor-fold>//GEN-END:initComponents
 
     private void assignJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_assignJButtonActionPerformed

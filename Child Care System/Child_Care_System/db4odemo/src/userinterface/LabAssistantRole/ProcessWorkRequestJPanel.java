@@ -80,7 +80,7 @@ public class ProcessWorkRequestJPanel extends javax.swing.JPanel {
         add(backJButton);
         backJButton.setBounds(70, 50, 60, 30);
 
-        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Background.jpg"))); // NOI18N
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/blue-and-silver-stetoscope-40568.jpg"))); // NOI18N
         add(jLabel2);
         jLabel2.setBounds(0, 0, 1610, 1080);
     }// </editor-fold>//GEN-END:initComponents

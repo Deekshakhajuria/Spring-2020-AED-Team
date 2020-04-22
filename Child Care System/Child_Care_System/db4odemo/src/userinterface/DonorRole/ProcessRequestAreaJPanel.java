@@ -87,7 +87,7 @@ public class ProcessRequestAreaJPanel extends javax.swing.JPanel {
 
         commentTextField.setFont(new java.awt.Font("Arial Black", 0, 14)); // NOI18N
         add(commentTextField);
-        commentTextField.setBounds(490, 220, 163, 27);
+        commentTextField.setBounds(490, 220, 163, 31);
 
         submitJButton.setFont(new java.awt.Font("Arial Black", 0, 14)); // NOI18N
         submitJButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/button_submit.png"))); // NOI18N
@@ -109,7 +109,7 @@ public class ProcessRequestAreaJPanel extends javax.swing.JPanel {
         add(jLabel7);
         jLabel7.setBounds(400, 70, 160, 50);
 
-        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Background.jpg"))); // NOI18N
+        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/blue-and-silver-stetoscope-40568.jpg"))); // NOI18N
         add(jLabel3);
         jLabel3.setBounds(0, 0, 1620, 1080);
     }// </editor-fold>//GEN-END:initComponents

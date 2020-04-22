@@ -143,9 +143,9 @@ public class ViewPendingRequest extends javax.swing.JPanel {
         add(backJButton);
         backJButton.setBounds(30, 20, 60, 40);
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Background.jpg"))); // NOI18N
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/blue-and-silver-stetoscope-40568.jpg"))); // NOI18N
         add(jLabel1);
-        jLabel1.setBounds(0, 0, 1610, 1080);
+        jLabel1.setBounds(0, 0, 1610, 2000);
     }// </editor-fold>//GEN-END:initComponents
 
     public void populateJTable()

@@ -95,8 +95,8 @@ public class DonorWorkAreaJPanel extends javax.swing.JPanel {
         });
         add(viewDonationRequestsBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 210, 290, 70));
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Background.jpg"))); // NOI18N
-        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/blue-and-silver-stetoscope-40568.jpg"))); // NOI18N
+        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1680, 1080));
     }// </editor-fold>//GEN-END:initComponents
 
     private void viewProfileBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_viewProfileBtnActionPerformed
