@@ -124,7 +124,7 @@ public class ManageUserAccountJPanel extends javax.swing.JPanel {
 
         nameJTextField.setFont(new java.awt.Font("Arial Black", 0, 14)); // NOI18N
         add(nameJTextField);
-        nameJTextField.setBounds(730, 200, 146, 27);
+        nameJTextField.setBounds(730, 200, 146, 31);
 
         jLabel1.setFont(new java.awt.Font("Arial Black", 0, 14)); // NOI18N
         jLabel1.setText("User Name:");
@@ -171,7 +171,7 @@ public class ManageUserAccountJPanel extends javax.swing.JPanel {
 
         passwordJTextField.setFont(new java.awt.Font("Arial Black", 0, 14)); // NOI18N
         add(passwordJTextField);
-        passwordJTextField.setBounds(730, 250, 146, 27);
+        passwordJTextField.setBounds(730, 250, 146, 31);
 
         jLabel3.setFont(new java.awt.Font("Arial Black", 0, 14)); // NOI18N
         jLabel3.setText("Employee:");
@@ -218,7 +218,7 @@ public class ManageUserAccountJPanel extends javax.swing.JPanel {
         add(roleJComboBox);
         roleJComboBox.setBounds(730, 150, 146, 27);
 
-        jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Background.jpg"))); // NOI18N
+        jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/blue-and-silver-stetoscope-40568.jpg"))); // NOI18N
         add(jLabel6);
         jLabel6.setBounds(0, 0, 1620, 1080);
     }// </editor-fold>//GEN-END:initComponents

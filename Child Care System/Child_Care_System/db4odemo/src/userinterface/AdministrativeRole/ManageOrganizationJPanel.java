@@ -135,7 +135,7 @@ public class ManageOrganizationJPanel extends javax.swing.JPanel {
         jLabel1.setText("Organization Type ");
         add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 230, 150, 40));
 
-        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Background.jpg"))); // NOI18N
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/blue-and-silver-stetoscope-40568.jpg"))); // NOI18N
         add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
     }// </editor-fold>//GEN-END:initComponents
 

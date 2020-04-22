@@ -86,7 +86,7 @@ public class AdminWorkAreaJPanel extends javax.swing.JPanel {
         add(valueLabel);
         valueLabel.setBounds(650, 140, 190, 30);
 
-        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Background.jpg"))); // NOI18N
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/blue-and-silver-stetoscope-40568.jpg"))); // NOI18N
         add(jLabel2);
         jLabel2.setBounds(0, 0, 1610, 1080);
     }// </editor-fold>//GEN-END:initComponents

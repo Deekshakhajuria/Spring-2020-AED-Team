@@ -109,7 +109,7 @@ public class RequestDonorTestJPanel extends javax.swing.JPanel {
         enterpriseLabel1.setText("ENTERPRISE:");
         add(enterpriseLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 70, 120, 30));
 
-        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Background.jpg"))); // NOI18N
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/blue-and-silver-stetoscope-40568.jpg"))); // NOI18N
         add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1610, -1));
     }// </editor-fold>//GEN-END:initComponents
 

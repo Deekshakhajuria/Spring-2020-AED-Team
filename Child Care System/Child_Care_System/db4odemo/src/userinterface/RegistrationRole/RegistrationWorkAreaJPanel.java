@@ -35,7 +35,7 @@ import javax.swing.JPanel;
  * @author hp
  */
 
-public class RegistrationworkAreaJPanel extends javax.swing.JPanel {
+public class RegistrationWorkAreaJPanel extends javax.swing.JPanel {
 
     /**
      * Creates new form RegistrationworkAreaJPanel
@@ -45,7 +45,7 @@ public class RegistrationworkAreaJPanel extends javax.swing.JPanel {
     private EcoSystem business; 
     private Enterprise enterprise;
     private Organization organization;
-    public RegistrationworkAreaJPanel(JPanel userProcessContainer, EcoSystem business) {
+    public RegistrationWorkAreaJPanel(JPanel userProcessContainer, EcoSystem business) {
         initComponents();
         this.userProcessContainer = userProcessContainer;
        this.business = business;

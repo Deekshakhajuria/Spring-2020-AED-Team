@@ -179,7 +179,7 @@ public class ManageEmployeeJPanel extends javax.swing.JPanel {
 
         nameJTextField.setFont(new java.awt.Font("Arial Black", 0, 14)); // NOI18N
         add(nameJTextField);
-        nameJTextField.setBounds(400, 330, 130, 27);
+        nameJTextField.setBounds(400, 330, 130, 31);
 
         organizationEmpJComboBox.setFont(new java.awt.Font("Arial Black", 0, 14)); // NOI18N
         organizationEmpJComboBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
@@ -196,7 +196,7 @@ public class ManageEmployeeJPanel extends javax.swing.JPanel {
         add(jLabel3);
         jLabel3.setBounds(240, 300, 110, 21);
 
-        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Background.jpg"))); // NOI18N
+        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/blue-and-silver-stetoscope-40568.jpg"))); // NOI18N
         add(jLabel4);
         jLabel4.setBounds(0, -50, 1650, 1080);
     }// </editor-fold>//GEN-END:initComponents

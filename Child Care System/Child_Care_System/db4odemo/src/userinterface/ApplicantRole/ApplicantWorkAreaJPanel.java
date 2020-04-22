@@ -143,7 +143,7 @@ public class ApplicantWorkAreaJPanel extends javax.swing.JPanel {
         jLabel2.setText("DONOR DASHBOARD");
         add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 140, -1, -1));
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Background.jpg"))); // NOI18N
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/blue-and-silver-stetoscope-40568.jpg"))); // NOI18N
         add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1600, -1));
     }// </editor-fold>//GEN-END:initComponents
 

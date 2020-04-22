@@ -224,7 +224,7 @@ public class VitalSignApplicantHistoryJPanel extends javax.swing.JPanel {
         });
         add(BarCharJButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 310, 140, 40));
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Background.jpg"))); // NOI18N
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/blue-and-silver-stetoscope-40568.jpg"))); // NOI18N
         add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(-20, 0, 1760, -1));
     }// </editor-fold>//GEN-END:initComponents
 
