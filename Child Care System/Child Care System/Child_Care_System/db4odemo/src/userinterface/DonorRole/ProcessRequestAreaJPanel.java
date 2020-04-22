@@ -19,7 +19,7 @@ import javax.swing.JPanel;
 
 /**
  *
- * @author deekshakjahuria
+ * @author moury
  */
 public class ProcessRequestAreaJPanel extends javax.swing.JPanel {
 

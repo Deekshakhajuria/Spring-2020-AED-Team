@@ -23,7 +23,7 @@ import javax.swing.JPanel;
 
 /**
  *
- * @author niramaykelkar
+ * @author deekshakhajuria
  */
 public class CreateManagerJPanel extends javax.swing.JPanel {
 

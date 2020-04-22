@@ -15,7 +15,7 @@ import javax.swing.JPanel;
 
 /**
  *
- * @author deekshakjahuria
+ * @author moury
  */
 public class DonorWorkAreaJPanel extends javax.swing.JPanel {
 

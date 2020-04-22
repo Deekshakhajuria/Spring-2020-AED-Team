@@ -7,7 +7,7 @@ package Business.Employee;
 
 /**
  *
- * @author moury
+ * @author Team SPY
  */
 public class Donation {
     

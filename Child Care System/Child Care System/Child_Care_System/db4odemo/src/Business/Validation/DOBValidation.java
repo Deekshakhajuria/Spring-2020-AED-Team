@@ -15,7 +15,7 @@ import javax.swing.JTextField;
 
 /**
  *
- * @author moury
+ * @author Team SPY
  */
 public class DOBValidation extends InputVerifier{
     

@@ -15,7 +15,7 @@ import javax.swing.table.DefaultTableModel;
 
 /**
  *
- * @author deekshakjahuria
+ * @author moury
  */
 public class ViewDonationHistory extends javax.swing.JPanel {
 

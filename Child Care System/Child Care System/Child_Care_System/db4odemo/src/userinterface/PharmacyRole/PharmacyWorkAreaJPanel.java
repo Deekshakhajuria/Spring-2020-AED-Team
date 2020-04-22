@@ -20,7 +20,7 @@ import javax.swing.table.DefaultTableModel;
 
 /**
  *
- * @author moury
+ * @author deekshakhajuria
  */
 public class PharmacyWorkAreaJPanel extends javax.swing.JPanel {
 

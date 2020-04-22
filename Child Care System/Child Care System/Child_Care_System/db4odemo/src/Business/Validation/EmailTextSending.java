@@ -18,7 +18,7 @@ import javax.mail.internet.MimeMessage;
 
 /**
  *
- * @author deekshakhajuria
+ * @author verle
  */
 public class EmailTextSending {
     

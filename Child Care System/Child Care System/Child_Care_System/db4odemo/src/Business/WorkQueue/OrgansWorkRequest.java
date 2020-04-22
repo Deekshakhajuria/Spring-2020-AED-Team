@@ -7,7 +7,7 @@ package Business.WorkQueue;
 
 /**
  *
- * @author moury
+ * @author verle
  */
 public class OrgansWorkRequest extends WorkRequest{
     
