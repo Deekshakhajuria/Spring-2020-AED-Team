@@ -7,7 +7,7 @@ package Business.Validation;
 
 /**
  *
- * @author Team SPY
+ * @author moury
  */
 public class Donation {
     

@@ -9,7 +9,7 @@ import javax.mail.Authenticator;
 import javax.mail.PasswordAuthentication;
 /**
  *
- * @author Team SPY
+ * @author deekshakhajuria
  */
 public class Email extends Authenticator{
     

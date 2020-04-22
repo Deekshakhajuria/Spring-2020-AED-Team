@@ -21,7 +21,7 @@ import userinterface.ApplicantRole.ApplicantUpdateJPanel;
 
 /**
  *
- * @author verle
+ * @author deekshakjahuria
  */
 public class ViewPendingRequest extends javax.swing.JPanel {
 

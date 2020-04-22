@@ -13,7 +13,7 @@ import javax.swing.JTextField;
 
 /**
  *
- * @author verle
+ * @author niramaykelkar
  */
 public class StringValidation extends InputVerifier{
     

@@ -16,7 +16,7 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 /**
  *
- * @author verle
+ * @author moury
  */
 public class ProcessWorkRequestJPanel extends javax.swing.JPanel {
 

@@ -14,7 +14,7 @@ import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 /**
  *
- * @author verle
+ * @author deekshakhajuria
  */
 public class EmailValidation extends InputVerifier{
 

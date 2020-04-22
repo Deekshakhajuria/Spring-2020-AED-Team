@@ -15,7 +15,7 @@ import userinterface.PharmacyRole.PharmacyWorkAreaJPanel;
 
 /**
  *
- * @author verle
+ * @author deekshakhajuria
  */
 public class PharmacyRole extends Role{
     

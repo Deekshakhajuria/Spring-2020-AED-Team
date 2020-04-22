@@ -9,7 +9,7 @@ import java.util.ArrayList;
 
 /**
  *
- * @author verle
+ * @author moury
  */
 public class Donor extends Employee{
     

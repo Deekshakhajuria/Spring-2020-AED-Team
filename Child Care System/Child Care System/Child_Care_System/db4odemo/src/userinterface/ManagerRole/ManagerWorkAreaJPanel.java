@@ -20,7 +20,7 @@ import userinterface.DonorRole.ViewDonorJPanel;
 
 /**
  *
- * @author Team SPY
+ * @author niramaykelkar
  */
 public class ManagerWorkAreaJPanel extends javax.swing.JPanel {
 

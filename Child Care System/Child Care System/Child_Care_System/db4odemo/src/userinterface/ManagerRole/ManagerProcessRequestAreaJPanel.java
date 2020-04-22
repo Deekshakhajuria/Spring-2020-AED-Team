@@ -29,7 +29,7 @@ import javax.swing.JPanel;
 
 /**
  *
- * @author verle
+ * @author niramaykelkar
  */
 public class ManagerProcessRequestAreaJPanel extends javax.swing.JPanel {
 

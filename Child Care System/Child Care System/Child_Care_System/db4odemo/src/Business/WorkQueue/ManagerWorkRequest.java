@@ -7,7 +7,7 @@ package Business.WorkQueue;
 
 /**
  *
- * @author verle
+ * @author niramaykelkar
  */
 public class ManagerWorkRequest extends WorkRequest{
     

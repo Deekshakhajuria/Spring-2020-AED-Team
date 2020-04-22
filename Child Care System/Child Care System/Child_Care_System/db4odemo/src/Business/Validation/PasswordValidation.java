@@ -12,7 +12,7 @@ import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 /**
  *
- * @author verle
+ * @author niramaykelkar
  */
 public class PasswordValidation extends InputVerifier{
     
