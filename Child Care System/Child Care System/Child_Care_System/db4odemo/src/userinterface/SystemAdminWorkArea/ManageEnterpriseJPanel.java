@@ -166,7 +166,7 @@ public class ManageEnterpriseJPanel extends javax.swing.JPanel {
         add(backJButton);
         backJButton.setBounds(32, 35, 60, 40);
 
-        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Background.jpg"))); // NOI18N
+        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/blue-and-silver-stetoscope-40568.jpg"))); // NOI18N
         add(jLabel4);
         jLabel4.setBounds(0, 0, 1610, 1080);
     }// </editor-fold>//GEN-END:initComponents

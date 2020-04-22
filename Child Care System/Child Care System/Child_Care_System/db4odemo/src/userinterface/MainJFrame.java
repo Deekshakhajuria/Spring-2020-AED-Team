@@ -17,7 +17,7 @@ import java.awt.Toolkit;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import userinterface.DoctorRole.RequestLabTestJPanel;
-import userinterface.RegistrationRole.RegistrationWorkAreaJPanel;
+import userinterface.RegistrationRole.RegistrationworkAreaJPanel;
 
 /**
  *
@@ -239,9 +239,9 @@ public class MainJFrame extends javax.swing.JFrame {
         passwordField.setText("");
 
         container.removeAll();
-         RegistrationWorkAreaJPanel registrationWorkAreaJPanel = new RegistrationWorkAreaJPanel(container, system);
+         RegistrationworkAreaJPanel registrationworkAreaJPanel = new RegistrationworkAreaJPanel(container, system);
          CardLayout layout = (CardLayout) container.getLayout();
-         container.add("RegisterWorkArea", registrationWorkAreaJPanel);
+         container.add("RegisterWorkArea", registrationworkAreaJPanel);
          layout.next(container);
          dB4OUtil.storeSystem(system);
          

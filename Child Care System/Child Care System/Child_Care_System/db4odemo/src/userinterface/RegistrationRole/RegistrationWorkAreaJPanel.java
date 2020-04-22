@@ -479,7 +479,7 @@ public class RegistrationWorkAreaJPanel extends javax.swing.JPanel {
         });
         add(occupationTxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 670, 144, 30));
 
-        jLabel21.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Background.jpg"))); // NOI18N
+        jLabel21.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/blue-and-silver-stetoscope-40568.jpg"))); // NOI18N
         add(jLabel21, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
     }// </editor-fold>//GEN-END:initComponents
 

@@ -197,7 +197,7 @@ public class ManagerWorkAreaJPanel extends javax.swing.JPanel {
         });
         add(updateSupervisorProfile, new org.netbeans.lib.awtextra.AbsoluteConstraints(1363, 47, 175, -1));
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Background.jpg"))); // NOI18N
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/blue-and-silver-stetoscope-40568.jpg"))); // NOI18N
         add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
     }// </editor-fold>//GEN-END:initComponents
 

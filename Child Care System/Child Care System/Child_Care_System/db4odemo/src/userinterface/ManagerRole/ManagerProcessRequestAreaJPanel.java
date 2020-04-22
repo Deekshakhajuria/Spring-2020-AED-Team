@@ -155,9 +155,9 @@ public class ManagerProcessRequestAreaJPanel extends javax.swing.JPanel {
 
         commentsJTextField.setFont(new java.awt.Font("Arial Black", 0, 14)); // NOI18N
         add(commentsJTextField);
-        commentsJTextField.setBounds(460, 200, 163, 27);
+        commentsJTextField.setBounds(460, 200, 163, 31);
 
-        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Background.jpg"))); // NOI18N
+        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/blue-and-silver-stetoscope-40568.jpg"))); // NOI18N
         add(jLabel4);
         jLabel4.setBounds(0, 0, 1620, 1080);
     }// </editor-fold>//GEN-END:initComponents
